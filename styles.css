@@ -287,6 +287,10 @@ li + li {
   gap: 0.9rem;
 }
 
+.hero-btns {
+  justify-content: center;
+}
+
 .button-row-spaced {
   margin-top: 1.5rem;
 }
@@ -303,12 +307,37 @@ li + li {
 .hero-highlights {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 0.9rem;
+  justify-content: center;
+  margin-bottom: 0.6rem;
   padding: 0;
   list-style: none;
 }
 
-.hero-highlights li,
+.hero-highlights li {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.hero-highlights li + li::before {
+  content: "";
+  width: 1px;
+  height: 0.95rem;
+  margin-right: 0.9rem;
+  background: linear-gradient(
+    180deg,
+    rgba(47, 116, 255, 0.1),
+    rgba(47, 116, 255, 0.45),
+    rgba(47, 116, 255, 0.1)
+  );
+}
+
 .chip-list li,
 .skill-pill {
   margin: 0;
@@ -323,6 +352,8 @@ li + li {
 
 .hero-panel {
   position: relative;
+  width: min(100%, 470px);
+  margin-inline: auto;
   padding: 1.2rem;
   border-radius: var(--radius-lg);
   background: linear-gradient(
@@ -1022,11 +1053,11 @@ td {
   letter-spacing: -0.03em;
 }
 
-.logo img {
-  width: 58px;
-  height: 58px;
-  padding: 0.35rem;
-  object-fit: contain;
+.logo-mark {
+  width: 86px;
+  height: 64px;
+  flex: 0 0 86px;
+  overflow: hidden;
   border-radius: 18px;
   background: linear-gradient(
     145deg,
@@ -1034,6 +1065,16 @@ td {
     rgba(105, 182, 255, 0.22)
   );
   box-shadow: var(--shadow-glow);
+}
+
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 0% center;
+  transform: scale(1.24);
+  transform-origin: center;
 }
 
 .logo span {
