@@ -912,10 +912,23 @@ details.program-details {
 }
 
 details.program-details summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   list-style: none;
   cursor: pointer;
   font-weight: 800;
   color: var(--ink-strong);
+}
+
+.program-details-hint {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: rgba(47, 116, 255, 0.1);
 }
 
 details.program-details summary::-webkit-details-marker {
@@ -924,6 +937,7 @@ details.program-details summary::-webkit-details-marker {
 
 details.program-details summary::after {
   content: " +";
+  margin-left: auto;
   color: var(--accent-deep);
 }
 
