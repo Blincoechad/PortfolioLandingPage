@@ -1,503 +1,715 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-DD6TGLHT02"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-DD6TGLHT02");
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chad Blincoe | Creative Web Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Pixel Designs | Web Design & Development</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="favicon/site.webmanifest" />
-    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
   </head>
   <body>
-    <header class="navbar">
-      <div class="nav-inner">
-        <a href="index.html" class="logo">
-          <span class="logo-mark">
-            <img
-              src="media/myLogo.png"
-              alt="Pixel Designs logo"
-              width="66"
-              height="46"
-            />
-          </span>
-          <span>Pixel Designs</span>
-        </a>
-        <button
-          class="hamburger"
-          id="hamburger"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="navLinks"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav id="navLinks" class="nav-links" aria-label="Main navigation">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="about.html" class="nav-link">About</a>
-          <a href="logic-programs.html" class="nav-link">JavaScript Builds</a>
-          <a href="web-projects.html" class="nav-link">Web Projects</a>
-          <a href="graphic-work.html" class="nav-link">Graphic Work</a>
-          <a href="contact.html" class="nav-link">Contact</a>
-        </nav>
-      </div>
-    </header>
+    <!-- Cursor -->
+    <div class="cursor" id="cursor">
+      <div class="cursor-dot" id="cursorDot"></div>
+      <div class="cursor-ring" id="cursorRing"></div>
+    </div>
 
-    <main id="main">
-      <section class="hero">
-        <div class="container hero-shell">
-          <div class="hero-copy">
-            <span class="eyebrow">Creative Portfolio</span>
-            <h1>Designing websites with clarity, personality, and motion.</h1>
-            <p class="hero-subtitle">
-              I am a web designer, front-end builder, and I optimize SEO for
-              websites, I'm based in Lakeland, Florida.
-            </p>
-            <p class="lead">
-              I combine clean code, graphic design instincts, and marketing
-              awareness to create portfolio sites, business websites, and
-              branded digital experiences that feel polished without feeling
-              generic.
-            </p>
-            <div class="hero-btns">
-              <a href="web-projects.html" class="btn btn-primary">
-                Explore Featured Work
-              </a>
-              <a href="contact.html" class="btn btn-secondary">
-                Let's Work Together
-              </a>
+    <!-- Background grid -->
+    <div class="grid-bg"></div>
+
+    <!-- ─── NAV ─────────────────────────────────────── -->
+    <nav>
+      <a href="#hero" class="nav-logo">
+        <!-- Replace with your actual logo: <img src="myLogo.png" alt="Pixel Designs"> -->
+        <img
+          src="media/myLogo.png"
+          alt="Pixel Designs Logo"
+          onerror="this.style.display = 'none'"
+        />
+        <span class="nav-logo-text">Pixel Designs</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+    </nav>
+
+    <!-- ─── HERO ─────────────────────────────────────── -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">Available for new projects</div>
+          <h1 class="hero-title">
+            <span class="line1">Web Design</span>
+            <span class="line2">&amp; Development</span>
+            <span class="line3">That Delivers.</span>
+          </h1>
+          <div class="hero-mobile-portrait" aria-hidden="true">
+            <div class="hero-mobile-portrait-frame">
+              <img src="media/ChadSelfie.png" alt="" />
             </div>
-            <ul class="hero-highlights" aria-label="Highlights">
-              <li>Responsive web design</li>
-              <li>Front-end development</li>
-              <li>Graphic design direction</li>
-            </ul>
           </div>
-          <div class="hero-panel">
-            <img
-              src="media/ChadSelfie.png"
-              alt="Portrait of Chad Blincoe"
-              class="hero-photo"
-            />
-            <div class="hero-card-stack">
-              <div class="mini-panel">
-                <h3>Professional Feel</h3>
-                <p>
-                  Modern layouts, clear hierarchy, and confident visual
-                  storytelling.
-                </p>
+          <p class="hero-sub">
+            I build fast, modern, and visually striking websites that convert
+            visitors into customers — from concept to launch.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">View My Work</a>
+            <a href="#contact" class="btn-ghost">Let's Talk</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-num">5+</div>
+              <div class="stat-label">Projects Done</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">2+</div>
+              <div class="stat-label">Years Building</div>
+            </div>
+          </div>
+          <div class="hero-socials hero-socials-mobile">
+            <a
+              class="hero-social"
+              href="https://www.facebook.com/chad.blincoe.1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              title="Facebook"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.3-1.5 1.6-1.5h1.3V5.1c-.2 0-1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H9v3h2.2v7h2.3z"
+                />
+              </svg>
+            </a>
+            <a
+              class="hero-social"
+              href="https://www.linkedin.com/in/chad-blincoe-42b2b1338/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M6.6 8.9a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zM8 19H5.2V10H8v9zM19 19h-2.8v-4.6c0-1.1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V19h-2.8V10h2.7v1.2h.1c.4-.7 1.3-1.5 2.8-1.5 3 0 3.5 2 3.5 4.5V19z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-visual-frame">
+            <div class="corner-tl"></div>
+            <div class="corner-br"></div>
+            <div class="hero-photo-wrap">
+              <div class="hero-photo-inner">
+                <!-- Replace src with your headshot: ChadSelfie.png -->
+                <img
+                  src="media/ChadSelfie.png"
+                  alt="Chad - Pixel Designs"
+                  onerror="
+                    this.style.display = 'none';
+                    this.nextElementSibling.style.display = 'flex';
+                  "
+                />
+                <div class="photo-placeholder">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1"
+                  >
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                  </svg>
+                  <span>[ ChadSelfie.png ]</span>
+                </div>
               </div>
-              <div class="mini-panel">
-                <h3>Creative Edge</h3>
-                <p>
-                  Playful color, motion, and imagery that still stay
-                  client-ready.
-                </p>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow">What I Bring</span>
-            <h2>A portfolio built around design, code, and communication.</h2>
-            <p class="lead">
-              My work sits at the overlap of web design, development, content,
-              and branding. That makes it easier to create websites that do more
-              than just look good.
-            </p>
-          </div>
-          <div class="service-grid">
-            <article class="service-card">
-              <div class="service-icon">01</div>
-              <h3>Web Design &amp; UI Layouts</h3>
-              <p>
-                I create clean, responsive page structures with strong
-                hierarchy, intuitive spacing, and visual rhythm that gives each
-                section a purpose.
-              </p>
-            </article>
-            <article class="service-card">
-              <div class="service-icon">02</div>
-              <h3>Front-End Development</h3>
-              <p>
-                I turn ideas into working builds with HTML, CSS, and JavaScript,
-                focusing on usability, responsiveness, and thoughtful
-                interactions.
-              </p>
-            </article>
-            <article class="service-card">
-              <div class="service-icon">03</div>
-              <h3>Creative Brand Support</h3>
-              <p>
-                From mockups to graphics and content framing, I help projects
-                feel cohesive so the final site has a stronger identity.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section alt-bg">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow">Quick Snapshot</span>
-            <h2>Focused on thoughtful digital work.</h2>
-          </div>
-          <div class="metric-grid">
-            <div class="stat-card">
-              <strong>3</strong>
-              <p>
-                Creative lanes combined: web design, development, and graphics.
-              </p>
-            </div>
-            <div class="stat-card">
-              <strong>2+</strong>
-              <p>
-                Portfolio pieces across websites, JavaScript projects, and
-                visual design work.
-              </p>
-            </div>
-            <div class="stat-card">
-              <strong>1</strong>
-              <p>
-                Goal for every project: make the work feel memorable and easy to
-                use.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow">Featured Projects</span>
-            <h2>Work that blends polish with function.</h2>
-            <p class="home-cards-subtitle">Click image previews to enlarge.</p>
-          </div>
-          <div class="grid-3">
-            <article class="card">
+            <div class="hero-tag t1">// Web Developer</div>
+            <div class="hero-tag t2">// UI / UX Design</div>
+            <div class="hero-logo-badge">
               <img
-                src="media/pottsSiteDesign.png"
-                alt="Dog sanctuary website preview"
+                src="media/myLogo.png"
+                alt=""
+                onerror="this.style.display = 'none'"
               />
-              <h3>Dog Sanctuary Website</h3>
-              <p>
-                A client-style website concept built to communicate services
-                clearly while keeping the visual mood warm, welcoming, and easy
-                to navigate.
+              <span>Pixel Designs</span>
+            </div>
+            <div class="hero-socials hero-socials-desktop">
+              <a
+                class="hero-social"
+                href="https://www.facebook.com/chad.blincoe.1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.3-1.5 1.6-1.5h1.3V5.1c-.2 0-1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H9v3h2.2v7h2.3z"
+                  />
+                </svg>
+              </a>
+              <a
+                class="hero-social"
+                href="https://www.linkedin.com/in/chad-blincoe-42b2b1338/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M6.6 8.9a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zM8 19H5.2V10H8v9zM19 19h-2.8v-4.6c0-1.1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V19h-2.8V10h2.7v1.2h.1c.4-.7 1.3-1.5 2.8-1.5 3 0 3.5 2 3.5 4.5V19z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── TICKER ───────────────────────────────────── -->
+    <div class="ticker">
+      <div class="ticker-track">
+        <!-- Doubled for seamless loop -->
+        <div class="ticker-item">
+          <span>✦</span>
+          HTML &amp; CSS
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          JavaScript
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Responsive Design
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          UI / UX
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Brand Identity
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Web Applications
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          SEO Optimization
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Site Redesigns
+        </div>
+        <!-- repeat -->
+        <div class="ticker-item">
+          <span>✦</span>
+          HTML &amp; CSS
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          JavaScript
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Responsive Design
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          UI / UX
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Brand Identity
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Web Applications
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          SEO Optimization
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Site Redesigns
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── ABOUT ─────────────────────────────────────── -->
+    <section id="about">
+      <div class="about-inner">
+        <div class="reveal">
+          <div class="about-label">About Me</div>
+          <h2 class="section-title">
+            Turning ideas into
+            <em>digital reality</em>
+          </h2>
+          <p class="about-text">
+            I'm a web designer and developer passionate about building clean,
+            functional, and visually compelling digital experiences. Every
+            project I take on is built with intention — from pixel-perfect
+            layouts to smooth user interactions.
+          </p>
+          <p class="about-text">
+            Whether it's a full site redesign, a brand-new web presence, or a
+            custom web app, I bring creative thinking and technical precision to
+            every line of code.
+          </p>
+          <div class="skills-grid">
+            <div class="skill-chip">HTML5 / CSS3</div>
+            <div class="skill-chip">JavaScript (ES6+)</div>
+            <div class="skill-chip">Responsive Design</div>
+            <div class="skill-chip">UI / UX Principles</div>
+            <div class="skill-chip">Web Performance</div>
+            <div class="skill-chip">Brand & Logo Design</div>
+            <div class="skill-chip">CMS Integration</div>
+            <div class="skill-chip">Cross-Browser Testing</div>
+          </div>
+        </div>
+
+        <div class="about-img-area reveal">
+          <div class="about-card">
+            <div class="about-card-title">// What I Offer</div>
+            <div class="about-services">
+              <div class="service-row">
+                <div class="service-icon">🎨</div>
+                <div>
+                  <div class="service-name">Website Design</div>
+                  <div class="service-desc">
+                    Fully custom, responsive layouts built to impress and
+                    convert — no templates.
+                  </div>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-icon">⚙️</div>
+                <div>
+                  <div class="service-name">Web Development</div>
+                  <div class="service-desc">
+                    Clean, efficient code that performs fast on any device or
+                    screen size.
+                  </div>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-icon">🔄</div>
+                <div>
+                  <div class="service-name">Site Redesigns</div>
+                  <div class="service-desc">
+                    Transform outdated sites into modern, high-performing
+                    digital assets.
+                  </div>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-icon">🖼️</div>
+                <div>
+                  <div class="service-name">Brand & Logo Design</div>
+                  <div class="service-desc">
+                    Visual identity that reflects who you are and sticks in
+                    people's minds.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ─────────────────────────────────── -->
+    <section id="projects">
+      <div class="projects-inner">
+        <div class="section-header reveal">
+          <div class="about-label">Portfolio</div>
+          <h2 class="section-title">
+            Featured
+            <em>Projects</em>
+          </h2>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Featured: Pacific NW X-Ray Redesign -->
+          <div class="project-card featured reveal">
+            <div class="project-img ba-strip">
+              <div class="ba-pane">
+                <div class="ba-label before">Before</div>
+                <img
+                  src="media/beforeSite.png"
+                  alt="Pacific NW X-Ray - Before"
+                  onerror="
+                    this.parentElement.innerHTML =
+                      '<div class=\'project-img-placeholder\'>[media/beforeSite.png]</div>'
+                  "
+                />
+              </div>
+              <div class="ba-pane">
+                <div class="ba-label after">After</div>
+                <img
+                  src="media/afterSite.png"
+                  alt="Pacific NW X-Ray - After"
+                  onerror="
+                    this.parentElement.innerHTML =
+                      '<div class=\'project-img-placeholder\'>[media/afterSite.png]</div>'
+                  "
+                />
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">// Site Redesign</div>
+              <div class="project-title">Pacific NW X-Ray Inc.</div>
+              <p class="project-desc">
+                Complete visual overhaul of a 28-year-old medical imaging
+                company's website. Transformed a dated early-2000s layout into a
+                sleek, professional dark-theme site with product search, modern
+                navigation, and strong brand presence.
               </p>
-              <div class="card-btns">
+              <div class="project-tags">
+                <div class="tag">HTML/CSS</div>
+                <div class="tag">JavaScript</div>
+                <div class="tag">UI Redesign</div>
+                <div class="tag">Dark Theme</div>
+              </div>
+              <div class="project-links">
                 <a
-                  href="https://blincoechad.github.io/PottsDogWebsite/"
-                  class="btn btn-primary"
+                  class="project-link project-link-code"
+                  href="https://www.pnwx.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Original Site
+                </a>
+                <a
+                  class="project-link project-link-live"
+                  href="https://blincoechad.github.io/SiteRebuild/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Live Site
                 </a>
                 <a
-                  href="https://github.com/Blincoechad/SchoolWebPage"
-                  class="btn btn-secondary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-              </div>
-            </article>
-            <article class="card">
-              <figure class="split-image split-image--featured">
-                <div class="split-image__item">
-                  <img
-                    src="media/beforeSite.png"
-                    alt="Medical site before redesign"
-                  />
-                </div>
-                <div class="split-image__item">
-                  <img
-                    src="media/afterSite.png"
-                    alt="Medical site after redesign"
-                  />
-                </div>
-              </figure>
-              <h3>Medical Website Redesign</h3>
-              <p>
-                A before-and-after redesign that shows my approach to
-                modernizing outdated interfaces through structure, contrast, and
-                clearer user flow.
-              </p>
-              <div class="card-btns">
-                <a
-                  href="https://www.pnwx.com"
-                  class="btn btn-secondary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Before
-                </a>
-                <a
-                  href="https://blincoechad.github.io/SiteRebuild/"
-                  class="btn btn-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  After
-                </a>
-                <a
+                  class="project-link project-link-code"
                   href="https://github.com/Blincoechad/SiteRebuild"
-                  class="btn btn-secondary"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
                 </a>
               </div>
-            </article>
-            <article class="card">
-              <div class="image-slider" aria-label="JavaScript project gallery">
-                <div class="slider-track">
-                  <img
-                    class="slide"
-                    src="media/RockPaperScissors.png"
-                    alt="Rock paper scissors preview"
-                  />
-                  <img
-                    class="slide"
-                    src="media/motivationArray.png"
-                    alt="Motivation array preview"
-                  />
-                  <img
-                    class="slide"
-                    src="media/ColorTranslator.png"
-                    alt="Color translator preview"
-                  />
-                  <img
-                    class="slide"
-                    src="media/IphoneMenu.png"
-                    alt="iPhone menu preview"
-                  />
-                </div>
+            </div>
+            <div class="project-arrow">↗</div>
+          </div>
+
+          <!-- Pott's Dog Sanctuary -->
+          <div class="project-card reveal">
+            <div class="project-img">
+              <img
+                src="media/pottsSiteDesign.png"
+                alt="Pott's Dog Sanctuary"
+                onerror="
+                  this.parentElement.innerHTML =
+                    '<div class=\'project-img-placeholder\'>[media/pottsSiteDesign.png]</div>'
+                "
+              />
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">// Web Design</div>
+              <div class="project-title">Pott's Off-Leash Dog Sanctuary</div>
+              <p class="project-desc">
+                Community-driven dog sanctuary website with hero video
+                background, donation CTA, volunteer sign-up, and regulation
+                pages.
+              </p>
+              <div class="project-tags">
+                <div class="tag">HTML/CSS</div>
+                <div class="tag">Non-Profit</div>
+                <div class="tag">Video Hero</div>
               </div>
-              <h3>Interactive JavaScript Builds</h3>
-              <p>
-                Small but practical projects that show logic, DOM work, and
-                interactive thinking through focused front-end exercises.
-              </p>
-              <a
-                href="logic-programs.html"
-                class="btn btn-primary programProject-btn"
-              >
-                View Logic Projects
-              </a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section alt-bg">
-        <div class="container">
-          <div class="section-heading center">
-            <span class="eyebrow">Process</span>
-            <h2>How I approach a build.</h2>
-          </div>
-          <div class="process-grid">
-            <article class="process-step">
-              <div class="step-index">A</div>
-              <h3>Understand the goal</h3>
-              <p>
-                I start with the message, audience, and practical purpose of the
-                page so the design has direction from the start.
-              </p>
-            </article>
-            <article class="process-step">
-              <div class="step-index">B</div>
-              <h3>Shape the visual system</h3>
-              <p>
-                Color, typography, spacing, and image treatment all work
-                together so the site feels distinct and consistent.
-              </p>
-            </article>
-            <article class="process-step">
-              <div class="step-index">C</div>
-              <h3>Build for real use</h3>
-              <p>
-                I focus on clean responsive code, clear interaction patterns,
-                and layouts that hold up across devices.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container center">
-          <div class="cta-panel">
-            <span class="eyebrow">Let’s Make Something Good</span>
-            <h2>Need a portfolio, landing page, or creative site refresh?</h2>
-            <p class="lead">
-              I’m available for freelance builds, redesigns, and collaborative
-              creative work.
-            </p>
-            <div class="cta-actions cta-actions-centered">
-              <a href="contact.html" class="btn btn-primary contact-button">
-                Contact Me
-              </a>
-              <a href="graphic-work.html" class="btn btn-secondary">
-                See Graphic Work
-              </a>
+              <div class="project-links">
+                <a
+                  class="project-link project-link-live"
+                  href="https://blincoechad.github.io/PottsDogWebsite/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Site
+                </a>
+                <a
+                  class="project-link project-link-code"
+                  href="https://github.com/Blincoechad/PottsDogWebsite"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
+            <div class="project-arrow">↗</div>
           </div>
-        </div>
-      </section>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-grid">
-          <div class="footer-col footer-col--about">
-            <h3>About</h3>
-            <p>
-              Built by Chad Blincoe. Pixel Designs is a creative portfolio
-              focused on polished web experiences, front-end development, and
-              visual storytelling.
-            </p>
-          </div>
-          <div class="footer-col footer-col--links">
-            <h3>Quick Links</h3>
-            <nav aria-label="Footer navigation">
-              <a href="index.html">Home</a>
-              <a href="about.html">About</a>
-              <a href="logic-programs.html">JavaScript Builds</a>
-              <a href="web-projects.html">Web Projects</a>
-              <a href="graphic-work.html">Graphic Work</a>
-              <a href="contact.html">Contact</a>
-            </nav>
-          </div>
-          <div class="footer-col footer-col--contact">
-            <h3>Contact</h3>
-            <p class="footer-contact-name">
-              <strong>Chad Blincoe</strong>
-            </p>
-            <p class="footer-contact-location">
-              <strong>Location:</strong>
-              Lakeland, FL
-            </p>
-            <div class="social-icons" aria-label="Social links">
-              <a
-                href="mailto:PixelDesigns.blincoe@gmail.com"
-                aria-label="Email PixelDesigns.blincoe@gmail.com"
-                class="social-icon email-social-icon"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
-                  />
-                </svg>
-              </a>
-              <a
-                href="tel:+18132780899"
-                aria-label="Call (813) 278-0899"
-                class="social-icon phone-social-icon"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M6.62 10.79a15.054 15.054 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24a11.36 11.36 0 0 0 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.44.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://github.com/Blincoechad"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                class="social-icon github-icon"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/chad-blincoe-42b2b1338"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                class="social-icon linkedin-icon"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.437-.103.25-.129.599-.129.948v5.42h-3.554s.05-8.789 0-9.714h3.554v1.375c.428-.66 1.193-1.599 2.898-1.599 2.117 0 3.704 1.384 3.704 4.362v5.576zM5.337 9.432c-1.144 0-1.915-.759-1.915-1.71 0-.955.769-1.71 1.959-1.71 1.188 0 1.914.755 1.938 1.71 0 .951-.75 1.71-1.982 1.71zm1.581 11.02H3.715V9.738h3.203v10.714zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"
-                  />
-                </svg>
-              </a>
+          <!-- Color Translator -->
+          <div class="project-card reveal">
+            <div class="project-img">
+              <img
+                src="media/ColorTranslator.png"
+                alt="Color Translator App"
+                onerror="
+                  this.parentElement.innerHTML =
+                    '<div class=\'project-img-placeholder\'>[media/ColorTranslator.png]</div>'
+                "
+              />
+              <div class="project-overlay"></div>
             </div>
+            <div class="project-body">
+              <div class="project-type">// Web Application</div>
+              <div class="project-title">The Color Translator</div>
+              <p class="project-desc">
+                An interactive web app that translates plain-English color names
+                into their hex/CSS equivalents in real time.
+              </p>
+              <div class="project-tags">
+                <div class="tag">JavaScript</div>
+                <div class="tag">Web App</div>
+                <div class="tag">Interactive</div>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link project-link-live"
+                  href="https://blincoechad.github.io/MyPrograms/colorTranslator/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Site
+                </a>
+                <a
+                  class="project-link project-link-code"
+                  href="https://github.com/Blincoechad/MyPrograms/tree/main/colorTranslator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <div class="project-arrow">↗</div>
           </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 Pixel Designs. All rights reserved.</p>
+
+          <!-- Rock Paper Scissors -->
+          <div class="project-card reveal">
+            <div class="project-img">
+              <img
+                src="media/RockPaperScissors.png"
+                alt="Rock Paper Scissors Game"
+                onerror="
+                  this.parentElement.innerHTML =
+                    '<div class=\'project-img-placeholder\'>[media/RockPaperScissors.png]</div>'
+                "
+              />
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">// Interactive Game</div>
+              <div class="project-title">Rock, Paper, Scissors</div>
+              <p class="project-desc">
+                A fully playable browser game featuring custom CSS art assets,
+                animated results display, score tracking, and branded UI under
+                Pixel Designs.
+              </p>
+              <div class="project-tags">
+                <div class="tag">JavaScript</div>
+                <div class="tag">CSS Art</div>
+                <div class="tag">Game Logic</div>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link project-link-live"
+                  href="https://blincoechad.github.io/MyPrograms/rockPaperScissors/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Site
+                </a>
+                <a
+                  class="project-link project-link-code"
+                  href="https://github.com/Blincoechad/MyPrograms/tree/main/rockPaperScissors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <div class="project-arrow">↗</div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- ─── PROCESS ───────────────────────────────────── -->
+    <section id="process">
+      <div class="process-inner">
+        <div class="section-header reveal">
+          <div class="about-label">How I Work</div>
+          <h2 class="section-title">
+            My
+            <em>Process</em>
+          </h2>
+        </div>
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <div class="step-connector"></div>
+            <div class="step-num">01</div>
+            <div class="step-title">Discovery</div>
+            <div class="step-desc">
+              We talk about your goals, audience, and vision. I ask the right
+              questions to understand exactly what you need.
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-connector"></div>
+            <div class="step-num">02</div>
+            <div class="step-title">Design</div>
+            <div class="step-desc">
+              I craft layouts, color palettes, and typography that fit your
+              brand and make a strong first impression.
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-connector"></div>
+            <div class="step-num">03</div>
+            <div class="step-title">Build</div>
+            <div class="step-desc">
+              Clean, optimized code is written from scratch. Every interaction,
+              animation, and page is built with performance in mind.
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-num">04</div>
+            <div class="step-title">Launch</div>
+            <div class="step-desc">
+              Final review, testing across devices, and deployment. I ensure
+              everything is ready before going live.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ───────────────────────────────────── -->
+    <section id="contact">
+      <div class="contact-inner">
+        <div class="reveal">
+          <div class="about-label contact-label-center">Get In Touch</div>
+          <h2 class="contact-title">
+            Ready to build
+            <br />
+            something
+            <em>great?</em>
+          </h2>
+          <p class="contact-sub">
+            Tell me about your project and I'll get back to you within 24 hours.
+            No commitments — just a conversation.
+          </p>
+        </div>
+        <div class="contact-form reveal">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="John Smith" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="projectType">Project Type</label>
+              <select id="projectType" name="projectType">
+                <option value="" disabled selected>Select a service...</option>
+                <option>New Website Design</option>
+                <option>Site Redesign</option>
+                <option>Web Application</option>
+                <option>Logo / Branding</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budgetRange">Budget Range</label>
+              <select id="budgetRange" name="budgetRange">
+                <option value="" disabled selected>Select a range...</option>
+                <option>Under $500</option>
+                <option>$500 – $1,000</option>
+                <option>$1,000 – $2,500</option>
+                <option>$2,500+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Tell Me About Your Project</label>
+              <textarea
+                rows="5"
+                placeholder="What are you looking to build? Any details about your goals, timeline, or inspiration are helpful..."
+              ></textarea>
+            </div>
+          </div>
+          <button class="form-submit">Send Message →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ────────────────────────────────────── -->
+    <footer>
+      <div class="footer-logo">
+        <img
+          src="media/myLogo.png"
+          alt=""
+          onerror="this.style.display = 'none'"
+        />
+        <span class="footer-logo-text">Pixel Designs</span>
+      </div>
+      <div class="footer-copy">© 2025 Pixel Designs. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
     </footer>
-    <script src="scripts.js" type="module" defer></script>
+
+    <button
+      id="backToTop"
+      class="back-to-top"
+      type="button"
+      aria-label="Back to top"
+      title="Back to top"
+    >
+      ↑
+    </button>
+
+    <script src="script.js"></script>
   </body>
 </html>
