@@ -370,13 +370,6 @@ section {
 .hero-socials-mobile {
   display: none;
 }
-.hero-socials-desktop {
-  position: absolute;
-  left: 50%;
-  bottom: -82px;
-  transform: translateX(-50%);
-  margin-top: 0;
-}
 .hero-social {
   width: 38px;
   height: 38px;
@@ -1260,13 +1253,7 @@ footer {
   .hero-inner {
     grid-template-columns: 1fr;
   }
-  .hero-socials-mobile {
-    display: flex;
-    margin-top: 1rem;
-  }
-  .hero-socials-desktop {
-    display: none;
-  }
+
   .hero-visual {
     display: none;
   }
