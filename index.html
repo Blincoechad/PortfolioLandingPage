@@ -604,15 +604,19 @@
             No commitments — just a conversation.
           </p>
         </div>
-        <div class="contact-form reveal">
+        <form
+          class="contact-form reveal"
+          action="https://formspree.io/f/mpqgwbjv"
+          method="POST"
+        >
           <div class="form-row">
             <div class="form-group">
               <label>Your Name</label>
-              <input type="text" placeholder="John Smith" />
+              <input type="text" name="name" placeholder="John Smith" />
             </div>
             <div class="form-group">
               <label>Email Address</label>
-              <input type="email" placeholder="john@example.com" />
+              <input type="email" name="email" placeholder="john@example.com" />
             </div>
           </div>
           <div class="form-row">
@@ -643,11 +647,13 @@
               <label>Tell Me About Your Project</label>
               <textarea
                 rows="5"
+                name="message"
                 placeholder="What are you looking to build? Any details about your goals, timeline, or inspiration are helpful..."
               ></textarea>
             </div>
           </div>
-          <button class="form-submit">Send Message →</button>
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
         </div>
       </div>
     </section>
