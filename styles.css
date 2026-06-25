@@ -890,6 +890,7 @@ section {
 .project-link-code {
   background: transparent;
   color: var(--text);
+  border: 1px solid rgb(129, 125, 125);
 }
 .project-link-code:hover {
   border-color: var(--accent);
