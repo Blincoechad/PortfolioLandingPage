@@ -216,6 +216,13 @@ document.addEventListener("visibilitychange", () => {
   });
 });
 
+// Keep card-level click handlers from hijacking real link/button actions.
+document.querySelectorAll(".project-links a").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+});
+
 videoCards.forEach((card) => {
   const videoSrc = card.dataset.videoSrc;
 
