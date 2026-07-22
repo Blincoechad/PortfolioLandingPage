@@ -920,16 +920,23 @@ section {
 .project-link {
   padding: 0.45rem 0.9rem;
   border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.66rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transform: scale(1);
   transition:
     border-color 0.2s,
     background 0.2s,
     color 0.2s,
-    box-shadow 0.2s;
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+.project-link:hover {
+  transform: scale(1.06);
 }
 .project-link-live {
   background: var(--accent);
