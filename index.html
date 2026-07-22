@@ -606,14 +606,17 @@
           <!-- Content Creation -->
           <div
             class="project-card reveal"
-            data-video-modal
-            data-video-src="media/clips/PolkRunRide.mp4"
+            data-external-url="https://youtu.be/D2bIeFhx-cs"
           >
             <div class="project-img project-video-wrap">
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="media/clips/PolkRunRide.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <img
+                src="https://img.youtube.com/vi/D2bIeFhx-cs/hqdefault.jpg"
+                alt="Content Creation Showcase video thumbnail"
+                onerror="
+                  this.parentElement.innerHTML =
+                    '<div class=\'project-img-placeholder\'>[Content Creation Showcase thumbnail unavailable]</div>'
+                "
+              />
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -632,11 +635,11 @@
               <div class="project-links">
                 <a
                   class="project-link project-link-live"
-                  href="media/clips/PolkRunRide.mp4"
+                  href="https://youtu.be/D2bIeFhx-cs"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View Video
+                  Watch on YouTube
                 </a>
               </div>
             </div>

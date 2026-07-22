@@ -101,14 +101,17 @@ const processSteps = document.querySelectorAll(".process-step");
 const videoModal = document.getElementById("videoModal");
 const videoModalPlayer = document.getElementById("videoModalPlayer");
 const videoCards = document.querySelectorAll("[data-video-modal]");
-const projectPreviewVideos = document.querySelectorAll(".project-video-wrap video");
+const externalCards = document.querySelectorAll("[data-external-url]");
+const projectPreviewVideos = document.querySelectorAll(
+  ".project-video-wrap video",
+);
 const imageModal = document.getElementById("imageModal");
 const imageModalPreview = document.getElementById("imageModalPreview");
 const imageModalThumbs = document.getElementById("imageModalThumbs");
 const imageModalPrev = imageModal?.querySelector(".image-modal__nav--prev");
 const imageModalNext = imageModal?.querySelector(".image-modal__nav--next");
 const imageCards = document.querySelectorAll(
-  ".project-card:not([data-video-modal])",
+  ".project-card:not([data-video-modal]):not([data-external-url])",
 );
 
 let imageModalItems = [];
@@ -222,6 +225,19 @@ videoCards.forEach((card) => {
       return;
     }
     openVideoModal(videoSrc);
+  });
+});
+
+externalCards.forEach((card) => {
+  const externalUrl = card.dataset.externalUrl;
+
+  card.addEventListener("click", (event) => {
+    const clickedLink = event.target.closest("a");
+    if (clickedLink || !externalUrl) {
+      return;
+    }
+
+    window.open(externalUrl, "_blank", "noopener,noreferrer");
   });
 });
 
