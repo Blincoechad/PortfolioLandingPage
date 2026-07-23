@@ -725,7 +725,7 @@
           ×
         </button>
         <div class="process-modal__eyebrow">My Process</div>
-        <h3 class="process-modal__title" id="processModalTitle"></h3>
+        <h3 class="process-modal__title" id="processModalTitle">Process details</h3>
         <p class="process-modal__text" id="processModalText"></p>
       </div>
     </div>
@@ -782,12 +782,12 @@
         >
           <div class="form-row">
             <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" name="name" placeholder="John Smith" />
+              <label for="contactName">Your Name</label>
+              <input id="contactName" type="text" name="name" placeholder="John Smith" />
             </div>
             <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" name="email" placeholder="john@example.com" />
+              <label for="contactEmail">Email Address</label>
+              <input id="contactEmail" type="email" name="email" placeholder="john@example.com" />
             </div>
           </div>
           <div class="form-row">
@@ -815,8 +815,9 @@
           </div>
           <div class="form-row">
             <div class="form-group full">
-              <label>Tell Me About Your Project</label>
+              <label for="contactMessage">Tell Me About Your Project</label>
               <textarea
+                id="contactMessage"
                 rows="5"
                 name="message"
                 placeholder="What are you looking to build? Any details about your goals, timeline, or inspiration are helpful..."

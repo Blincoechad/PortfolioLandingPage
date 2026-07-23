@@ -16,7 +16,7 @@
   --accent2: #7c3aed;
   --glow: #38bdf880;
   --text: #e2e8f0;
-  --muted: #64748b;
+  --muted: #93a4bc;
   --white: #ffffff;
 }
 
@@ -451,7 +451,7 @@ section {
 }
 .stat-label {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: var(--muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -542,7 +542,7 @@ section {
 .hero-tag {
   position: absolute;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.4rem 0.9rem;
@@ -617,7 +617,7 @@ section {
   white-space: nowrap;
   animation: ticker 22s linear infinite;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -654,7 +654,7 @@ section {
 }
 .about-label {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--accent);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -705,7 +705,7 @@ section {
   background: var(--surface);
   border: 1px solid var(--border);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--text);
   letter-spacing: 0.06em;
   transition:
@@ -883,7 +883,7 @@ section {
 }
 .project-type {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--accent);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -924,7 +924,7 @@ section {
   align-items: center;
   text-decoration: none;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transform: scale(1);
@@ -960,7 +960,7 @@ section {
   background: var(--bg);
   border: 1px solid var(--border);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.06em;
 }
@@ -984,7 +984,7 @@ section {
   top: 0.6rem;
   left: 0.6rem;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.2rem 0.5rem;
@@ -1130,7 +1130,7 @@ section {
 }
 .process-modal__eyebrow {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1368,7 +1368,7 @@ section {
 }
 .form-group label {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1456,7 +1456,7 @@ footer {
 }
 .footer-copy {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.08em;
 }
@@ -1466,7 +1466,7 @@ footer {
 }
 .footer-links a {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
   text-decoration: none;
   letter-spacing: 0.08em;
@@ -1528,7 +1528,7 @@ footer {
   width: 44px;
   text-align: center;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.56rem;
+  font-size: 0.72rem;
   color: var(--accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1732,7 +1732,7 @@ footer {
   }
   .nav-cta {
     padding: 0.48rem 0.95rem;
-    font-size: 0.7rem;
+    font-size: 0.78rem;
   }
   .nav-toggle {
     width: 42px;
