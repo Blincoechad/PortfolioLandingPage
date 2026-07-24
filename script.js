@@ -113,6 +113,11 @@ const imageModalNext = imageModal?.querySelector(".image-modal__nav--next");
 const imageCards = document.querySelectorAll(
   ".project-card:not([data-video-modal]):not([data-external-url])",
 );
+const contactForm = document.querySelector(".contact-form");
+const submitModal = document.getElementById("submitModal");
+const submitModalCloseControls = document.querySelectorAll(
+  "[data-close-submit-modal]",
+);
 
 let imageModalItems = [];
 let imageModalIndex = 0;
@@ -295,6 +300,59 @@ function closeImageModal() {
   document.body.classList.remove("modal-open");
 }
 
+function openSubmitModal() {
+  if (!submitModal) return;
+  submitModal.classList.add("is-open");
+  submitModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeSubmitModal() {
+  if (!submitModal) return;
+  submitModal.classList.remove("is-open");
+  submitModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+async function handleContactSubmit(event) {
+  if (!contactForm) return;
+  event.preventDefault();
+
+  const submitButton = contactForm.querySelector(".form-submit");
+  const originalButtonText = submitButton?.textContent || "Send Inquiry →";
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+  }
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Form submit failed");
+    }
+
+    contactForm.reset();
+    openSubmitModal();
+  } catch (error) {
+    window.alert(
+      "There was a problem sending your inquiry. Please try again in a moment.",
+    );
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  }
+}
+
 function stepImageModal(direction) {
   if (imageModalItems.length < 2) return;
   imageModalIndex =
@@ -368,6 +426,12 @@ document.querySelectorAll("[data-close-image-modal]").forEach((element) => {
   element.addEventListener("click", closeImageModal);
 });
 
+submitModalCloseControls.forEach((element) => {
+  element.addEventListener("click", closeSubmitModal);
+});
+
+contactForm?.addEventListener("submit", handleContactSubmit);
+
 imageModal
   ?.querySelector(".image-modal__dialog")
   ?.addEventListener("click", (event) => {
@@ -377,6 +441,9 @@ imageModal
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && imageModal?.classList.contains("is-open")) {
     closeImageModal();
+  }
+  if (event.key === "Escape" && submitModal?.classList.contains("is-open")) {
+    closeSubmitModal();
   }
   if (event.key === "ArrowLeft" && imageModal?.classList.contains("is-open")) {
     stepImageModal(-1);

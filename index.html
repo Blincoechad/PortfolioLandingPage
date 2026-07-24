@@ -38,7 +38,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <a href="#contact" class="nav-cta">Hire Me</a>
+        <a href="#contact" class="nav-cta">Contact Me</a>
         <button
           type="button"
           class="nav-toggle"
@@ -64,7 +64,7 @@
     <section id="hero">
       <div class="hero-inner">
         <div class="hero-content">
-          <div class="hero-badge">Available for new projects</div>
+          <div class="hero-badge">Available For Work</div>
           <h1 class="hero-title">
             <span class="line1">Web Design</span>
             <span class="line2">&amp; Development</span>
@@ -76,7 +76,11 @@
             </div>
           </div>
           <p class="hero-sub">
-            I design, build, and market digital experiences — from web development to content creation — that help brands look sharp and get found.
+            I <span class="hero-sub-accent hero-sub-accent--1">design</span>,
+            <span class="hero-sub-accent hero-sub-accent--2">build</span>, and
+            <span class="hero-sub-accent hero-sub-accent--3">market digital content</span>
+            and experiences — from web development to content creation — that
+            help brands look superior to other businesses.
           </p>
           <div class="hero-actions">
             <a href="#projects" class="btn-primary">View My Work</a>
@@ -134,7 +138,7 @@
             <div class="corner-br"></div>
             <div class="hero-photo-wrap">
               <div class="hero-photo-inner">
-                <!-- Replace src with your headshot: ChadSelfie.png -->
+                
                 <img
                   src="media/ChadSelfie.png"
                   alt="Chad - Pixel Designs"
@@ -262,13 +266,13 @@
           <div class="about-label">About Me</div>
           <h2 class="section-title">
             Code, Design, and
-            <em>Digital Content</em>
+            <em class="hero-sub-accent">Digital Content</em>
           </h2>
           <p class="about-text">
-            From outdated to on-brand. I'm a web designer and developer working across front-end code, visual design, SEO, and content creation. I like taking sites that feel stuck in 2010 and rebuilding them into something that actually represents the business behind them — see the Pacific NW X-Ray project below. 
+          My name is Chad Blincoe, I'm live in Lakeland, Fl, and I’m a web designer and front-end developer with a passion for creating clean, functional, and visually appealing digital experiences. I specialize in building responsive websites that not only look great but also perform well across all devices. I can build custom websites from scratch or work with WordPress to create a tailored solution that meets your needs, along with manage and maintain your site for long-term growth and success. 
           </p>
           <p class="about-text">
-            I also shoot and edit social content, so I can help a brand look good and get seen. When I'm not doing client work, I'm building out my own skills on side projects, a few of which are also below.
+            My work also extends into content creation, including video production and editing that supports a brand's visibility and presence. Outside of client engagements, I continue to develop these skills through self-directed projects, several of which are showcased below.
           </p>
        <div class="skills-grid">
   <div class="skill-chip">HTML5 / CSS3</div>
@@ -772,9 +776,9 @@
           <div class="about-label contact-label-center">Let's Connect</div>
 
 <h2 class="contact-title">
-  Ready to Work
+  <span class="hero-sub-accent hero-sub-accent--1 hero-sub-accent--white">Ready to Work</span>
   <br />
-  <em>Together?</em>
+  <em><span class="hero-sub-accent hero-sub-accent--2">Together?</span></em>
 </h2>
 
 <p class="contact-sub">
@@ -860,12 +864,11 @@
           <div class="form-row">
             <div class="form-group full">
               <label for="contactMessage">Preferred Method of Contact</label>
-              <textarea
-                id="contactMessage"
-                rows="2"
-                name="message"
-                placeholder="Preferred method of contact..."
-              ></textarea>
+              <select id="contactMessage" name="message" required>
+                <option value="" disabled selected>Select a contact method...</option>
+                <option>Email</option>
+                <option>Phone</option>
+              </select>
             </div>
           </div>
           <button type="submit" class="form-submit">Send Inquiry →</button>
@@ -873,6 +876,30 @@
         </div>
       </div>
     </section>
+
+    <div class="submit-modal" id="submitModal" aria-hidden="true">
+      <div class="submit-modal__backdrop" data-close-submit-modal></div>
+      <div class="submit-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="submitModalTitle">
+        <button
+          class="submit-modal__close"
+          type="button"
+          aria-label="Close confirmation"
+          data-close-submit-modal
+        >
+          ×
+        </button>
+        <div class="submit-modal__eyebrow">Message Sent</div>
+        <h3 class="submit-modal__title" id="submitModalTitle">Thanks for reaching out.</h3>
+        <p class="submit-modal__text">
+              ✅  Message Sent! ✅ <br>
+          I'll be in touch as soon as possible,
+          I look forward to meeting you!
+        </p>
+        <button class="submit-modal__button" type="button" data-close-submit-modal>
+          Close
+        </button>
+      </div>
+    </div>
 
     <!-- ─── FOOTER ────────────────────────────────────── -->
     <footer>
