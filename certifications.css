@@ -249,8 +249,8 @@ main {
   position: absolute;
   inset: 0;
   background: rgba(6, 10, 18, 0.84);
-  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .cert-lightbox__dialog {
