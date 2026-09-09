@@ -191,6 +191,69 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// ─── Case Study Modal
+const caseStudyModal = document.getElementById("caseStudyModal");
+const caseStudyModalTitle = document.getElementById("caseStudyModalTitle");
+const caseStudyModalContent = document.getElementById("caseStudyModalContent");
+const caseStudyModalClose = caseStudyModal?.querySelector(
+  ".case-study-modal__close",
+);
+let caseStudyLastTrigger = null;
+
+function openCaseStudyModal(card) {
+  if (
+    !caseStudyModal ||
+    !caseStudyModalTitle ||
+    !caseStudyModalContent ||
+    !card
+  )
+    return;
+
+  const content = card.querySelector(".case-study-content");
+  if (!content) return;
+
+  caseStudyModalTitle.textContent =
+    card.querySelector(".project-title")?.textContent?.trim() || "Case Study";
+  caseStudyModalContent.innerHTML = content.innerHTML;
+  caseStudyModal.classList.add("is-open");
+  caseStudyModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  caseStudyModalClose?.focus();
+}
+
+function closeCaseStudyModal() {
+  if (!caseStudyModal) return;
+  caseStudyModal.classList.remove("is-open");
+  caseStudyModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  caseStudyLastTrigger?.focus();
+  caseStudyLastTrigger = null;
+}
+
+document.querySelectorAll("[data-case-study-trigger]").forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    caseStudyLastTrigger = trigger;
+    openCaseStudyModal(trigger.closest(".project-card"));
+  });
+});
+
+document.querySelectorAll("[data-close-case-study]").forEach((element) => {
+  element.addEventListener("click", closeCaseStudyModal);
+});
+
+caseStudyModal
+  ?.querySelector(".case-study-modal__dialog")
+  ?.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && caseStudyModal?.classList.contains("is-open")) {
+    closeCaseStudyModal();
+  }
+});
+
 function closeVideoModal() {
   if (!videoModal || !videoModalPlayer) return;
   videoModal.classList.remove("is-open");
@@ -255,7 +318,7 @@ videoCards.forEach((card) => {
   const videoSrc = card.dataset.videoSrc;
 
   card.addEventListener("click", (event) => {
-    const clickedLink = event.target.closest("a");
+    const clickedLink = event.target.closest("a, button");
     if (clickedLink) {
       return;
     }
@@ -274,7 +337,7 @@ externalCards.forEach((card) => {
   const externalUrl = card.dataset.externalUrl;
 
   card.addEventListener("click", (event) => {
-    const clickedLink = event.target.closest("a");
+    const clickedLink = event.target.closest("a, button");
     if (clickedLink || !externalUrl) {
       return;
     }
@@ -427,7 +490,7 @@ function openImageModal(images, startIndex = 0) {
 
 imageCards.forEach((card) => {
   card.addEventListener("click", (event) => {
-    const clickedLink = event.target.closest("a");
+    const clickedLink = event.target.closest("a, button");
     if (clickedLink) {
       return;
     }
