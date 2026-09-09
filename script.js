@@ -1,17 +1,16 @@
 // ─── Cursor
-const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+const isTouchDevice = window.matchMedia(
+  "(hover: none) and (pointer: coarse)",
+).matches;
 const cursor = document.getElementById("cursor");
 const dot = document.getElementById("cursorDot");
-const ring = document.getElementById("cursorRing");
 
 if (isTouchDevice) {
   // Touch devices have no mouse pointer — drop the custom cursor entirely.
   cursor?.remove();
 } else {
   let mx = 0,
-    my = 0,
-    rx = 0,
-    ry = 0;
+    my = 0;
   document.addEventListener("mousemove", (e) => {
     mx = e.clientX;
     my = e.clientY;
@@ -19,10 +18,6 @@ if (isTouchDevice) {
   function animCursor() {
     dot.style.left = mx + "px";
     dot.style.top = my + "px";
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + "px";
-    ring.style.top = ry + "px";
     requestAnimationFrame(animCursor);
   }
   animCursor();
@@ -437,10 +432,20 @@ imageCards.forEach((card) => {
       return;
     }
 
-    const images = [...card.querySelectorAll(".project-img img")]
-      .map((img) => ({
-        src: img.currentSrc || img.getAttribute("src") || "",
-        alt: img.getAttribute("alt") || "Project preview",
+    const images = [
+      ...card.querySelectorAll(".project-img img, .project-img video"),
+    ]
+      .map((media) => ({
+        src:
+          media.getAttribute("data-modal-src") ||
+          media.currentSrc ||
+          media.getAttribute("src") ||
+          media.getAttribute("poster") ||
+          "",
+        alt:
+          media.getAttribute("alt") ||
+          media.getAttribute("aria-label") ||
+          "Project preview",
       }))
       .filter((item) => item.src);
 
