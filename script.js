@@ -195,10 +195,77 @@ document.addEventListener("keydown", (event) => {
 const caseStudyModal = document.getElementById("caseStudyModal");
 const caseStudyModalTitle = document.getElementById("caseStudyModalTitle");
 const caseStudyModalContent = document.getElementById("caseStudyModalContent");
+const caseStudyModalBody = caseStudyModal?.querySelector(
+  ".case-study-modal__body",
+);
 const caseStudyModalClose = caseStudyModal?.querySelector(
   ".case-study-modal__close",
 );
 let caseStudyLastTrigger = null;
+let caseStudyLastTouchY = null;
+
+function containsCaseStudyContent(target) {
+  return !!target?.closest?.(".case-study-modal__body");
+}
+
+function shouldBlockScrollChaining(deltaY) {
+  if (!caseStudyModalBody) return true;
+
+  const { scrollTop, scrollHeight, clientHeight } = caseStudyModalBody;
+  const atTop = scrollTop <= 0;
+  const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+  return (deltaY < 0 && atTop) || (deltaY > 0 && atBottom);
+}
+
+function stopCaseStudyWheelChaining(event) {
+  if (!caseStudyModal?.classList.contains("is-open")) return;
+  if (!containsCaseStudyContent(event.target)) {
+    event.preventDefault();
+    return;
+  }
+
+  if (shouldBlockScrollChaining(event.deltaY)) {
+    event.preventDefault();
+  }
+}
+
+function handleCaseStudyTouchStart(event) {
+  caseStudyLastTouchY = event.touches?.[0]?.clientY ?? null;
+}
+
+function stopCaseStudyTouchChaining(event) {
+  if (!caseStudyModal?.classList.contains("is-open")) return;
+  if (!containsCaseStudyContent(event.target)) {
+    event.preventDefault();
+    return;
+  }
+
+  const currentY = event.touches?.[0]?.clientY;
+  if (typeof currentY !== "number") return;
+
+  if (caseStudyLastTouchY === null) {
+    caseStudyLastTouchY = currentY;
+    return;
+  }
+
+  const deltaY = caseStudyLastTouchY - currentY;
+  caseStudyLastTouchY = currentY;
+
+  if (shouldBlockScrollChaining(deltaY)) {
+    event.preventDefault();
+  }
+}
+
+caseStudyModal?.addEventListener("wheel", stopCaseStudyWheelChaining, {
+  passive: false,
+});
+caseStudyModal?.addEventListener("touchstart", handleCaseStudyTouchStart, {
+  passive: true,
+});
+caseStudyModal?.addEventListener("touchmove", stopCaseStudyTouchChaining, {
+  passive: false,
+});
 
 function openCaseStudyModal(card) {
   if (
@@ -215,6 +282,7 @@ function openCaseStudyModal(card) {
   caseStudyModalTitle.textContent =
     card.querySelector(".project-title")?.textContent?.trim() || "Case Study";
   caseStudyModalContent.innerHTML = content.innerHTML;
+  if (caseStudyModalBody) caseStudyModalBody.scrollTop = 0;
   caseStudyModal.classList.add("is-open");
   caseStudyModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
