@@ -527,6 +527,19 @@ section {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+.hero-tagline {
+  margin-top: 3rem;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+.hero-tagline-text {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-left: 2px solid var(--accent);
+  padding-left: 0.9rem;
+}
 
 /* Hero right - visual */
 .hero-visual {
@@ -2197,9 +2210,8 @@ footer {
   .hero-title {
     font-size: 2.5rem;
   }
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: 1.25rem 1.75rem;
+  .hero-tagline {
+    margin-top: 2rem;
   }
   .skills-grid {
     grid-template-columns: 1fr;
