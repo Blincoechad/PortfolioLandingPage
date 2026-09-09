@@ -1,5 +1,55 @@
 const certCarousel = document.querySelector("[data-cert-carousel]");
 
+const CERTIFICATE_DESCRIPTIONS = {
+  "CanvaIntro.png":
+    "Introductory Canva certificate focused on core design tools, layout basics, and creating clean visual content.",
+  "CanvaProjects.jpg":
+    "Canva projects certificate centered on building complete branded assets using templates, typography, and design workflows.",
+  "ExcelGraphs.png":
+    "Excel graphs certificate covering chart creation, data visualization choices, and presenting data clearly for reports.",
+  "FigmaComponents.png":
+    "Figma components certificate focused on reusable UI components, variants, and consistent design system structure.",
+  "FigmaIntoCode.png":
+    "Figma into code certificate emphasizing translating design files into structured, implementation-ready web interfaces.",
+  "JsAiPrograming.png":
+    "JavaScript AI programming certificate covering practical ways JavaScript can be used with AI-assisted workflows and tooling.",
+  "JsDebugging.png":
+    "JavaScript debugging certificate focused on identifying runtime issues, tracing logic errors, and resolving common bugs.",
+  "JsWebForms.png":
+    "JavaScript web forms certificate covering client-side validation, form handling patterns, and interactive form behavior.",
+  "PythonMadeApp.png":
+    "Python app development certificate focused on building a functional application with core Python programming concepts.",
+  "ProjectManagementFoundationsEthics_PMI.png":
+    "Project Management Foundations and Ethics certificate covering planning fundamentals, delivery practices, and professional ethics.",
+  "ProjectManagementExam.png":
+    "Project management exam certificate validating knowledge of standard project lifecycle concepts and decision-making frameworks.",
+  "SEO(SquareSpace).png":
+    "Squarespace SEO certificate focused on search optimization basics such as page structure, metadata, and content discoverability.",
+  "VideoCreationCanva.png":
+    "Canva video creation certificate covering editing tools, pacing, and producing short-form visual content.",
+  "WebFlowNoCode.png":
+    "Webflow no-code certificate focused on building responsive websites visually with CMS and layout controls.",
+  "Webflow101.png":
+    "Webflow 101 certificate covering platform fundamentals, structure setup, and core website-building workflow.",
+  "WebflowLayouts.png":
+    "Webflow layouts certificate focused on responsive section design, spacing systems, and multi-breakpoint layout control.",
+};
+
+function getCertificateDescription(imageSrc) {
+  if (!imageSrc) return "";
+
+  try {
+    const imageName = new URL(imageSrc, window.location.href).pathname
+      .split("/")
+      .pop();
+    return CERTIFICATE_DESCRIPTIONS[imageName] || "";
+  } catch (error) {
+    const parts = imageSrc.split("/");
+    const imageName = parts[parts.length - 1] || "";
+    return CERTIFICATE_DESCRIPTIONS[imageName] || "";
+  }
+}
+
 if (certCarousel) {
   const track = certCarousel.querySelector("#certTrack");
   const slides = track
@@ -11,12 +61,19 @@ if (certCarousel) {
   const scene = certCarousel.querySelector("#certScene");
   const lightbox = document.getElementById("certLightbox");
   const lightboxImage = document.getElementById("certLightboxImage");
+  const lightboxDescription = document.getElementById(
+    "certLightboxDescription",
+  );
 
   let currentIndex = 0;
   let autoAdvanceTimer = null;
+  let autoAdvanceKickoffTimer = null;
   let theta = 0;
   let radius = 0;
   let currentRotation = 0;
+
+  const AUTO_ADVANCE_INTERVAL_MS = 5200;
+  const AUTO_ADVANCE_FIRST_DELAY_MS = 900;
 
   function normalizeIndex(index) {
     if (slides.length === 0) return 0;
@@ -32,6 +89,7 @@ if (certCarousel) {
         ? "brightness(1) saturate(1)"
         : "brightness(0.78) saturate(0.8)";
       slide.style.pointerEvents = isActive ? "auto" : "none";
+      slide.style.zIndex = isActive ? "5" : "1";
     });
 
     dotsContainer?.querySelectorAll(".cert-dot").forEach((dot, dotIndex) => {
@@ -52,6 +110,7 @@ if (certCarousel) {
     if (!scene || !track || slides.length === 0) return;
 
     const itemWidth = track.clientWidth;
+    if (!itemWidth) return;
     theta = 360 / slides.length;
 
     // Classic radius formula for equal angular spacing around the ring.
@@ -94,15 +153,35 @@ if (certCarousel) {
     rotateTo(currentIndex - 1);
   }
 
-  function startAutoAdvance() {
-    if (slides.length < 2) return;
-
+  function runAutoAdvanceInterval() {
+    if (autoAdvanceTimer) return;
     autoAdvanceTimer = window.setInterval(() => {
       nextSlide();
-    }, 5200);
+    }, AUTO_ADVANCE_INTERVAL_MS);
+  }
+
+  function startAutoAdvance(useFastStart = false) {
+    if (slides.length < 2) return;
+    if (autoAdvanceTimer || autoAdvanceKickoffTimer) return;
+
+    if (!useFastStart) {
+      runAutoAdvanceInterval();
+      return;
+    }
+
+    autoAdvanceKickoffTimer = window.setTimeout(() => {
+      autoAdvanceKickoffTimer = null;
+      nextSlide();
+      runAutoAdvanceInterval();
+    }, AUTO_ADVANCE_FIRST_DELAY_MS);
   }
 
   function stopAutoAdvance() {
+    if (autoAdvanceKickoffTimer) {
+      window.clearTimeout(autoAdvanceKickoffTimer);
+      autoAdvanceKickoffTimer = null;
+    }
+
     if (!autoAdvanceTimer) return;
 
     window.clearInterval(autoAdvanceTimer);
@@ -114,11 +193,14 @@ if (certCarousel) {
     startAutoAdvance();
   }
 
-  function openLightbox(imageSrc, imageAlt) {
+  function openLightbox(imageSrc, imageAlt, descriptionText) {
     if (!lightbox || !lightboxImage || !imageSrc) return;
 
     lightboxImage.src = imageSrc;
     lightboxImage.alt = imageAlt || "Certification preview";
+    if (lightboxDescription) {
+      lightboxDescription.textContent = descriptionText || "";
+    }
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
@@ -131,6 +213,9 @@ if (certCarousel) {
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
     lightboxImage.removeAttribute("src");
+    if (lightboxDescription) {
+      lightboxDescription.textContent = "";
+    }
     document.body.classList.remove("modal-open");
     startAutoAdvance();
   }
@@ -146,9 +231,13 @@ if (certCarousel) {
   });
 
   slides.forEach((slide) => {
-    const image = slide.querySelector("img");
-    image?.addEventListener("click", () => {
-      openLightbox(image.currentSrc || image.src, image.alt);
+    slide.addEventListener("click", () => {
+      const image = slide.querySelector("img");
+      if (!image) return;
+
+      const imageSrc = image.currentSrc || image.src;
+      const description = getCertificateDescription(imageSrc);
+      openLightbox(imageSrc, image.alt, description);
     });
   });
 
@@ -183,6 +272,27 @@ if (certCarousel) {
     updateGeometry();
   });
 
+  window.addEventListener("load", () => {
+    updateGeometry();
+    rotateTo(currentIndex);
+  });
+
+  if (typeof ResizeObserver !== "undefined") {
+    const geometryObserver = new ResizeObserver(() => {
+      updateGeometry();
+    });
+    if (scene) geometryObserver.observe(scene);
+    if (track) geometryObserver.observe(track);
+  }
+
+  slides.forEach((slide) => {
+    const image = slide.querySelector("img");
+    image?.addEventListener("load", () => {
+      updateGeometry();
+      rotateTo(currentIndex);
+    });
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && lightbox?.classList.contains("is-open")) {
       closeLightbox();
@@ -205,6 +315,9 @@ if (certCarousel) {
 
   buildDots();
   updateGeometry();
-  rotateTo(0);
-  startAutoAdvance();
+  window.requestAnimationFrame(() => {
+    updateGeometry();
+    rotateTo(0);
+  });
+  startAutoAdvance(true);
 }

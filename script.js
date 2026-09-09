@@ -27,6 +27,66 @@ if (isTouchDevice) {
 const nav = document.querySelector("nav");
 const navToggle = document.getElementById("navToggle");
 const mobileNavLinks = document.querySelectorAll(".mobile-nav-menu a");
+const themeToggle = document.getElementById("themeToggle");
+const themeToggleDesktopSlot = document.getElementById(
+  "themeToggleDesktopSlot",
+);
+const themeToggleMobileSlot = document.getElementById("themeToggleMobileSlot");
+const THEME_STORAGE_KEY = "pixel-designs-theme";
+const DARK_THEME = "dark";
+const LIGHT_THEME = "light";
+
+function syncThemeToggleLabel(theme) {
+  if (!themeToggle) return;
+  const nextTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+  const label =
+    nextTheme === LIGHT_THEME
+      ? "Switch to light theme"
+      : "Switch to dark theme";
+  themeToggle.setAttribute("aria-label", label);
+  themeToggle.setAttribute("title", label);
+}
+
+function applyTheme(theme, persist = true) {
+  const resolvedTheme = theme === LIGHT_THEME ? LIGHT_THEME : DARK_THEME;
+  document.documentElement.setAttribute("data-theme", resolvedTheme);
+  syncThemeToggleLabel(resolvedTheme);
+
+  if (!persist) return;
+  try {
+    window.localStorage.setItem(THEME_STORAGE_KEY, resolvedTheme);
+  } catch (error) {
+    // Ignore persistence errors in private mode.
+  }
+}
+
+function moveThemeToggleForViewport() {
+  if (!themeToggle) return;
+  const isMobileViewport = window.innerWidth <= 900;
+  const targetSlot = isMobileViewport
+    ? themeToggleMobileSlot
+    : themeToggleDesktopSlot;
+
+  if (!targetSlot || themeToggle.parentElement === targetSlot) return;
+  targetSlot.appendChild(themeToggle);
+}
+
+function initializeTheme() {
+  let storedTheme = null;
+  try {
+    storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+  } catch (error) {
+    storedTheme = null;
+  }
+
+  const validStoredTheme =
+    storedTheme === LIGHT_THEME || storedTheme === DARK_THEME
+      ? storedTheme
+      : DARK_THEME;
+
+  applyTheme(validStoredTheme, false);
+  moveThemeToggleForViewport();
+}
 
 function closeMobileNav() {
   if (!nav || !navToggle) return;
@@ -52,11 +112,22 @@ mobileNavLinks.forEach((link) => {
   link.addEventListener("click", closeMobileNav);
 });
 
+themeToggle?.addEventListener("click", () => {
+  const currentTheme =
+    document.documentElement.getAttribute("data-theme") === LIGHT_THEME
+      ? LIGHT_THEME
+      : DARK_THEME;
+  applyTheme(currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME);
+});
+
 window.addEventListener("resize", () => {
+  moveThemeToggleForViewport();
   if (window.innerWidth > 900) {
     closeMobileNav();
   }
 });
+
+initializeTheme();
 
 // ─── Reveal on scroll
 const reveals = document.querySelectorAll(".reveal");

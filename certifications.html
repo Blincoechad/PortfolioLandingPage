@@ -28,6 +28,47 @@
         />
         <span class="nav-logo-text">Pixel Designs</span>
       </a>
+      <div
+        class="theme-toggle-slot theme-toggle-slot--desktop"
+        id="themeToggleDesktopSlot"
+      >
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Switch to light theme"
+          title="Toggle theme"
+        >
+          <span
+            class="theme-toggle__icon theme-toggle__icon--moon"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path
+                d="M15.7 3.9a7.9 7.9 0 1 0 4.4 14.8 9 9 0 1 1-4.4-14.8z"
+                class="theme-toggle__stroke"
+              />
+              <path
+                d="M16.4 6.1l.9.3.3.9.3-.9.9-.3-.9-.3-.3-.9-.3.9z"
+                class="theme-toggle__spark"
+              />
+            </svg>
+          </span>
+          <span
+            class="theme-toggle__icon theme-toggle__icon--sun"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="12" r="3.3" class="theme-toggle__fill" />
+              <path
+                d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"
+                class="theme-toggle__stroke"
+              />
+            </svg>
+          </span>
+          <span class="theme-toggle__text">Theme</span>
+        </button>
+      </div>
       <div class="nav-actions">
         <a href="index.html#contact" class="nav-cta">Contact Me</a>
         <button
@@ -50,6 +91,10 @@
         <a href="index.html#process">Process</a>
         <a href="certifications.html">Certifications</a>
         <a href="index.html#contact">Contact</a>
+        <div
+          class="theme-toggle-slot theme-toggle-slot--mobile"
+          id="themeToggleMobileSlot"
+        ></div>
       </div>
     </nav>
 
@@ -325,6 +370,7 @@
           class="cert-lightbox__image"
           alt="Certification preview"
         />
+        <p id="certLightboxDescription" class="cert-lightbox__description"></p>
       </div>
     </div>
 
