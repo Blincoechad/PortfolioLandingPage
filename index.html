@@ -1001,11 +1001,10 @@
             </div>
             <div class="project-body">
               <div class="project-type">// Interactive Game</div>
-              <div class="project-title">Rock, Paper, Scissors</div>
+              <div class="project-title">Rock Paper Scissors React Rebuild</div>
               <p class="project-desc">
-                A fully playable browser game featuring custom CSS art assets,
-                animated results display, score tracking, and branded UI under
-                Pixel Designs.
+                A rebuilt version of one of my first JavaScript projects, recreated with React and Vite to improve structure, state handling, and maintainability. I kept the original design to showcase how my design and coding skills have developed over time.
+
               </p>
               <div class="project-tags">
                 <div class="tag">JavaScript</div>
@@ -1015,7 +1014,7 @@
               <div class="project-links">
                 <a
                   class="project-link project-link-live"
-                  href="https://blincoechad.github.io/MyPrograms/rockPaperScissors/"
+                  href="https://blincoechad.github.io/RockPaperScissorsReact/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1023,12 +1022,97 @@
                 </a>
                 <a
                   class="project-link project-link-code"
-                  href="https://github.com/Blincoechad/MyPrograms/tree/main/rockPaperScissors"
+                  href="https://github.com/Blincoechad/RockPaperScissorsReact"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
                 </a>
+                <button
+                  type="button"
+                  class="project-link project-link-case-study"
+                  data-case-study-trigger
+                >
+                  View Case Study
+                </button>
+              </div>
+              <div class="case-study-content" hidden>
+                <h4>Overview</h4>
+                <p>
+                  Rock Paper Scissors started as one of my first JavaScript
+                  projects. I built a playable browser version with HTML, CSS,
+                  and JavaScript while learning the basics. Later, I rebuilt the
+                  same game with React and Vite so I could compare how the same
+                  project changes when you move from direct DOM scripting to a
+                  component-based approach. I kept the original visual design on
+                  purpose so the comparison stays focused on how much my coding
+                  approach and project structure improved compared to my newer
+                  designs.
+                </p>
+
+                <h4>The Challenge</h4>
+                <p>
+                  In version one, I was focused on learning core programming:
+                  writing logic, handling user clicks, updating the interface,
+                  and keeping game state accurate after each round. At that
+                  stage, even small issues like missed state updates or repeated
+                  logic blocks were hard to spot. Rebuilding later gave me a way
+                  to solve the same problem with better structure and a clearer
+                  mental model.
+                </p>
+
+                <h4>Version 1: HTML, CSS &amp; JavaScript</h4>
+                <p>
+                  The original version taught me how programming concepts connect
+                  in a real interface. I used variables to track selections and
+                  score, conditionals to decide round outcomes, and functions to
+                  keep repeated logic manageable. Event listeners connected user
+                  input to gameplay, and DOM manipulation displayed the result of
+                  each round. I also implemented random computer choices and
+                  score/result tracking, which helped me understand how data,
+                  logic, and UI have to stay in sync.
+                </p>
+
+                <h4>The Rebuild: React + Vite</h4>
+                <p>
+                  I rebuilt the project because I wanted to understand React in a
+                  practical way, not just from tutorials. Using a familiar game
+                  let me focus on architecture changes. I broke the interface
+                  into components, moved game data into state, and used event
+                  handlers and conditional rendering to drive the UI from state
+                  instead of manually updating DOM nodes in multiple places.
+                  Vite gave me a faster development loop and cleaner project
+                  setup, which made iteration easier.
+                </p>
+
+                <h4>What Changed Between Versions</h4>
+                <p>
+                  In the JavaScript version, I was mostly thinking in terms of
+                  "find element, change element" after every interaction. In the
+                  React version, I shifted to "update state, let the UI re-render
+                  from that state." That changed the structure of the code a lot.
+                  The rebuilt version is easier to reason about, easier to extend,
+                  and less fragile when making updates.
+                </p>
+
+                <h4>Problem Solving &amp; Lessons Learned</h4>
+                <p>
+                  This project taught me that getting an app to work is only step
+                  one. The bigger lesson was learning how to organize logic so it
+                  stays readable and maintainable. Building the same app twice
+                  helped me compare approaches directly and understand the
+                  difference between writing working code and writing code that is
+                  easier to maintain and expand.
+                </p>
+
+                <h4>Outcome</h4>
+                <p>
+                  The finished rebuild shows my progression from learning core
+                  JavaScript fundamentals to understanding modern front-end
+                  development with React. It is still a simple game by design,
+                  but it clearly demonstrates growth in how I structure UI,
+                  manage state, and approach problem solving.
+                </p>
               </div>
             </div>
             <div class="project-arrow">↗</div>

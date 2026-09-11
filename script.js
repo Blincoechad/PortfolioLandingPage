@@ -36,6 +36,7 @@ const THEME_STORAGE_KEY = "pixel-designs-theme";
 const DARK_THEME = "dark";
 const LIGHT_THEME = "light";
 
+// Keep the toggle label honest by describing the theme it will switch to.
 function syncThemeToggleLabel(theme) {
   if (!themeToggle) return;
   const nextTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
@@ -47,6 +48,7 @@ function syncThemeToggleLabel(theme) {
   themeToggle.setAttribute("title", label);
 }
 
+// Apply a theme to the page and optionally remember it for the next visit.
 function applyTheme(theme, persist = true) {
   const resolvedTheme = theme === LIGHT_THEME ? LIGHT_THEME : DARK_THEME;
   document.documentElement.setAttribute("data-theme", resolvedTheme);
@@ -60,6 +62,7 @@ function applyTheme(theme, persist = true) {
   }
 }
 
+// Move the same toggle button between desktop and mobile nav slots.
 function moveThemeToggleForViewport() {
   if (!themeToggle) return;
   const isMobileViewport = window.innerWidth <= 900;
@@ -71,6 +74,7 @@ function moveThemeToggleForViewport() {
   targetSlot.appendChild(themeToggle);
 }
 
+// Read saved theme settings, apply them, and place the toggle correctly.
 function initializeTheme() {
   let storedTheme = null;
   try {
@@ -88,6 +92,7 @@ function initializeTheme() {
   moveThemeToggleForViewport();
 }
 
+// Close the mobile nav and reset accessibility state on the menu button.
 function closeMobileNav() {
   if (!nav || !navToggle) return;
   nav.classList.remove("mobile-nav-open");
@@ -96,6 +101,7 @@ function closeMobileNav() {
   navToggle.setAttribute("aria-label", "Open navigation menu");
 }
 
+// Open/close mobile nav and keep aria attributes in sync with that state.
 function toggleMobileNav() {
   if (!nav || !navToggle) return;
   const isOpen = nav.classList.toggle("mobile-nav-open");
@@ -107,6 +113,7 @@ function toggleMobileNav() {
   );
 }
 
+// Basic nav wiring: open/close behavior and theme switching.
 navToggle?.addEventListener("click", toggleMobileNav);
 mobileNavLinks.forEach((link) => {
   link.addEventListener("click", closeMobileNav);
@@ -153,6 +160,7 @@ const backToTop = document.getElementById("backToTop");
 const backToTopText = document.querySelector(".back-to-top-text");
 const pageFooter = document.querySelector("footer");
 
+// Show the back-to-top button after scrolling and keep it above the footer.
 function updateBackToTop() {
   if (!backToTop) return;
 
@@ -216,6 +224,7 @@ const submitModalCloseControls = document.querySelectorAll(
 let imageModalItems = [];
 let imageModalIndex = 0;
 
+// Close the process modal and restore normal page scrolling.
 function closeProcessModal() {
   if (!processModal) return;
   processModal.classList.remove("is-open");
@@ -223,6 +232,7 @@ function closeProcessModal() {
   document.body.classList.remove("modal-open");
 }
 
+// Fill the process modal using data from the clicked step card.
 function openProcessModal(step) {
   if (!processModal || !processModalTitle || !processModalText) return;
 
@@ -242,6 +252,7 @@ function openProcessModal(step) {
   document.body.classList.add("modal-open");
 }
 
+// Click-to-open behavior for each process step card.
 processSteps.forEach((step) => {
   step.addEventListener("click", () => openProcessModal(step));
 });
@@ -275,10 +286,12 @@ const caseStudyModalClose = caseStudyModal?.querySelector(
 let caseStudyLastTrigger = null;
 let caseStudyLastTouchY = null;
 
+// Check whether an event started inside the scrollable case-study content area.
 function containsCaseStudyContent(target) {
   return !!target?.closest?.(".case-study-modal__body");
 }
 
+// Prevent page scroll from chaining when the modal content hits top or bottom.
 function shouldBlockScrollChaining(deltaY) {
   if (!caseStudyModalBody) return true;
 
@@ -289,6 +302,7 @@ function shouldBlockScrollChaining(deltaY) {
   return (deltaY < 0 && atTop) || (deltaY > 0 && atBottom);
 }
 
+// Block mouse-wheel scroll from leaking through the open case-study modal.
 function stopCaseStudyWheelChaining(event) {
   if (!caseStudyModal?.classList.contains("is-open")) return;
   if (!containsCaseStudyContent(event.target)) {
@@ -301,10 +315,12 @@ function stopCaseStudyWheelChaining(event) {
   }
 }
 
+// Track last touch position so we can calculate touch scroll direction.
 function handleCaseStudyTouchStart(event) {
   caseStudyLastTouchY = event.touches?.[0]?.clientY ?? null;
 }
 
+// Stop touch scroll from moving the page behind the case-study modal.
 function stopCaseStudyTouchChaining(event) {
   if (!caseStudyModal?.classList.contains("is-open")) return;
   if (!containsCaseStudyContent(event.target)) {
@@ -338,6 +354,7 @@ caseStudyModal?.addEventListener("touchmove", stopCaseStudyTouchChaining, {
   passive: false,
 });
 
+// Copy case-study content from a project card into the shared modal shell.
 function openCaseStudyModal(card) {
   if (
     !caseStudyModal ||
@@ -360,6 +377,7 @@ function openCaseStudyModal(card) {
   caseStudyModalClose?.focus();
 }
 
+// Close case-study modal and return keyboard focus to the trigger button.
 function closeCaseStudyModal() {
   if (!caseStudyModal) return;
   caseStudyModal.classList.remove("is-open");
@@ -369,6 +387,7 @@ function closeCaseStudyModal() {
   caseStudyLastTrigger = null;
 }
 
+// Open case-study modal from any "View Case Study" button.
 document.querySelectorAll("[data-case-study-trigger]").forEach((trigger) => {
   trigger.addEventListener("click", (event) => {
     event.stopPropagation();
@@ -393,6 +412,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// Reset and close the video modal so the next open starts fresh.
 function closeVideoModal() {
   if (!videoModal || !videoModalPlayer) return;
   videoModal.classList.remove("is-open");
@@ -404,6 +424,7 @@ function closeVideoModal() {
   document.body.classList.remove("modal-open");
 }
 
+// Start muted preview playback in cards, with safe fallback if blocked.
 function startPreviewVideo(video) {
   if (!video) return;
   video.muted = true;
@@ -415,6 +436,7 @@ function startPreviewVideo(video) {
   });
 }
 
+// Open the full video modal and try autoplay while controls remain available.
 async function openVideoModal(videoSrc) {
   if (!videoModal || !videoModalPlayer || !videoSrc) return;
   videoModalPlayer.src = videoSrc;
@@ -431,12 +453,14 @@ async function openVideoModal(videoSrc) {
   }
 }
 
+// Initialize any preview videos that were not loaded yet.
 projectPreviewVideos.forEach((video) => {
   if (video.readyState === 0) {
     startPreviewVideo(video);
   }
 });
 
+// When tab becomes active again, resume paused preview videos.
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState !== "visible") return;
   projectPreviewVideos.forEach((video) => {
@@ -456,6 +480,7 @@ document.querySelectorAll(".project-links a").forEach((link) => {
 videoCards.forEach((card) => {
   const videoSrc = card.dataset.videoSrc;
 
+  // Card click opens modal unless user clicked an actual link/button.
   card.addEventListener("click", (event) => {
     const clickedLink = event.target.closest("a, button");
     if (clickedLink) {
@@ -475,6 +500,7 @@ document.querySelectorAll("[data-video-trigger]").forEach((trigger) => {
 externalCards.forEach((card) => {
   const externalUrl = card.dataset.externalUrl;
 
+  // Card click opens its external URL unless a nested control was clicked.
   card.addEventListener("click", (event) => {
     const clickedLink = event.target.closest("a, button");
     if (clickedLink || !externalUrl) {
@@ -501,12 +527,14 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// Hide image-modal arrows when there is only one image in the gallery.
 function setImageModalNavVisibility() {
   const shouldShowNav = imageModalItems.length > 1;
   imageModalPrev?.classList.toggle("is-hidden", !shouldShowNav);
   imageModalNext?.classList.toggle("is-hidden", !shouldShowNav);
 }
 
+// Paint the active modal image and sync active thumbnail state.
 function renderImageModalPreview() {
   if (!imageModalPreview || imageModalItems.length === 0) return;
 
@@ -521,6 +549,7 @@ function renderImageModalPreview() {
     });
 }
 
+// Clear image modal state so each open starts from clean data.
 function closeImageModal() {
   if (!imageModal || !imageModalPreview || !imageModalThumbs) return;
   imageModal.classList.remove("is-open");
@@ -532,6 +561,7 @@ function closeImageModal() {
   document.body.classList.remove("modal-open");
 }
 
+// Show the contact success modal after a successful submit.
 function openSubmitModal() {
   if (!submitModal) return;
   submitModal.classList.add("is-open");
@@ -539,6 +569,7 @@ function openSubmitModal() {
   document.body.classList.add("modal-open");
 }
 
+// Close the contact success modal.
 function closeSubmitModal() {
   if (!submitModal) return;
   submitModal.classList.remove("is-open");
@@ -546,6 +577,7 @@ function closeSubmitModal() {
   document.body.classList.remove("modal-open");
 }
 
+// Send contact form data with graceful UI feedback and error handling.
 async function handleContactSubmit(event) {
   if (!contactForm) return;
   event.preventDefault();
@@ -585,6 +617,7 @@ async function handleContactSubmit(event) {
   }
 }
 
+// Move one step left or right in the modal image gallery.
 function stepImageModal(direction) {
   if (imageModalItems.length < 2) return;
   imageModalIndex =
@@ -593,6 +626,7 @@ function stepImageModal(direction) {
   renderImageModalPreview();
 }
 
+// Build and open image modal from the card's image list.
 function openImageModal(images, startIndex = 0) {
   if (
     !imageModal ||
@@ -628,6 +662,7 @@ function openImageModal(images, startIndex = 0) {
 }
 
 imageCards.forEach((card) => {
+  // Open image modal only when the card body is clicked, not a link/button.
   card.addEventListener("click", (event) => {
     const clickedLink = event.target.closest("a, button");
     if (clickedLink) {
@@ -656,6 +691,7 @@ imageCards.forEach((card) => {
         arr.findIndex((entry) => entry.src === item.src) === idx,
     );
 
+    // Remove duplicates so one image source does not appear multiple times.
     if (uniqueImages.length === 0) return;
     openImageModal(uniqueImages);
   });
@@ -681,6 +717,7 @@ imageModal
   });
 
 document.addEventListener("keydown", (event) => {
+  // Keyboard shortcuts keep all modals navigable without mouse input.
   if (event.key === "Escape" && imageModal?.classList.contains("is-open")) {
     closeImageModal();
   }

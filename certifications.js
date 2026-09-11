@@ -35,6 +35,7 @@ const CERTIFICATE_DESCRIPTIONS = {
     "Webflow layouts certificate focused on responsive section design, spacing systems, and multi-breakpoint layout control.",
 };
 
+// Match an image file name to its description text for the lightbox caption.
 function getCertificateDescription(imageSrc) {
   if (!imageSrc) return "";
 
@@ -75,11 +76,13 @@ if (certCarousel) {
   const AUTO_ADVANCE_INTERVAL_MS = 5200;
   const AUTO_ADVANCE_FIRST_DELAY_MS = 900;
 
+  // Wrap indexes so moving past either end loops back around the carousel.
   function normalizeIndex(index) {
     if (slides.length === 0) return 0;
     return (index + slides.length) % slides.length;
   }
 
+  // Update visual emphasis for the active slide and active pagination dot.
   function updateActiveState() {
     slides.forEach((slide, index) => {
       const isActive = index === currentIndex;
@@ -97,6 +100,7 @@ if (certCarousel) {
     });
   }
 
+  // Rotate the 3D ring to the requested slide index.
   function rotateTo(index) {
     if (!track || slides.length === 0) return;
 
@@ -106,6 +110,7 @@ if (certCarousel) {
     updateActiveState();
   }
 
+  // Recalculate spacing math so the 3D layout stays correct on resize.
   function updateGeometry() {
     if (!scene || !track || slides.length === 0) return;
 
@@ -127,10 +132,12 @@ if (certCarousel) {
     rotateTo(currentIndex);
   }
 
+  // Move forward one certificate.
   function nextSlide() {
     rotateTo(currentIndex + 1);
   }
 
+  // Build pagination dots and wire each one to jump to its slide.
   function buildDots() {
     if (!dotsContainer || slides.length === 0) return;
 
@@ -149,10 +156,12 @@ if (certCarousel) {
     });
   }
 
+  // Move backward one certificate.
   function previousSlide() {
     rotateTo(currentIndex - 1);
   }
 
+  // Run the repeating timer that advances the carousel automatically.
   function runAutoAdvanceInterval() {
     if (autoAdvanceTimer) return;
     autoAdvanceTimer = window.setInterval(() => {
@@ -160,6 +169,7 @@ if (certCarousel) {
     }, AUTO_ADVANCE_INTERVAL_MS);
   }
 
+  // Start auto-advance, with an optional quick first move after page load.
   function startAutoAdvance(useFastStart = false) {
     if (slides.length < 2) return;
     if (autoAdvanceTimer || autoAdvanceKickoffTimer) return;
@@ -176,6 +186,7 @@ if (certCarousel) {
     }, AUTO_ADVANCE_FIRST_DELAY_MS);
   }
 
+  // Stop all auto-advance timers (both kickoff and repeating interval).
   function stopAutoAdvance() {
     if (autoAdvanceKickoffTimer) {
       window.clearTimeout(autoAdvanceKickoffTimer);
@@ -188,11 +199,13 @@ if (certCarousel) {
     autoAdvanceTimer = null;
   }
 
+  // Restart auto-advance after any manual interaction.
   function restartAutoAdvance() {
     stopAutoAdvance();
     startAutoAdvance();
   }
 
+  // Open cert image in lightbox with its matching description text.
   function openLightbox(imageSrc, imageAlt, descriptionText) {
     if (!lightbox || !lightboxImage || !imageSrc) return;
 
@@ -207,6 +220,7 @@ if (certCarousel) {
     stopAutoAdvance();
   }
 
+  // Close lightbox, clear old media state, and resume carousel rotation.
   function closeLightbox() {
     if (!lightbox || !lightboxImage) return;
 
@@ -231,6 +245,7 @@ if (certCarousel) {
   });
 
   slides.forEach((slide) => {
+    // Clicking the active slide opens a larger preview in the lightbox.
     slide.addEventListener("click", () => {
       const image = slide.querySelector("img");
       if (!image) return;
@@ -254,6 +269,7 @@ if (certCarousel) {
   certCarousel.addEventListener("mouseenter", stopAutoAdvance);
   certCarousel.addEventListener("mouseleave", startAutoAdvance);
 
+  // Mouse wheel rotates the 3D carousel and pauses/resets auto-advance.
   scene?.addEventListener(
     "wheel",
     (event) => {
@@ -278,6 +294,7 @@ if (certCarousel) {
   });
 
   if (typeof ResizeObserver !== "undefined") {
+    // Keep geometry synced even when container size changes without window resize.
     const geometryObserver = new ResizeObserver(() => {
       updateGeometry();
     });
@@ -294,6 +311,7 @@ if (certCarousel) {
   });
 
   document.addEventListener("keydown", (event) => {
+    // Escape closes lightbox; arrow keys rotate carousel when lightbox is closed.
     if (event.key === "Escape" && lightbox?.classList.contains("is-open")) {
       closeLightbox();
       return;
