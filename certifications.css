@@ -3,6 +3,11 @@ main {
   z-index: 1;
 }
 
+.nav-actions .theme-toggle-slot--desktop {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .cert-hero {
   min-height: 44vh;
   padding: 8.5rem 3rem 2.5rem;

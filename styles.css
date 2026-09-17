@@ -191,7 +191,7 @@ nav {
   gap: 0.45rem;
   min-height: 36px;
   padding: 0.45rem 0.72rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent);
   background: var(--panel-bg);
   color: var(--accent);
   font-family: "JetBrains Mono", monospace;
@@ -259,6 +259,9 @@ nav {
 }
 [data-theme="light"] .theme-toggle__icon--sun {
   display: inline;
+}
+[data-theme="light"] .theme-toggle {
+  border-color: var(--text);
 }
 .nav-actions {
   display: flex;
