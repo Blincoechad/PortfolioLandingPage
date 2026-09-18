@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Designs | Web Design & Development</title>
     <meta name="description" content="Pixel Designs is the portfolio of Chad Blincoe, a web designer and developer building responsive, modern websites and interactive front-end projects." />
-    <link rel="canonical" href="https://portfolio-landing-page-indol.vercel.app/" />
+    <link rel="canonical" href="https://portfolio-landing-page-eight-pink.vercel.app/" />
     <!-- ADDED: favicon (was missing, so the tab showed no icon) -->
     <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
@@ -45,34 +45,6 @@
         />
         <span class="nav-logo-text">Pixel Designs</span>
       </a>
-      <!-- ===== ADDED: desktop-only resume popup trigger, left of the theme
-           toggle. Same compact style as the mobile .nav-resume button (see
-           .nav-actions below), just shown/hidden at the opposite breakpoint. ===== -->
-      <a
-        href="media/Chad_Blincoe_Resume.pdf"
-        target="_blank"
-        rel="noopener"
-        class="btn-primary nav-resume-desktop"
-        data-resume-trigger
-        aria-label="View or download Chad Blincoe's resume, PDF"
-      >
-        <svg
-          class="nav-resume-desktop__icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
-          <path d="M14 3v5h5" />
-        </svg>
-        <span class="nav-resume-desktop__text">Resume</span>
-      </a>
-      <!-- ===== END desktop nav resume button ===== -->
       <div class="theme-toggle-slot theme-toggle-slot--desktop" id="themeToggleDesktopSlot">
         <button
           type="button"
@@ -141,6 +113,35 @@
           <span class="nav-resume__text">Resume</span>
         </a>
         <!-- ===== END nav resume button ===== -->
+        <!-- ===== ADDED: desktop-only resume popup trigger, left of Contact
+             Me. Same compact style as the mobile .nav-resume above, just
+             shown/hidden at the opposite breakpoint — the two swap in this
+             same spot depending on viewport width. ===== -->
+        <a
+          href="media/Chad_Blincoe_Resume.pdf"
+          target="_blank"
+          rel="noopener"
+          class="btn-primary nav-resume-desktop"
+          data-resume-trigger
+          aria-label="View or download Chad Blincoe's resume, PDF"
+        >
+          <svg
+            class="nav-resume-desktop__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path d="M14 3v5h5" />
+          </svg>
+          <span class="nav-resume-desktop__text">Resume</span>
+        </a>
+        <!-- ===== END desktop nav resume button ===== -->
         <a href="#contact" class="nav-cta">Contact Me</a>
         <button
           type="button"
@@ -221,8 +222,10 @@
               My Resume
             </a>
             <!-- ===== END hero resume button ===== -->
-          </div>
-          <div class="hero-socials">
+            <!-- MOVED: hero-socials now lives inside hero-cta-group so it
+                 centers under the CTA stack the same way the resume button
+                 does, instead of being left-aligned as a separate sibling. -->
+            <div class="hero-socials">
             <a
               class="hero-social"
               href="https://www.linkedin.com/in/chad-blincoe-42b2b1338/"
@@ -251,6 +254,7 @@
                 />
               </svg>
             </a>
+            </div>
           </div>
           <div class="hero-tagline">
             <span class="hero-tagline-text">Junior Frontend Developer — Lakeland, FL</span>

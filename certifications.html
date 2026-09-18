@@ -4,13 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Designs | Certifications</title>
-    <meta name="description" content="Certifications and credentials earned by Chad Blincoe, showcasing continued training in web design and development." />
-    <link rel="canonical" href="https://portfolio-landing-page-indol.vercel.app/certifications.html" />
+    <meta
+      name="description"
+      content="Certifications and credentials earned by Chad Blincoe, showcasing continued training in web design and development."
+    />
+    <link
+      rel="canonical"
+      href="https://portfolio-landing-page-eight-pink.vercel.app/certifications.html"
+    />
     <!-- ADDED: favicon (was missing, so the tab showed no icon) -->
     <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
     <link rel="manifest" href="favicon/site.webmanifest" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -41,75 +61,51 @@
         />
         <span class="nav-logo-text">Pixel Designs</span>
       </a>
-      <div class="nav-actions">
-        <!-- ===== ADDED: desktop-only resume popup trigger, left of the
-             theme toggle. Same as index.html's navbar. ===== -->
-        <a
-          href="media/Chad_Blincoe_Resume.pdf"
-          target="_blank"
-          rel="noopener"
-          class="btn-primary nav-resume-desktop"
-          data-resume-trigger
-          aria-label="View or download Chad Blincoe's resume, PDF"
+      <!-- MOVED: theme toggle now sits right after the logo (desktop only —
+           .theme-toggle-slot--desktop is already hidden ≤900px), matching
+           index.html's navbar layout instead of living inside .nav-actions. -->
+      <div
+        class="theme-toggle-slot theme-toggle-slot--desktop"
+        id="themeToggleDesktopSlot"
+      >
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Switch to light theme"
+          title="Toggle theme"
         >
-          <svg
-            class="nav-resume-desktop__icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+          <span
+            class="theme-toggle__icon theme-toggle__icon--moon"
             aria-hidden="true"
-            focusable="false"
           >
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
-            <path d="M14 3v5h5" />
-          </svg>
-          <span class="nav-resume-desktop__text">Resume</span>
-        </a>
-        <!-- ===== END desktop nav resume button ===== -->
-        <div
-          class="theme-toggle-slot theme-toggle-slot--desktop"
-          id="themeToggleDesktopSlot"
-        >
-          <button
-            type="button"
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Switch to light theme"
-            title="Toggle theme"
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path
+                d="M15.7 3.9a7.9 7.9 0 1 0 4.4 14.8 9 9 0 1 1-4.4-14.8z"
+                class="theme-toggle__stroke"
+              />
+              <path
+                d="M16.4 6.1l.9.3.3.9.3-.9.9-.3-.9-.3-.3-.9-.3.9z"
+                class="theme-toggle__spark"
+              />
+            </svg>
+          </span>
+          <span
+            class="theme-toggle__icon theme-toggle__icon--sun"
+            aria-hidden="true"
           >
-            <span
-              class="theme-toggle__icon theme-toggle__icon--moon"
-              aria-hidden="true"
-            >
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path
-                  d="M15.7 3.9a7.9 7.9 0 1 0 4.4 14.8 9 9 0 1 1-4.4-14.8z"
-                  class="theme-toggle__stroke"
-                />
-                <path
-                  d="M16.4 6.1l.9.3.3.9.3-.9.9-.3-.9-.3-.3-.9-.3.9z"
-                  class="theme-toggle__spark"
-                />
-              </svg>
-            </span>
-            <span
-              class="theme-toggle__icon theme-toggle__icon--sun"
-              aria-hidden="true"
-            >
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="12" r="3.3" class="theme-toggle__fill" />
-                <path
-                  d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"
-                  class="theme-toggle__stroke"
-                />
-              </svg>
-            </span>
-            <span class="theme-toggle__text">Theme</span>
-          </button>
-        </div>
+            <svg viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="12" r="3.3" class="theme-toggle__fill" />
+              <path
+                d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"
+                class="theme-toggle__stroke"
+              />
+            </svg>
+          </span>
+          <span class="theme-toggle__text">Theme</span>
+        </button>
+      </div>
+      <div class="nav-actions">
         <!-- ===== ADDED: same compact mobile/tablet resume popup trigger
              used in index.html's navbar (hidden on desktop, sits left of
              Contact Me) ===== -->
@@ -132,12 +128,44 @@
             aria-hidden="true"
             focusable="false"
           >
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path
+              d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"
+            />
             <path d="M14 3v5h5" />
           </svg>
           <span class="nav-resume__text">Resume</span>
         </a>
         <!-- ===== END nav resume button ===== -->
+        <!-- ===== ADDED: desktop-only resume popup trigger, left of Contact
+             Me. Same as index.html's navbar — swaps with the mobile
+             .nav-resume above at the 900px breakpoint. ===== -->
+        <a
+          href="media/Chad_Blincoe_Resume.pdf"
+          target="_blank"
+          rel="noopener"
+          class="btn-primary nav-resume-desktop"
+          data-resume-trigger
+          aria-label="View or download Chad Blincoe's resume, PDF"
+        >
+          <svg
+            class="nav-resume-desktop__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"
+            />
+            <path d="M14 3v5h5" />
+          </svg>
+          <span class="nav-resume-desktop__text">Resume</span>
+        </a>
+        <!-- ===== END desktop nav resume button ===== -->
         <a href="index.html#contact" class="nav-cta">Contact Me</a>
         <button
           type="button"
@@ -438,7 +466,9 @@
                 aria-hidden="true"
                 focusable="false"
               >
-                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path
+                  d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"
+                />
                 <path d="M14 3v5h5" />
               </svg>
               My Resume
@@ -519,9 +549,7 @@
               aria-hidden="true"
               focusable="false"
             >
-              <path
-                d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"
-              />
+              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
               <circle cx="12" cy="12" r="3" />
             </svg>
             View Resume

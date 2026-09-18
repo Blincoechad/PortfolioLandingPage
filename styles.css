@@ -393,15 +393,15 @@ nav {
   }
 }
 /* ===== ADDED: desktop-only copy of the compact nav resume button, left of
-   the theme toggle. Visible by default (desktop); hidden ≤900px in the
-   RESPONSIVE section below, the opposite of .nav-resume above. Same
-   compact sizing/look, just shown at the other breakpoint. ===== */
+   Contact Me (same slot as the mobile .nav-resume above — they swap at the
+   900px breakpoint, never both visible). Visible by default (desktop);
+   hidden ≤900px in the RESPONSIVE section below. Same compact sizing/look
+   as .nav-resume; spacing comes from .nav-actions' own flex gap. ===== */
 .btn-primary.nav-resume-desktop {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  margin-left: 1rem;
   padding: 0.4rem 0.7rem;
   font-size: 0.68rem;
 }
@@ -777,7 +777,9 @@ section {
 .hero-socials {
   display: flex;
   gap: 0.7rem;
-  margin-top: 1.2rem;
+  /* No margin-top: now a child of .hero-cta-group, whose flex `gap` already
+     provides spacing — its own align-items: center is what centers this
+     row under the CTA stack. */
   animation: fadeUp 0.7s 0.5s ease both;
 }
 .hero-socials-mobile {

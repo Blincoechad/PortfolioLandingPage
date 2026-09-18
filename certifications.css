@@ -3,9 +3,16 @@ main {
   z-index: 1;
 }
 
-.nav-actions .theme-toggle-slot--desktop {
-  margin-left: 0;
-  margin-right: 0;
+/* CHANGED: the theme toggle now sits as a direct sibling of .nav-logo (not
+   nested in .nav-actions), matching index.html's markup. But unlike
+   index.html, this page's <nav> has no .nav-links element to absorb the
+   `justify-content: space-between` gap — with only 3 flex children
+   (logo, toggle, .nav-actions) the toggle would otherwise land near the
+   horizontal center of the bar instead of staying next to the logo.
+   margin-right: auto claims all that free space itself, pinning the toggle
+   tight against the logo and pushing .nav-actions to the far right. */
+.theme-toggle-slot--desktop {
+  margin-right: auto;
 }
 
 .cert-hero {
