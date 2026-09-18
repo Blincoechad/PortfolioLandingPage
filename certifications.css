@@ -233,6 +233,16 @@ main {
   flex-wrap: wrap;
 }
 
+/* ADDED: .hero-cta-group (from styles.css) shrinks to fit-content so its
+   own resume button can center under .cert-actions without widening past
+   it. On index.html that sits in a left-aligned column, so no extra
+   centering is needed there — but .cert-gallery-inner is a centered
+   max-width column, so this fit-content box needs its own margin:auto to
+   land in the middle instead of flush against the left edge. */
+.cert-gallery-inner .hero-cta-group {
+  margin-inline: auto;
+}
+
 .cert-lightbox {
   position: fixed;
   inset: 0;

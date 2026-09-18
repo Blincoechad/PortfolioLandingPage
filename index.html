@@ -6,6 +6,12 @@
     <title>Pixel Designs | Web Design & Development</title>
     <meta name="description" content="Pixel Designs is the portfolio of Chad Blincoe, a web designer and developer building responsive, modern websites and interactive front-end projects." />
     <link rel="canonical" href="https://portfolio-landing-page-indol.vercel.app/" />
+    <!-- ADDED: favicon (was missing, so the tab showed no icon) -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
@@ -39,6 +45,34 @@
         />
         <span class="nav-logo-text">Pixel Designs</span>
       </a>
+      <!-- ===== ADDED: desktop-only resume popup trigger, left of the theme
+           toggle. Same compact style as the mobile .nav-resume button (see
+           .nav-actions below), just shown/hidden at the opposite breakpoint. ===== -->
+      <a
+        href="media/Chad_Blincoe_Resume.pdf"
+        target="_blank"
+        rel="noopener"
+        class="btn-primary nav-resume-desktop"
+        data-resume-trigger
+        aria-label="View or download Chad Blincoe's resume, PDF"
+      >
+        <svg
+          class="nav-resume-desktop__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+          <path d="M14 3v5h5" />
+        </svg>
+        <span class="nav-resume-desktop__text">Resume</span>
+      </a>
+      <!-- ===== END desktop nav resume button ===== -->
       <div class="theme-toggle-slot theme-toggle-slot--desktop" id="themeToggleDesktopSlot">
         <button
           type="button"
@@ -79,6 +113,34 @@
   <li><a href="#contact">Contact</a></li>
 </ul>
       <div class="nav-actions">
+        <!-- ===== ADDED: compact mobile/tablet resume button (hidden on desktop, sits left of Contact Me) =====
+             CHANGED: now a shared resume-popup trigger — see the resume-modal
+             markup near the end of <body> and the "Resume popup" JS section. -->
+        <a
+          href="media/Chad_Blincoe_Resume.pdf"
+          target="_blank"
+          rel="noopener"
+          class="btn-primary nav-resume"
+          data-resume-trigger
+          aria-label="View or download Chad Blincoe's resume, PDF"
+        >
+          <svg
+            class="nav-resume__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path d="M14 3v5h5" />
+          </svg>
+          <span class="nav-resume__text">Resume</span>
+        </a>
+        <!-- ===== END nav resume button ===== -->
         <a href="#contact" class="nav-cta">Contact Me</a>
         <button
           type="button"
@@ -124,9 +186,41 @@
             <span class="hero-sub-accent hero-sub-accent--3"> develop responsive web experiences</span>
             from front-end development to content creation — that help brands stand out.
           </p>
-          <div class="hero-actions">
-            <a href="#projects" class="btn-primary">View My Work</a>
-            <a href="#contact" class="btn-ghost">Let's Talk</a>
+          <!-- ADDED: hero-cta-group wraps the original hero-actions row so a
+               third button can stack underneath it without touching the
+               existing .hero-actions markup, styles, or behavior. -->
+          <div class="hero-cta-group">
+            <div class="hero-actions">
+              <a href="#projects" class="btn-primary">View My Work</a>
+              <a href="#contact" class="btn-ghost">Let's Talk</a>
+            </div>
+            <!-- ===== ADDED: hero resume button (desktop/tablet only, hidden ≤900px) =====
+                 CHANGED: now a shared resume-popup trigger. -->
+            <a
+              href="media/Chad_Blincoe_Resume.pdf"
+              target="_blank"
+              rel="noopener"
+              class="btn-ghost hero-resume-btn"
+              data-resume-trigger
+              aria-label="View or download Chad Blincoe's resume, PDF"
+            >
+              <svg
+                class="hero-resume-btn__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M14 3v5h5" />
+              </svg>
+              My Resume
+            </a>
+            <!-- ===== END hero resume button ===== -->
           </div>
           <div class="hero-socials">
             <a
@@ -1359,6 +1453,42 @@
 
 </p>
         </div>
+
+        <!-- ===== ADDED: Resume download callout =====
+             CHANGED: now a shared resume-popup trigger. -->
+        <div class="resume-cta reveal">
+          <div class="about-label contact-label-center">Quick Access</div>
+          <p class="resume-cta__text">Prefer to review first? Grab my resume.</p>
+          <a
+            class="btn-primary resume-cta__btn"
+            href="media/Chad_Blincoe_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            data-resume-trigger
+            aria-label="View or download Chad Blincoe's resume, PDF"
+          >
+            <svg
+              class="resume-cta__icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+              <path d="M14 3v5h5" />
+            </svg>
+            My Resume
+          </a>
+          <span class="resume-cta__meta">PDF · 195 KB</span>
+        </div>
+        <!-- ===== END resume download callout ===== -->
+
         <form
           class="contact-form reveal"
           action="https://formspree.io/f/mpqgwbjv"
@@ -1374,60 +1504,14 @@
               <input id="contactName" type="text" name="name" placeholder="Jordan Smith" required />
             </div>
             <div class="form-group">
-              <label for="contactCompany">Company Name</label>
-              <input id="contactCompany" type="text" name="company" placeholder="Acme Studio" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
               <label for="contactEmail">Contact Email</label>
               <input id="contactEmail" type="email" name="email" placeholder="jordan@company.com" required />
-            </div>
-            <div class="form-group">
-              <label for="contactPhone">Phone Number (Optional)</label>
-              <input id="contactPhone" type="tel" name="phone" placeholder="(555) 123-4567" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="jobType">Job Type</label>
-              <select id="jobType" name="jobType" required>
-                <option value="" disabled selected>Select a job type...</option>
-                <option>Website Design</option>
-                <option>Website Redesign</option>
-                <option>Website Maintenance</option>
-                <option>Landing Page Design</option>
-                <option>WordPress</option>
-                <option>Front-End Development</option>
-                <option>SEO</option>
-                <option>Digital Marketing</option>
-                <option>Social Media Content</option>
-                <option>Video Editing</option>
-                <option>Graphic Design</option>
-                <option>Branding</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="employmentType">Employment Type</label>
-              <select id="employmentType" name="employmentType" required>
-                <option value="" disabled selected>Select an option...</option>
-                <option>Full Time</option>
-                <option>Part Time</option>
-                <option>Contract</option>
-                <option>Other</option>
-              </select>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group full">
-              <label for="workLocation">Work Arrangement</label>
-              <select id="workLocation" name="workLocation" required>
-                <option value="" disabled selected>Select a work arrangement...</option>
-                <option>Remote</option>
-                <option>In Person</option>
-                <option>Hybrid</option>
-              </select>
+              <label for="contactPhone">Phone Number (Optional)</label>
+              <input id="contactPhone" type="tel" name="phone" placeholder="(555) 123-4567" />
             </div>
           </div>
           <div class="form-row">
@@ -1472,6 +1556,86 @@
         </button>
       </div>
     </div>
+
+    <!-- ===== ADDED: shared resume popup, opened by every [data-resume-trigger]
+         link (nav "Resume", hero "My Resume", contact "My Resume"). Follows
+         the same markup/class/overlay pattern as .submit-modal above. ===== -->
+    <div class="resume-modal" id="resumeModal" aria-hidden="true">
+      <div class="resume-modal__backdrop" data-close-resume-modal></div>
+      <div
+        class="resume-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resumeModalTitle"
+      >
+        <button
+          class="resume-modal__close"
+          type="button"
+          aria-label="Close"
+          data-close-resume-modal
+        >
+          ×
+        </button>
+        <div class="about-label contact-label-center">Resume</div>
+        <h3 class="resume-modal__title" id="resumeModalTitle">
+          Chad Blincoe's Resume
+        </h3>
+        <p class="resume-modal__text">
+          PDF, opens in a new tab or saves to your device.
+        </p>
+        <div class="resume-modal__options">
+          <a
+            href="media/Chad_Blincoe_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="resume-modal__option resume-modal__option--primary"
+            data-resume-option
+          >
+            <svg
+              class="resume-modal__option-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"
+              />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            View Resume
+          </a>
+          <a
+            href="media/Chad_Blincoe_Resume.pdf"
+            download="Chad_Blincoe_Resume.pdf"
+            class="resume-modal__option resume-modal__option--secondary"
+            data-resume-option
+          >
+            <svg
+              class="resume-modal__option-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 3v12" />
+              <path d="M7 10l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END resume popup ===== -->
 
     <!-- ─── FOOTER ────────────────────────────────────── -->
     <footer>

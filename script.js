@@ -731,3 +731,104 @@ document.addEventListener("keydown", (event) => {
     stepImageModal(1);
   }
 });
+
+// ─── Resume popup (shared by the nav "Resume", hero "My Resume", and
+// contact "My Resume" links — every [data-resume-trigger] opens the same
+// modal instance instead of downloading directly)
+const resumeModal = document.getElementById("resumeModal");
+const resumeModalDialog = resumeModal?.querySelector(".resume-modal__dialog");
+const resumeModalOptions = resumeModal?.querySelectorAll(
+  "[data-resume-option]",
+);
+const resumeTriggers = document.querySelectorAll("[data-resume-trigger]");
+let resumeModalLastTrigger = null;
+
+// Elements the Tab focus trap cycles between while the popup is open.
+function getResumeModalFocusable() {
+  if (!resumeModalDialog) return [];
+  return Array.from(
+    resumeModalDialog.querySelectorAll("a[href], button:not([disabled])"),
+  ).filter((el) => el.offsetParent !== null);
+}
+
+// Open the popup, remembering which trigger to return focus to on close.
+function openResumeModal(trigger) {
+  if (!resumeModal) return;
+  resumeModalLastTrigger = trigger || null;
+  resumeModal.classList.add("is-open");
+  resumeModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  resumeModalOptions?.[0]?.focus();
+}
+
+// Close the popup and return keyboard focus to whichever link opened it.
+function closeResumeModal() {
+  if (!resumeModal) return;
+  resumeModal.classList.remove("is-open");
+  resumeModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  resumeModalLastTrigger?.focus();
+  resumeModalLastTrigger = null;
+}
+
+// A plain left click opens the popup. Ctrl/Cmd/Shift/Alt/middle-click are
+// left alone so the real href (target="_blank") still opens the PDF in a
+// new tab, same as with JavaScript disabled.
+resumeTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+    event.preventDefault();
+    openResumeModal(trigger);
+  });
+});
+
+document.querySelectorAll("[data-close-resume-modal]").forEach((element) => {
+  element.addEventListener("click", closeResumeModal);
+});
+
+resumeModalDialog?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+// "View Resume"/"Download Resume" are real links — never preventDefault,
+// just let the browser handle them natively and close the popup after.
+resumeModalOptions?.forEach((option) => {
+  option.addEventListener("click", () => {
+    closeResumeModal();
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (!resumeModal?.classList.contains("is-open")) return;
+
+  if (event.key === "Escape") {
+    closeResumeModal();
+    return;
+  }
+
+  if (event.key !== "Tab") return;
+
+  // Keep Tab/Shift+Tab cycling within the dialog instead of escaping to
+  // the page behind it.
+  const focusable = getResumeModalFocusable();
+  if (focusable.length === 0) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});

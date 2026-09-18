@@ -6,6 +6,12 @@
     <title>Pixel Designs | Certifications</title>
     <meta name="description" content="Certifications and credentials earned by Chad Blincoe, showcasing continued training in web design and development." />
     <link rel="canonical" href="https://portfolio-landing-page-indol.vercel.app/certifications.html" />
+    <!-- ADDED: favicon (was missing, so the tab showed no icon) -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
@@ -36,6 +42,33 @@
         <span class="nav-logo-text">Pixel Designs</span>
       </a>
       <div class="nav-actions">
+        <!-- ===== ADDED: desktop-only resume popup trigger, left of the
+             theme toggle. Same as index.html's navbar. ===== -->
+        <a
+          href="media/Chad_Blincoe_Resume.pdf"
+          target="_blank"
+          rel="noopener"
+          class="btn-primary nav-resume-desktop"
+          data-resume-trigger
+          aria-label="View or download Chad Blincoe's resume, PDF"
+        >
+          <svg
+            class="nav-resume-desktop__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path d="M14 3v5h5" />
+          </svg>
+          <span class="nav-resume-desktop__text">Resume</span>
+        </a>
+        <!-- ===== END desktop nav resume button ===== -->
         <div
           class="theme-toggle-slot theme-toggle-slot--desktop"
           id="themeToggleDesktopSlot"
@@ -77,6 +110,34 @@
             <span class="theme-toggle__text">Theme</span>
           </button>
         </div>
+        <!-- ===== ADDED: same compact mobile/tablet resume popup trigger
+             used in index.html's navbar (hidden on desktop, sits left of
+             Contact Me) ===== -->
+        <a
+          href="media/Chad_Blincoe_Resume.pdf"
+          target="_blank"
+          rel="noopener"
+          class="btn-primary nav-resume"
+          data-resume-trigger
+          aria-label="View or download Chad Blincoe's resume, PDF"
+        >
+          <svg
+            class="nav-resume__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path d="M14 3v5h5" />
+          </svg>
+          <span class="nav-resume__text">Resume</span>
+        </a>
+        <!-- ===== END nav resume button ===== -->
         <a href="index.html#contact" class="nav-cta">Contact Me</a>
         <button
           type="button"
@@ -348,9 +409,41 @@
             aria-label="Carousel navigation dots"
           ></div>
 
-          <div class="cert-actions">
-            <a href="index.html#contact" class="btn-primary">Let's Talk!</a>
-            <a href="index.html#projects" class="btn-ghost">See Projects</a>
+          <!-- ADDED: hero-cta-group (reused from index.html's hero section)
+               wraps .cert-actions so a third button can center underneath it
+               without touching .cert-actions itself. -->
+          <div class="hero-cta-group">
+            <div class="cert-actions">
+              <a href="index.html#contact" class="btn-primary">Let's Talk!</a>
+              <a href="index.html#projects" class="btn-ghost">See Projects</a>
+            </div>
+            <!-- ===== ADDED: resume popup trigger, same style/behavior as
+                 the hero's "My Resume" button on index.html ===== -->
+            <a
+              href="media/Chad_Blincoe_Resume.pdf"
+              target="_blank"
+              rel="noopener"
+              class="btn-ghost hero-resume-btn"
+              data-resume-trigger
+              aria-label="View or download Chad Blincoe's resume, PDF"
+            >
+              <svg
+                class="hero-resume-btn__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M14 3v5h5" />
+              </svg>
+              My Resume
+            </a>
+            <!-- ===== END resume button ===== -->
           </div>
         </div>
       </section>
@@ -380,6 +473,86 @@
         <p id="certLightboxDescription" class="cert-lightbox__description"></p>
       </div>
     </div>
+
+    <!-- ===== ADDED: shared resume popup, same markup/IDs as index.html so
+         the shared script.js logic (which looks up #resumeModal) works here
+         too — opened by the nav "Resume" and "My Resume" triggers above. ===== -->
+    <div class="resume-modal" id="resumeModal" aria-hidden="true">
+      <div class="resume-modal__backdrop" data-close-resume-modal></div>
+      <div
+        class="resume-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resumeModalTitle"
+      >
+        <button
+          class="resume-modal__close"
+          type="button"
+          aria-label="Close"
+          data-close-resume-modal
+        >
+          ×
+        </button>
+        <div class="about-label contact-label-center">Resume</div>
+        <h3 class="resume-modal__title" id="resumeModalTitle">
+          Chad Blincoe's Resume
+        </h3>
+        <p class="resume-modal__text">
+          PDF, opens in a new tab or saves to your device.
+        </p>
+        <div class="resume-modal__options">
+          <a
+            href="media/Chad_Blincoe_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="resume-modal__option resume-modal__option--primary"
+            data-resume-option
+          >
+            <svg
+              class="resume-modal__option-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"
+              />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            View Resume
+          </a>
+          <a
+            href="media/Chad_Blincoe_Resume.pdf"
+            download="Chad_Blincoe_Resume.pdf"
+            class="resume-modal__option resume-modal__option--secondary"
+            data-resume-option
+          >
+            <svg
+              class="resume-modal__option-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 3v12" />
+              <path d="M7 10l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END resume popup ===== -->
 
     <footer>
       <div class="footer-left">
