@@ -3,3 +3,7 @@
 
 # Installers / large downloads that shouldn't be committed
 *.dmg
+
+# local env files
+.env*.local
+.env
