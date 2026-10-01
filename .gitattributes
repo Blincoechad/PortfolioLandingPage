@@ -1,10 +1,6 @@
-# Media is committed as normal files so GitHub Pages can serve it directly.
-# GitHub Pages does NOT resolve Git LFS pointers: an LFS-tracked video gets
-# served as its ~130-byte pointer text instead of the file, so it won't play.
+# Media is committed as normal files so GitHub Pages / Vercel can serve it directly.
+# Do NOT use Git LFS for site media: hosts serve an LFS-tracked file as its
+# ~130-byte pointer text instead of the real file, so videos won't play.
 #
-# Only files that exceed GitHub's hard 100 MB per-file limit are kept in Git LFS,
-# because those cannot be pushed as normal files. If you add a new video over
-# ~100 MB that needs to play on the site, compress it below 100 MB instead of
-# adding it here.
-media/clips/PolkRideCleanVers.mp4 filter=lfs diff=lfs merge=lfs -text
-media/clips/PolkRunRide.mp4 filter=lfs diff=lfs merge=lfs -text
+# Keep every video under GitHub's 100 MB per-file limit by compressing it
+# before adding it to media/.
