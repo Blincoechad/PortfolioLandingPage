@@ -525,22 +525,18 @@ section {
   margin-bottom: 1.6rem;
   animation: fadeUp 0.6s ease both;
 }
-.hero-badge::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
+.hero-badge {
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
+.hero-badge:hover,
+.hero-badge:focus-visible {
+  border-color: var(--accent);
+}
+/* Keep the form clear of the fixed nav when jumped to */
+#contactForm {
+  scroll-margin-top: 6rem;
 }
 
 .hero-title {
@@ -573,9 +569,8 @@ section {
 .hero-mobile-portrait-frame {
   width: min(68vw, 220px);
   height: min(82vw, 280px);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 4px;
+  background: var(--accent);
+  padding: 2px;
   clip-path: polygon(
     0 0,
     calc(100% - 12px) 0,
@@ -857,7 +852,7 @@ section {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  background: var(--accent);
   clip-path: polygon(
     0 0,
     calc(100% - 16px) 0,
@@ -866,15 +861,6 @@ section {
     16px 100%,
     0 calc(100% - 16px)
   );
-  animation: borderGlow 3s ease infinite alternate;
-}
-@keyframes borderGlow {
-  from {
-    opacity: 0.6;
-  }
-  to {
-    opacity: 1;
-  }
 }
 .hero-photo-inner {
   position: absolute;
@@ -950,7 +936,10 @@ section {
   gap: 0.6rem;
 }
 .hero-logo-badge img {
-  height: 32px;
+  height: 48px;
+  /* Negative margins cancel the extra 16px height (and ~11px width of the
+     2:3 logo) so the logo grows into the padding without resizing the badge. */
+  margin: -8px -5px;
 }
 .hero-logo-badge span {
   font-family: "Rajdhani", sans-serif;
