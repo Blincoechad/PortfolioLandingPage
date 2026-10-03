@@ -1090,36 +1090,44 @@
             <div class="project-arrow">↗</div>
           </div>
 
-          <!-- <-- Rock Paper Scissors -->
+          <!-- MyBudgetDash -->
           <div class="project-card reveal">
             <div class="project-img">
               <img
-                src="media/RockPaperScissors.png"
-                alt="Rock Paper Scissors Game"
+                src="media/ExspenseDesk1.png"
+                alt="MyBudgetDash summary, this week card, and paycheck cards on desktop"
                 onerror="
                   this.parentElement.innerHTML =
-                    '<div class=\'project-img-placeholder\'>[media/RockPaperScissors.png]</div>'
+                    '<div class=\'project-img-placeholder\'>[media/ExspenseDesk1.png]</div>'
                 "
               />
+              <div hidden>
+                <img src="media/ExspenseDesk2.png" alt="MyBudgetDash weekly targets, outside savings, and income breakdown on desktop" />
+                <img src="media/ExspenseMobile1.png" alt="MyBudgetDash summary and this week card on a phone" />
+                <img src="media/ExspenseMobile2.png" alt="MyBudgetDash weekly targets and income breakdown on a phone" />
+              </div>
               <div class="project-overlay"></div>
               <div class="img-hint">Click to expand</div>
             </div>
             <div class="project-body">
-              <div class="project-type">// Interactive Game</div>
-              <div class="project-title">Rock Paper Scissors React Rebuild</div>
+              <div class="project-type">// Personal Budgeting Web App</div>
+              <div class="project-title">MyBudgetDash</div>
               <p class="project-desc">
-                A rebuilt version of one of my first JavaScript projects, recreated with React and Vite to improve structure, state handling, and maintainability. I kept the original design to showcase how my design and coding skills have developed over time.
-
+                A budgeting app built around weekly paychecks. It shows which
+                Friday's pay covers which bill and syncs between my phone and
+                laptop. I owned the product, design, and testing, and paired
+                with Claude Code, which wrote most of the code.
               </p>
               <div class="project-tags">
                 <div class="tag">JavaScript</div>
-                <div class="tag">CSS Art</div>
-                <div class="tag">Game Logic</div>
+                <div class="tag">Firebase</div>
+                <div class="tag">Web App</div>
+                <div class="tag">AI-Assisted</div>
               </div>
               <div class="project-links">
                 <a
                   class="project-link project-link-live"
-                  href="https://blincoechad.github.io/RockPaperScissorsReact/"
+                  href="https://blincoechad.github.io/MoneyTracker/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1127,7 +1135,7 @@
                 </a>
                 <a
                   class="project-link project-link-code"
-                  href="https://github.com/Blincoechad/RockPaperScissorsReact"
+                  href="https://github.com/Blincoechad/MoneyTracker"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1144,84 +1152,80 @@
               <div class="case-study-content" hidden>
                 <h4>Overview</h4>
                 <p>
-                  Rock Paper Scissors started as one of my first JavaScript
-                  projects. I built a playable browser version with HTML, CSS,
-                  and JavaScript while learning the basics. Later, I rebuilt the
-                  same game with React and Vite so I could compare how the same
-                  project changes when you move from direct DOM scripting to a
-                  component-based approach. I kept the original visual design on
-                  purpose so the comparison stays focused on how much my coding
-                  approach and project structure improved compared to my newer
-                  designs.
+                  A budgeting app I use every week, built with HTML, CSS, and
+                  vanilla JavaScript, with Firebase for sign-in and storage. I
+                  was the product owner, designer, and tester. Claude Code
+                  wrote most of the code. I defined every feature and rule,
+                  approved the designs, set up GitHub, Firebase, and the
+                  security rules, tested on my own phone and laptop, and
+                  approved every commit.
                 </p>
-
-                <h4>The Challenge</h4>
+                <h4>The Problem</h4>
                 <p>
-                  In version one, I was focused on learning core programming:
-                  writing logic, handling user clicks, updating the interface,
-                  and keeping game state accurate after each round. At that
-                  stage, even small issues like missed state updates or repeated
-                  logic blocks were hard to spot. Rebuilding later gave me a way
-                  to solve the same problem with better structure and a clearer
-                  mental model.
+                  I get paid every Friday. Most budgeting apps assume monthly
+                  pay and divide by 4.33 weeks, but a real month has four or
+                  five paydays. My rent is weekly and my other bills are
+                  monthly with different due dates, so the question I actually
+                  had was which paycheck pays which bill. My pay also changes
+                  week to week, and sometimes I cover a bill from a separate
+                  savings account. I couldn't find a tool that handled any of
+                  that.
                 </p>
-
-                <h4>Version 1: HTML, CSS &amp; JavaScript</h4>
+                <h4>My Approach</h4>
                 <p>
-                  The original version taught me how programming concepts connect
-                  in a real interface. I used variables to track selections and
-                  score, conditionals to decide round outcomes, and functions to
-                  keep repeated logic manageable. Event listeners connected user
-                  input to gameplay, and DOM manipulation displayed the result of
-                  each round. I also implemented random computer choices and
-                  score/result tracking, which helped me understand how data,
-                  logic, and UI have to stay in sync.
+                  I started with a one-page budget calculator and put it on
+                  GitHub first so every change could be reviewed and undone.
+                  Then I replaced the 4.33-week average with a count of the
+                  real Fridays in each month. Before building the paycheck
+                  cards, I reviewed a clickable mockup and changed the rules
+                  (weekly rent, editable due dates) before any code existed.
+                  After a few weeks of daily use, I cut the summary from six
+                  tiles to three and merged panels that repeated each other.
                 </p>
-
-                <h4>The Rebuild: React + Vite</h4>
+                <h4>Design &amp; Development Decisions</h4>
+                <ul>
+                  <li>One number at the top, green or red, for what's projected to be left this month.</li>
+                  <li>A card for each payday listing the bills due before the next one, with checkboxes and a running total.</li>
+                  <li>A "This week" card: enter your pay and see what it has to cover and what's left until Friday.</li>
+                  <li>"Pay from other source" for bills covered by side savings, tracked in its own panel.</li>
+                  <li>Firebase with Google sign-in. A security rule lets each account read and write only its own data.</li>
+                  <li>A light and dark theme toggle in the header.</li>
+                  <li>A macOS reminder at 9 AM on Fridays asks what I made that week and saves it to the right week.</li>
+                  <li>Calculation code lives in its own file, separate from the screen and sync code, and every input recalculates and redraws the whole page so the numbers can't drift apart.</li>
+                </ul>
+                <h4>Challenges &amp; Solutions</h4>
                 <p>
-                  I rebuilt the project because I wanted to understand React in a
-                  practical way, not just from tutorials. Using a familiar game
-                  let me focus on architecture changes. I broke the interface
-                  into components, moved game data into state, and used event
-                  handlers and conditional rendering to drive the UI from state
-                  instead of manually updating DOM nodes in multiple places.
-                  Vite gave me a faster development loop and cleaner project
-                  setup, which made iteration easier.
+                  A tab left open overnight from September 30 to October 1
+                  saved October's pay under September and then wiped it. Now
+                  the app checks the month again whenever you come back to the
+                  tab or start typing. My phone and laptop could also
+                  overwrite each other, so every piece of data now carries the
+                  time it was last changed and the newer copy wins. The
+                  reminder had its own bug: macOS's open command was quietly
+                  dropping the pay amount from the link. I set up a small
+                  local server to log the exact URL Safari received, found
+                  the problem, and switched to AppleScript.
                 </p>
-
-                <h4>What Changed Between Versions</h4>
+                <h4>Result</h4>
                 <p>
-                  In the JavaScript version, I was mostly thinking in terms of
-                  "find element, change element" after every interaction. In the
-                  React version, I shifted to "update state, let the UI re-render
-                  from that state." That changed the structure of the code a lot.
-                  The rebuilt version is easier to reason about, easier to extend,
-                  and less fragile when making updates.
+                  It's live on my phone and laptop and I use it every week.
+                  On Friday I get one prompt and enter one number, and I can
+                  see which bills that check covers. It shipped through 12
+                  reviewed commits.
                 </p>
-
-                <h4>Problem Solving &amp; Lessons Learned</h4>
+                <h4>What I Learned</h4>
                 <p>
-                  This project taught me that getting an app to work is only step
-                  one. The bigger lesson was learning how to organize logic so it
-                  stays readable and maintainable. Building the same app twice
-                  helped me compare approaches directly and understand the
-                  difference between writing working code and writing code that is
-                  easier to maintain and expand.
-                </p>
-
-                <h4>Outcome</h4>
-                <p>
-                  The finished rebuild shows my progression from learning core
-                  JavaScript fundamentals to understanding modern front-end
-                  development with React. It is still a simple game by design,
-                  but it clearly demonstrates growth in how I structure UI,
-                  manage state, and approach problem solving.
+                  Model the real unit. Once the app counted paychecks instead
+                  of months, the numbers matched my bank account. Real devices
+                  find bugs a test browser won't. And directing an AI
+                  assistant is a skill of its own: clear requirements,
+                  checking the output against real use, and asking for a bug
+                  review before every commit.
                 </p>
               </div>
             </div>
             <div class="project-arrow">↗</div>
-          </div> 
+          </div>
 
           <!-- Interactive PDF Newsletter -->
           <div class="project-card reveal">
