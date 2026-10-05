@@ -2852,8 +2852,8 @@ footer {
 
 .chatbot-widget {
   position: fixed;
-  left: 1.2rem;
-  bottom: 1.2rem;
+  left: 1.5rem;
+  bottom: 1.5rem;
   z-index: 1300;
 }
 
@@ -2886,6 +2886,38 @@ footer {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+.chatbot-launcher::after {
+  content: "Click for questions...";
+  position: absolute;
+  left: calc(100% + 0.65rem);
+  top: 50%;
+  max-width: calc(100vw - 6rem);
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--white);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  box-shadow: var(--surface-shadow-strong);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-0.25rem, -50%);
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s ease;
+}
+.chatbot-launcher.is-active::after {
+  content: "Close chat";
+}
+.chatbot-launcher:focus-visible::after,
+.chatbot-launcher:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -50%);
+}
 .chatbot-launcher__icon {
   width: 24px;
   height: 24px;
@@ -2913,8 +2945,14 @@ footer {
   bottom: calc(56px + 0.85rem);
   width: min(360px, calc(100vw - 2.4rem));
   height: min(520px, calc(100vh - 8rem));
+  min-width: min(280px, calc(100vw - 2.4rem));
+  max-width: calc(100vw - 2.4rem);
+  min-height: min(320px, calc(100vh - 8rem));
+  max-height: calc(100vh - 8rem);
   display: flex;
   flex-direction: column;
+  resize: both;
+  overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--surface-shadow-strong);
@@ -3126,7 +3164,7 @@ footer {
 }
 
 .chatbot-panel__footnote {
-  padding: 0 1.1rem 0.9rem;
+  padding: 0 1.1rem 1.3rem;
   font-size: 0.7rem;
   line-height: 1.5;
   color: var(--muted);
@@ -3134,11 +3172,21 @@ footer {
 .chatbot-panel__footnote a {
   color: var(--accent);
 }
+.chatbot-panel::after {
+  content: "Drag corner to resize";
+  position: absolute;
+  right: 1.25rem;
+  bottom: 0.25rem;
+  color: var(--white);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  pointer-events: none;
+}
 
 @media (max-width: 560px) {
   .chatbot-widget {
-    left: 0.75rem;
-    bottom: 0.75rem;
+    left: 1rem;
+    bottom: 1rem;
   }
   .chatbot-panel {
     width: calc(100vw - 1.5rem);
