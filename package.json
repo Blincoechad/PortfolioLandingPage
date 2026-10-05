@@ -1,0 +1,9 @@
+{
+  "name": "pixel-designs-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Chad Blincoe's Pixel Designs portfolio site, plus a serverless function for the portfolio assistant chatbot.",
+  "engines": {
+    "node": ">=18"
+  }
+}

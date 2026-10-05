@@ -1,9 +1,13 @@
 # macOS system files
 .DS_Store
 
-# Installers / large downloads that shouldn't be committed
+# Installers / large downloads
 *.dmg
 
-# local env files
-.env*.local
+# Dependencies and Vercel local metadata
+node_modules/
+.vercel/
+
+# Local environment files
 .env
+.env*.local
