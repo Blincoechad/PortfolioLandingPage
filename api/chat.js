@@ -10,11 +10,12 @@ const KNOWLEDGE_PATH = path.join(process.cwd(), "ChatBotKnowledge.md");
 // high demand; gemini-3.5-flash-lite has been reliable, so it's the last
 // resort rather than the primary pick.
 const GEMINI_MODELS = ["gemini-3.5-flash", "gemini-3.5-flash-lite"];
-const GEMINI_URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
+const GEMINI_URL_BASE =
+  "https://generativelanguage.googleapis.com/v1beta/models";
 
 const MAX_MESSAGE_LENGTH = 600;
 const MAX_HISTORY_MESSAGES = 12; // ~6 back-and-forth turns of prior context
-const MAX_OUTPUT_TOKENS = 400;
+const MAX_OUTPUT_TOKENS = 2048;
 
 // Both places this site is hosted (Vercel + the GitHub Pages mirror), plus
 // localhost for testing the widget locally. Same-origin requests never hit
@@ -134,7 +135,8 @@ module.exports = async function handler(req, res) {
 
       if (!reply) {
         res.status(502).json({
-          error: "I couldn't put together an answer to that. Try rephrasing, or contact Chad directly.",
+          error:
+            "I couldn't put together an answer to that. Try rephrasing, or contact Chad directly.",
         });
         return;
       }
@@ -145,7 +147,8 @@ module.exports = async function handler(req, res) {
 
     console.error("All Gemini models failed:", lastStatus, lastErrText);
     res.status(502).json({
-      error: "Chad's assistant is having trouble right now. Please try again in a moment, or reach out directly through the contact form.",
+      error:
+        "Chad's assistant is having trouble right now. Please try again in a moment, or reach out directly through the contact form.",
     });
   } catch (err) {
     console.error("Chat handler error:", err);
