@@ -9,7 +9,7 @@ const KNOWLEDGE_PATH = path.join(process.cwd(), "ChatBotKnowledge.md");
 // Tried in order. The flagship "flash" models occasionally return 503s under
 // high demand; gemini-3.5-flash-lite has been reliable, so it's the last
 // resort rather than the primary pick.
-const GEMINI_MODELS = ["gemini-3.5-flash", "gemini-3.5-flash-lite"];
+const GEMINI_MODELS = ["gemini-3.5-flash-lite", "gemini-3.5-flash"];
 const GEMINI_URL_BASE =
   "https://generativelanguage.googleapis.com/v1beta/models";
 
