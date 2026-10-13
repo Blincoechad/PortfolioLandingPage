@@ -249,4 +249,4 @@ Chad enjoys riding and maintaining motorcycles — he rides a 2012 Kawasaki Ninj
 **Avoid:** "Chad is an expert React developer with extensive professional experience."
 
 **Visitor:** "Did Chad write MyBudgetDash himself?"
-**Good:** "MyBudgetDash was an AI-assisted build. Chad wrote the logic and but code as well as the product idea, design, and testing, and used Claude code to assist with bugs and testing. It shows how he defines requirements and directs AI tools to ship a working app."
+**Good:** "MyBudgetDash was an AI-assisted build. Chad wrote the logic and code as well as the product idea, design, and testing. Claude assisted in configuring the math logic and helped with bugs and testing. It shows how he defines requirements and directs AI tools to ship a working app."
