@@ -3,18 +3,6 @@ main {
   z-index: 1;
 }
 
-/* CHANGED: the theme toggle now sits as a direct sibling of .nav-logo (not
-   nested in .nav-actions), matching index.html's markup. But unlike
-   index.html, this page's <nav> has no .nav-links element to absorb the
-   `justify-content: space-between` gap — with only 3 flex children
-   (logo, toggle, .nav-actions) the toggle would otherwise land near the
-   horizontal center of the bar instead of staying next to the logo.
-   margin-right: auto claims all that free space itself, pinning the toggle
-   tight against the logo and pushing .nav-actions to the far right. */
-.theme-toggle-slot--desktop {
-  margin-right: auto;
-}
-
 .cert-hero {
   min-height: 44vh;
   padding: 8.5rem 3rem 2.5rem;
@@ -75,6 +63,18 @@ main {
   text-transform: uppercase;
 }
 
+/* Hint above the carousel: a plain muted caption (no border or fill, so
+   it doesn't read as a button). */
+.cert-hint {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .cert-carousel-shell {
   display: flex;
   flex-direction: column;
@@ -93,6 +93,9 @@ main {
   justify-content: center;
   overflow: visible;
   perspective: 1000px;
+  /* Let the browser handle vertical scrolling only, so horizontal swipes
+     reach the carousel's touch handlers in certifications.js. */
+  touch-action: pan-y;
 }
 
 .carousel {
@@ -201,53 +204,48 @@ main {
 .cert-controls {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.45rem;
   margin-top: 1.85rem;
 }
 
-.cert-dots {
-  margin-top: 1.2rem;
-  display: flex;
-  gap: 0.55rem;
-  justify-content: center;
-  flex-wrap: wrap;
+/* "01 / 16" position counter between Prev and Next. tabular-nums + a
+   min-width keep the buttons from shifting as the number changes. */
+.cert-counter {
+  min-width: 5.5rem;
+  padding: 0 0.6rem;
+  text-align: center;
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.cert-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1px solid rgba(56, 189, 248, 0.55);
-  background: transparent;
-  cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.cert-dot.is-active {
-  background: var(--accent);
-  transform: scale(1.12);
-  box-shadow: 0 0 14px var(--glow);
+.cert-counter__current {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .cert-actions {
   margin-top: 1.8rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.9rem;
   flex-wrap: wrap;
 }
 
-/* ADDED: .hero-cta-group (from styles.css) shrinks to fit-content so its
-   own resume button can center under .cert-actions without widening past
-   it. On index.html that sits in a left-aligned column, so no extra
-   centering is needed there — but .cert-gallery-inner is a centered
-   max-width column, so this fit-content box needs its own margin:auto to
-   land in the middle instead of flush against the left edge. */
-.cert-gallery-inner .hero-cta-group {
-  margin-inline: auto;
+/* On this page "My Resume" sits in the same row as "See Projects", so it
+   takes .btn-ghost's normal colors instead of the muted ones styles.css
+   gives .btn-ghost.hero-resume-btn for the index.html hero. */
+.cert-actions .btn-ghost.hero-resume-btn {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.cert-actions .btn-ghost.hero-resume-btn:hover {
+  color: var(--accent);
 }
 
 .cert-lightbox {
@@ -373,12 +371,22 @@ main {
     margin-top: 1.6rem;
   }
 
-  .cert-dots {
-    margin-top: 1.6rem;
-  }
-
+  /* Stack the three buttons, all as wide as the widest one. */
   .cert-actions {
     margin-top: 2.2rem;
+    flex-direction: column;
+    align-items: stretch;
+    width: fit-content;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  /* styles.css hides .hero-resume-btn at this width (the navbar's Resume
+     button replaces it on index.html); on this page it stays as the third
+     stacked button. */
+  .cert-actions .hero-resume-btn {
+    display: inline-flex;
+    justify-content: center;
   }
 }
 

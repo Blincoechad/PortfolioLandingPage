@@ -45,38 +45,6 @@
         />
         <span class="nav-logo-text">Pixel Designs</span>
       </a>
-      <div class="theme-toggle-slot theme-toggle-slot--desktop" id="themeToggleDesktopSlot">
-        <button
-          type="button"
-          class="theme-toggle"
-          id="themeToggle"
-          aria-label="Switch to light theme"
-          title="Toggle theme"
-        >
-          <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false">
-              <path
-                d="M15.7 3.9a7.9 7.9 0 1 0 4.4 14.8 9 9 0 1 1-4.4-14.8z"
-                class="theme-toggle__stroke"
-              />
-              <path
-                d="M16.4 6.1l.9.3.3.9.3-.9.9-.3-.9-.3-.3-.9-.3.9z"
-                class="theme-toggle__spark"
-              />
-            </svg>
-          </span>
-          <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false">
-              <circle cx="12" cy="12" r="3.3" class="theme-toggle__fill" />
-              <path
-                d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"
-                class="theme-toggle__stroke"
-              />
-            </svg>
-          </span>
-          <span class="theme-toggle__text">Theme</span>
-        </button>
-      </div>
      <ul class="nav-links">
   <li><a href="#about">About</a></li>
   <li><a href="#projects">Projects</a></li>
@@ -113,6 +81,40 @@
           <span class="nav-resume__text">Resume</span>
         </a>
         <!-- ===== END nav resume button ===== -->
+        <!-- Theme toggle: desktop only (slot is hidden ≤900px, where the
+             toggle moves into the mobile menu). Sits left of Resume. -->
+        <div class="theme-toggle-slot theme-toggle-slot--desktop" id="themeToggleDesktopSlot">
+          <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to light theme"
+            title="Toggle theme"
+          >
+            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path
+                  d="M15.7 3.9a7.9 7.9 0 1 0 4.4 14.8 9 9 0 1 1-4.4-14.8z"
+                  class="theme-toggle__stroke"
+                />
+                <path
+                  d="M16.4 6.1l.9.3.3.9.3-.9.9-.3-.9-.3-.3-.9-.3.9z"
+                  class="theme-toggle__spark"
+                />
+              </svg>
+            </span>
+            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="3.3" class="theme-toggle__fill" />
+                <path
+                  d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"
+                  class="theme-toggle__stroke"
+                />
+              </svg>
+            </span>
+            <span class="theme-toggle__text">Theme</span>
+          </button>
+        </div>
         <!-- ===== ADDED: desktop-only resume popup trigger, left of Contact
              Me. Same compact style as the mobile .nav-resume above, just
              shown/hidden at the opposite breakpoint — the two swap in this
@@ -170,7 +172,6 @@
     <section id="hero">
       <div class="hero-inner">
         <div class="hero-content">
-          <a href="#contactForm" class="hero-badge">Available For Work</a>
           <h1 class="hero-title">
             <span class="line1">Web Design</span>
             <span class="line2">&amp; Development</span>
@@ -182,10 +183,8 @@
             </div>
           </div>
           <p class="hero-sub">
-            I <span class="hero-sub-accent hero-sub-accent--1">design</span>,
-            <span class="hero-sub-accent hero-sub-accent--2">build</span>, and
-            <span class="hero-sub-accent hero-sub-accent--3"> develop responsive web experiences</span>
-            from front-end development to content creation — that help brands stand out.
+            I <span class="hero-sub-accent hero-sub-accent--1">design</span>
+            and <span class="hero-sub-accent hero-sub-accent--2">build responsive websites</span> that look good, run fast, and are made to last.
           </p>
           <!-- ADDED: hero-cta-group wraps the original hero-actions row so a
                third button can stack underneath it without touching the
@@ -222,9 +221,8 @@
               My Resume
             </a>
             <!-- ===== END hero resume button ===== -->
-            <!-- MOVED: hero-socials now lives inside hero-cta-group so it
-                 centers under the CTA stack the same way the resume button
-                 does, instead of being left-aligned as a separate sibling. -->
+            <!-- hero-socials lives inside hero-cta-group so it shares the
+                 group's alignment and gap with the resume button above it. -->
             <div class="hero-socials">
             <a
               class="hero-social"
@@ -257,7 +255,7 @@
             </div>
           </div>
           <div class="hero-tagline">
-            <span class="hero-tagline-text">Junior Frontend Developer — Lakeland, FL</span>
+            <span class="hero-tagline-text">Junior Front-end Developer — Lakeland, FL</span>
           </div>
         </div>
 
@@ -398,10 +396,10 @@
             <em class="hero-sub-accent">Digital Content</em>
           </h2>
           <p class="about-text">
-          My name is Chad Blincoe — I live in Lakeland, FL, and I’m a Front-end Developer with a passion for creating clean, functional, and visually appealing digital designs. I specialize in building responsive websites that not only look great but also perform well across all devices. I can build custom websites from scratch or work with WordPress to create a tailored solution that meets your needs, and I can also manage and maintain your site for long-term growth and success.
+          My name is Chad Blincoe. I'm a Front-end developer based in Lakeland, FL, and I love creating clean, functional websites that look as good as they work. I build responsive sites that perform well on every device, from phones to large desktop screens. 
           </p>
           <p class="about-text">
-            My work also extends into content creation, including video production and editing that supports a brand's visibility and presence. Outside of client engagements, I continue to develop these skills through self-directed projects, several of which are showcased below.
+          I've worked with both WordPress and Webflow and can use either when a project calls for it, but most of my work is coded from scratch. Writing my own code gives me the freedom to design exactly what I have in mind instead of working around the limits of a template. Once your site is live, I can also handle ongoing updates and maintenance so it keeps growing with your business.
           </p>
        <div class="skills-grid">
   <div class="skill-chip">HTML5 / CSS3</div>

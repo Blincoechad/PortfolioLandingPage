@@ -58,7 +58,7 @@ if (certCarousel) {
     : [];
   const prevButton = certCarousel.querySelector(".cert-nav-prev");
   const nextButton = certCarousel.querySelector(".cert-nav-next");
-  const dotsContainer = certCarousel.querySelector("#certDots");
+  const counter = certCarousel.querySelector("#certCounter");
   const scene = certCarousel.querySelector("#certScene");
   const lightbox = document.getElementById("certLightbox");
   const lightboxImage = document.getElementById("certLightboxImage");
@@ -67,12 +67,18 @@ if (certCarousel) {
   );
 
   let currentIndex = 0;
+  let counterCurrent = null;
   let autoAdvanceTimer = null;
   let autoAdvanceKickoffTimer = null;
   let theta = 0;
   let radius = 0;
   let currentRotation = 0;
 
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let suppressNextClick = false;
+
+  const SWIPE_MIN_DISTANCE_PX = 40;
   const AUTO_ADVANCE_INTERVAL_MS = 5200;
   const AUTO_ADVANCE_FIRST_DELAY_MS = 900;
 
@@ -82,7 +88,7 @@ if (certCarousel) {
     return (index + slides.length) % slides.length;
   }
 
-  // Update visual emphasis for the active slide and active pagination dot.
+  // Update visual emphasis for the active slide and the position counter.
   function updateActiveState() {
     slides.forEach((slide, index) => {
       const isActive = index === currentIndex;
@@ -95,9 +101,9 @@ if (certCarousel) {
       slide.style.zIndex = isActive ? "5" : "1";
     });
 
-    dotsContainer?.querySelectorAll(".cert-dot").forEach((dot, dotIndex) => {
-      dot.classList.toggle("is-active", dotIndex === currentIndex);
-    });
+    if (counterCurrent) {
+      counterCurrent.textContent = formatCount(currentIndex + 1);
+    }
   }
 
   // Rotate the 3D ring to the requested slide index.
@@ -137,23 +143,26 @@ if (certCarousel) {
     rotateTo(currentIndex + 1);
   }
 
-  // Build pagination dots and wire each one to jump to its slide.
-  function buildDots() {
-    if (!dotsContainer || slides.length === 0) return;
+  // Zero-pad counts so the counter keeps a steady width ("01 / 16").
+  function formatCount(count) {
+    return String(count).padStart(2, "0");
+  }
 
-    dotsContainer.innerHTML = "";
+  // Build the "current / total" counter shown between Prev and Next.
+  function buildCounter() {
+    if (!counter || slides.length === 0) return;
 
-    slides.forEach((slide, index) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "cert-dot";
-      dot.setAttribute("aria-label", `Go to certification ${index + 1}`);
-      dot.addEventListener("click", () => {
-        rotateTo(index);
-        restartAutoAdvance();
-      });
-      dotsContainer.appendChild(dot);
-    });
+    counter.innerHTML = "";
+
+    counterCurrent = document.createElement("span");
+    counterCurrent.className = "cert-counter__current";
+    counterCurrent.textContent = formatCount(currentIndex + 1);
+
+    const total = document.createElement("span");
+    total.className = "cert-counter__total";
+    total.textContent = formatCount(slides.length);
+
+    counter.append(counterCurrent, " / ", total);
   }
 
   // Move backward one certificate.
@@ -247,6 +256,12 @@ if (certCarousel) {
   slides.forEach((slide) => {
     // Clicking the active slide opens a larger preview in the lightbox.
     slide.addEventListener("click", () => {
+      // A swipe that ends on the active slide shouldn't also open it.
+      if (suppressNextClick) {
+        suppressNextClick = false;
+        return;
+      }
+
       const image = slide.querySelector("img");
       if (!image) return;
 
@@ -269,19 +284,49 @@ if (certCarousel) {
   certCarousel.addEventListener("mouseenter", stopAutoAdvance);
   certCarousel.addEventListener("mouseleave", startAutoAdvance);
 
-  // Mouse wheel rotates the 3D carousel and pauses/resets auto-advance.
+  // Touch swipe: left = next, right = previous. Mostly-vertical drags are
+  // ignored so the page still scrolls normally over the carousel.
   scene?.addEventListener(
-    "wheel",
+    "touchstart",
     (event) => {
-      event.preventDefault();
-      if (event.deltaY > 0) {
+      if (event.touches.length !== 1) return;
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+      suppressNextClick = false;
+    },
+    { passive: true },
+  );
+
+  scene?.addEventListener(
+    "touchend",
+    (event) => {
+      const touch = event.changedTouches[0];
+      if (!touch) return;
+
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+      if (
+        Math.abs(deltaX) < SWIPE_MIN_DISTANCE_PX ||
+        Math.abs(deltaX) <= Math.abs(deltaY)
+      ) {
+        return;
+      }
+
+      if (deltaX < 0) {
         nextSlide();
       } else {
         previousSlide();
       }
       restartAutoAdvance();
+
+      // Swallow the click some browsers fire after a swipe, then clear the
+      // flag in case no click arrives.
+      suppressNextClick = true;
+      window.setTimeout(() => {
+        suppressNextClick = false;
+      }, 400);
     },
-    { passive: false },
+    { passive: true },
   );
 
   window.addEventListener("resize", () => {
@@ -331,7 +376,7 @@ if (certCarousel) {
     }
   });
 
-  buildDots();
+  buildCounter();
   updateGeometry();
   window.requestAnimationFrame(() => {
     updateGeometry();

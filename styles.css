@@ -178,9 +178,9 @@ nav {
   display: flex;
   align-items: center;
 }
+/* Lives inside .nav-actions (left of Resume); spacing comes from its gap. */
 .theme-toggle-slot--desktop {
-  margin-left: 0.55rem;
-  margin-right: 1.1rem;
+  margin: 0;
 }
 .theme-toggle-slot--mobile {
   display: none;
@@ -275,9 +275,16 @@ nav {
   text-decoration: none;
 }
 .nav-logo img {
+  /* The PNG is mostly transparent padding (artwork is ~31% of its height),
+     so the layout height stays 120px and the nav bar doesn't grow; the
+     transform scales the rendered image inside that padding instead.
+     translateX keeps the artwork's left edge where it was, margin-right
+     makes room so the scaled artwork doesn't run into the logo text. */
   height: 120px;
   width: auto;
   transform-origin: left center;
+  transform: translateX(-13px) scale(1.6);
+  margin-right: 31px;
 }
 .nav-logo-text {
   font-family: "Rajdhani", sans-serif;
@@ -313,10 +320,12 @@ nav {
   background: var(--accent);
   transition: width 0.25s;
 }
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
   color: var(--accent);
 }
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after {
   width: 100%;
 }
 .nav-cta {
@@ -660,10 +669,12 @@ section {
 .hero-cta-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* Left-aligned: the resume button and the social icons each start at the
+     left edge of "View My Work". Re-centered ≤900px (RESPONSIVE section),
+     where the resume button is hidden. */
+  align-items: flex-start;
   /* Shrinks the group to the width of the "View My Work"/"Let's Talk" row
-     (its widest child) so centering the resume button below doesn't also
-     recenter that row within the full hero column. */
+     (its widest child). */
   width: fit-content;
   gap: 0.9rem;
 }
@@ -775,8 +786,7 @@ section {
   display: flex;
   gap: 0.7rem;
   /* No margin-top: now a child of .hero-cta-group, whose flex `gap` already
-     provides spacing — its own align-items: center is what centers this
-     row under the CTA stack. */
+     provides spacing and whose align-items positions this row. */
   animation: fadeUp 0.7s 0.5s ease both;
 }
 .hero-socials-mobile {
@@ -2523,6 +2533,7 @@ footer {
        stays small, transform scales the rendered image so it overflows. */
     height: 84px;
     transform: scale(1.75);
+    margin-right: 0;
   }
   .nav-actions {
     justify-self: end;
@@ -2545,11 +2556,15 @@ footer {
   .hero-resume-btn {
     display: none;
   }
+  /* Keep the social icons centered under the CTA row here, as before. */
+  .hero-cta-group {
+    align-items: center;
+  }
   .btn-primary.nav-resume {
     display: inline-flex;
     order: 0;
   }
-  /* ADDED: the desktop copy (left of the theme toggle) is the mirror image
+  /* ADDED: the desktop copy (right of the theme toggle) is the mirror image
      — visible by default, hidden here where the mobile one takes over. */
   .btn-primary.nav-resume-desktop {
     display: none;
@@ -2617,7 +2632,8 @@ footer {
     text-transform: uppercase;
     margin-left: 0.35rem;
   }
-  .mobile-nav-menu a:hover {
+  .mobile-nav-menu a:hover,
+  .mobile-nav-menu a[aria-current="page"] {
     color: var(--accent);
   }
   .hero-inner {

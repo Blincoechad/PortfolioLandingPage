@@ -61,50 +61,15 @@
         />
         <span class="nav-logo-text">Pixel Designs</span>
       </a>
-      <!-- MOVED: theme toggle now sits right after the logo (desktop only —
-           .theme-toggle-slot--desktop is already hidden ≤900px), matching
-           index.html's navbar layout instead of living inside .nav-actions. -->
-      <div
-        class="theme-toggle-slot theme-toggle-slot--desktop"
-        id="themeToggleDesktopSlot"
-      >
-        <button
-          type="button"
-          class="theme-toggle"
-          id="themeToggle"
-          aria-label="Switch to light theme"
-          title="Toggle theme"
-        >
-          <span
-            class="theme-toggle__icon theme-toggle__icon--moon"
-            aria-hidden="true"
-          >
-            <svg viewBox="0 0 24 24" focusable="false">
-              <path
-                d="M15.7 3.9a7.9 7.9 0 1 0 4.4 14.8 9 9 0 1 1-4.4-14.8z"
-                class="theme-toggle__stroke"
-              />
-              <path
-                d="M16.4 6.1l.9.3.3.9.3-.9.9-.3-.9-.3-.3-.9-.3.9z"
-                class="theme-toggle__spark"
-              />
-            </svg>
-          </span>
-          <span
-            class="theme-toggle__icon theme-toggle__icon--sun"
-            aria-hidden="true"
-          >
-            <svg viewBox="0 0 24 24" focusable="false">
-              <circle cx="12" cy="12" r="3.3" class="theme-toggle__fill" />
-              <path
-                d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"
-                class="theme-toggle__stroke"
-              />
-            </svg>
-          </span>
-          <span class="theme-toggle__text">Theme</span>
-        </button>
-      </div>
+      <!-- Same desktop links as index.html's navbar (hidden ≤900px, where
+           the mobile menu below takes over). aria-current marks this page. -->
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#process">Process</a></li>
+        <li><a href="certifications.html" aria-current="page">Certifications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
       <div class="nav-actions">
         <!-- ===== ADDED: same compact mobile/tablet resume popup trigger
              used in index.html's navbar (hidden on desktop, sits left of
@@ -136,6 +101,49 @@
           <span class="nav-resume__text">Resume</span>
         </a>
         <!-- ===== END nav resume button ===== -->
+        <!-- Theme toggle: desktop only (slot is hidden ≤900px, where the
+             toggle moves into the mobile menu). Sits left of Resume. -->
+        <div
+          class="theme-toggle-slot theme-toggle-slot--desktop"
+          id="themeToggleDesktopSlot"
+        >
+          <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to light theme"
+            title="Toggle theme"
+          >
+            <span
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              aria-hidden="true"
+            >
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path
+                  d="M15.7 3.9a7.9 7.9 0 1 0 4.4 14.8 9 9 0 1 1-4.4-14.8z"
+                  class="theme-toggle__stroke"
+                />
+                <path
+                  d="M16.4 6.1l.9.3.3.9.3-.9.9-.3-.9-.3-.3-.9-.3.9z"
+                  class="theme-toggle__spark"
+                />
+              </svg>
+            </span>
+            <span
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              aria-hidden="true"
+            >
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="3.3" class="theme-toggle__fill" />
+                <path
+                  d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"
+                  class="theme-toggle__stroke"
+                />
+              </svg>
+            </span>
+            <span class="theme-toggle__text">Theme</span>
+          </button>
+        </div>
         <!-- ===== ADDED: desktop-only resume popup trigger, left of Contact
              Me. Same as index.html's navbar — swaps with the mobile
              .nav-resume above at the 900px breakpoint. ===== -->
@@ -185,7 +193,7 @@
         <a href="index.html#about">About</a>
         <a href="index.html#projects">Projects</a>
         <a href="index.html#process">Process</a>
-        <a href="certifications.html">Certifications</a>
+        <a href="certifications.html" aria-current="page">Certifications</a>
         <a href="index.html#contact">Contact</a>
         <div
           class="theme-toggle-slot theme-toggle-slot--mobile"
@@ -205,26 +213,15 @@
             </span>
           </h1>
           <p class="cert-sub">
-            While I'm finishing up my degree in Internet Services Technology:
-            Web Development, I've also been actively pursuing various
-            certifications to enhance my skills in web development, design, and
-            analytics. These certifications reflect my commitment to continuous
-            learning and staying updated with the latest industry trends.
+            While I finish my degree at Hillsborough Community College, I've been earning certifications on my own time in web development, design, and analytics. They've filled in gaps my classes don't cover and given me skills I've already put to use in real client work. 
           </p>
         </div>
       </section>
 
       <section class="cert-gallery">
         <div class="cert-gallery-inner reveal visible" data-cert-carousel>
-          <div class="cert-carousel-head">
-            <h2 class="section-title">Certifications</h2>
-            <p class="cert-carousel-note">
-              I continue to learn and expand my knowledge through various
-              certifications. Below are some of the certifications I've earned,
-              showcasing my dedication to professional growth and expertise in
-              the field.
-            </p>
-          </div>
+
+          <p class="cert-hint">Click to enlarge image</p>
 
           <div
             class="cert-carousel-shell"
@@ -233,6 +230,72 @@
             <div class="scene" id="certScene">
               <div class="carousel" id="certTrack">
                 <figure class="carousel-item cert-slide is-active">
+                  <img
+                    src="media/certifications/ProjectManagementExam.png"
+                    alt="Project Management Exam certification"
+                    onerror="
+                      this.parentElement.innerHTML =
+                        '<div class=\'cert-fallback\'>Image unavailable</div>'
+                    "
+                  />
+                  <figcaption>Project Management Exam</figcaption>
+                </figure>
+                <figure class="carousel-item cert-slide">
+                  <img
+                    src="media/certifications/Webflow101.png"
+                    alt="Webflow 101 certification"
+                    onerror="
+                      this.parentElement.innerHTML =
+                        '<div class=\'cert-fallback\'>Image unavailable</div>'
+                    "
+                  />
+                  <figcaption>Webflow 101</figcaption>
+                </figure>
+                <figure class="carousel-item cert-slide">
+                  <img
+                    src="media/certifications/WebFlowNoCode.png"
+                    alt="Webflow no-code certification"
+                    onerror="
+                      this.parentElement.innerHTML =
+                        '<div class=\'cert-fallback\'>Image unavailable</div>'
+                    "
+                  />
+                  <figcaption>Webflow No Code</figcaption>
+                </figure>
+                <figure class="carousel-item cert-slide">
+                  <img
+                    src="media/certifications/WebflowLayouts.png"
+                    alt="Webflow Layouts certification"
+                    onerror="
+                      this.parentElement.innerHTML =
+                        '<div class=\'cert-fallback\'>Image unavailable</div>'
+                    "
+                  />
+                  <figcaption>Webflow Layouts</figcaption>
+                </figure>
+                <figure class="carousel-item cert-slide">
+                  <img
+                    src="media/certifications/SEO(SquareSpace).png"
+                    alt="SEO for SquareSpace certification"
+                    onerror="
+                      this.parentElement.innerHTML =
+                        '<div class=\'cert-fallback\'>Image unavailable</div>'
+                    "
+                  />
+                  <figcaption>SEO (SquareSpace)</figcaption>
+                </figure>
+                <figure class="carousel-item cert-slide">
+                  <img
+                    src="media/certifications/JsDebugging.png"
+                    alt="JavaScript Debugging certification"
+                    onerror="
+                      this.parentElement.innerHTML =
+                        '<div class=\'cert-fallback\'>Image unavailable</div>'
+                    "
+                  />
+                  <figcaption>JavaScript Debugging</figcaption>
+                </figure>
+                <figure class="carousel-item cert-slide">
                   <img
                     src="media/certifications/CanvaIntro.png"
                     alt="Canva Intro certification"
@@ -300,17 +363,6 @@
                 </figure>
                 <figure class="carousel-item cert-slide">
                   <img
-                    src="media/certifications/JsDebugging.png"
-                    alt="JavaScript Debugging certification"
-                    onerror="
-                      this.parentElement.innerHTML =
-                        '<div class=\'cert-fallback\'>Image unavailable</div>'
-                    "
-                  />
-                  <figcaption>JavaScript Debugging</figcaption>
-                </figure>
-                <figure class="carousel-item cert-slide">
-                  <img
                     src="media/certifications/JsWebForms.png"
                     alt="JavaScript Web Forms certification"
                     onerror="
@@ -346,28 +398,6 @@
                 </figure>
                 <figure class="carousel-item cert-slide">
                   <img
-                    src="media/certifications/ProjectManagementExam.png"
-                    alt="Project Management Exam certification"
-                    onerror="
-                      this.parentElement.innerHTML =
-                        '<div class=\'cert-fallback\'>Image unavailable</div>'
-                    "
-                  />
-                  <figcaption>Project Management Exam</figcaption>
-                </figure>
-                <figure class="carousel-item cert-slide">
-                  <img
-                    src="media/certifications/SEO(SquareSpace).png"
-                    alt="SEO for SquareSpace certification"
-                    onerror="
-                      this.parentElement.innerHTML =
-                        '<div class=\'cert-fallback\'>Image unavailable</div>'
-                    "
-                  />
-                  <figcaption>SEO (SquareSpace)</figcaption>
-                </figure>
-                <figure class="carousel-item cert-slide">
-                  <img
                     src="media/certifications/VideoCreationCanva.png"
                     alt="Video Creation with Canva certification"
                     onerror="
@@ -376,39 +406,6 @@
                     "
                   />
                   <figcaption>Video Creation Canva</figcaption>
-                </figure>
-                <figure class="carousel-item cert-slide">
-                  <img
-                    src="media/certifications/WebFlowNoCode.png"
-                    alt="Webflow no-code certification"
-                    onerror="
-                      this.parentElement.innerHTML =
-                        '<div class=\'cert-fallback\'>Image unavailable</div>'
-                    "
-                  />
-                  <figcaption>Webflow No Code</figcaption>
-                </figure>
-                <figure class="carousel-item cert-slide">
-                  <img
-                    src="media/certifications/Webflow101.png"
-                    alt="Webflow 101 certification"
-                    onerror="
-                      this.parentElement.innerHTML =
-                        '<div class=\'cert-fallback\'>Image unavailable</div>'
-                    "
-                  />
-                  <figcaption>Webflow 101</figcaption>
-                </figure>
-                <figure class="carousel-item cert-slide">
-                  <img
-                    src="media/certifications/WebflowLayouts.png"
-                    alt="Webflow Layouts certification"
-                    onerror="
-                      this.parentElement.innerHTML =
-                        '<div class=\'cert-fallback\'>Image unavailable</div>'
-                    "
-                  />
-                  <figcaption>Webflow Layouts</figcaption>
                 </figure>
               </div>
             </div>
@@ -421,6 +418,8 @@
               >
                 Prev
               </button>
+              <!-- Position counter ("01 / 16"), filled in by certifications.js -->
+              <span class="cert-counter" id="certCounter"></span>
               <button
                 class="cert-nav cert-nav-next"
                 type="button"
@@ -431,20 +430,9 @@
             </div>
           </div>
 
-          <div
-            class="cert-dots"
-            id="certDots"
-            aria-label="Carousel navigation dots"
-          ></div>
-
-          <!-- ADDED: hero-cta-group (reused from index.html's hero section)
-               wraps .cert-actions so a third button can center underneath it
-               without touching .cert-actions itself. -->
-          <div class="hero-cta-group">
-            <div class="cert-actions">
-              <a href="index.html#contact" class="btn-primary">Let's Talk!</a>
-              <a href="index.html#projects" class="btn-ghost">See Projects</a>
-            </div>
+          <div class="cert-actions">
+            <a href="index.html#contact" class="btn-primary">Let's Talk!</a>
+            <a href="index.html#projects" class="btn-ghost">See Projects</a>
             <!-- ===== ADDED: resume popup trigger, same style/behavior as
                  the hero's "My Resume" button on index.html ===== -->
             <a
