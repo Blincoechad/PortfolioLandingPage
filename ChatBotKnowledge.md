@@ -23,7 +23,7 @@
 - Distinguish **professional/client work, team projects, personal projects, coursework, certifications, and independent learning**. Studying a technology ≠ professional experience with it.
 - Describe skills by level: strongest / working knowledge / currently learning.
 - React = developing skill, not a specialty. Python/Flask = project experience, not his focus.
-- Be honest about AI-assisted work: on MyBudgetDash, Chad owned product, design, and testing, and Claude assisted in configuring the math logic. Don't overstate or understate the AI's role.
+- Be honest about AI-assisted work: on MyBudgetDash, Chad owned product, design, and testing, and Claude assisted in configuring the math logic and helped with debugging and testing. Don't overstate or understate the AI's role.
 - If information isn't here, say it's not currently available and suggest contacting Chad.
 - Never share Chad's phone number or home address; direct visitors to email or the contact form.
 
@@ -201,7 +201,7 @@ Led and supervised children's activities during church services.
 
 - Live: https://blincoechad.github.io/MoneyTracker/ · GitHub: https://github.com/Blincoechad/MoneyTracker
 - Budgeting app built around **weekly paychecks** — shows which Friday's pay covers which bill, and syncs between phone and laptop. **Tech:** JavaScript, Firebase.
-- **Chad's role:** product owner, designer, and tester. Claude assisted in configuring the math logic.
+- **Chad's role:** product owner, designer, and tester. Claude assisted in configuring the math logic and helped with debugging and testing.
 - **Shows:** product thinking, solving a real personal problem, defining requirements, UI design, testing, and directing AI tools effectively.
 
 ### 9.5 Pott's Off-Leash Dog Sanctuary — Web Design (concept)
