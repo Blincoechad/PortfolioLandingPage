@@ -157,7 +157,6 @@ reveals.forEach((r) => observer.observe(r));
 
 // ─── Back to top button
 const backToTop = document.getElementById("backToTop");
-const backToTopText = document.querySelector(".back-to-top-text");
 const pageFooter = document.querySelector("footer");
 
 // Show the back-to-top button after scrolling and keep it above the footer.
@@ -166,11 +165,11 @@ function updateBackToTop() {
 
   backToTop.classList.toggle("visible", window.scrollY > 320);
 
-  // Dock the button (and its label) just above the footer so it never
+  // Dock the button just above the footer so it never
   // overlaps footer content once you reach the bottom of the page.
   if (pageFooter) {
     const gap = 12;
-    const anchor = backToTopText || backToTop;
+    const anchor = backToTop;
     const currentLift =
       parseFloat(
         document.documentElement.style.getPropertyValue("--btt-lift"),

@@ -2270,11 +2270,14 @@ button.project-link {
 .form-group select {
   appearance: none;
 }
-
-#contactPhone {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
+/* A <select> has no ::placeholder. While the empty "Select a contact
+   method..." option is chosen the required select is :invalid, so that
+   state stands in for the placeholder color; real options stay var(--text). */
+.form-group select:required:invalid {
+  color: var(--muted);
+}
+.form-group select option {
+  color: var(--text);
 }
 
 .form-group.full {
@@ -2448,32 +2451,6 @@ footer {
   background: var(--accent);
   color: var(--bg);
   box-shadow: 0 0 18px var(--glow);
-}
-
-.back-to-top-text {
-  position: fixed;
-  right: 1.2rem;
-  bottom: calc(2rem + var(--btt-lift, 0px));
-  width: 44px;
-  text-align: center;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1;
-  z-index: 121;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(6px);
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-.back-to-top.visible + .back-to-top-text {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* ─── FADE ANIMATIONS ───────────────────────────── */
@@ -2726,10 +2703,6 @@ footer {
   .back-to-top {
     right: 0.9rem;
     bottom: calc(3.9rem + var(--btt-lift, 0px));
-  }
-  .back-to-top-text {
-    right: 0.9rem;
-    bottom: calc(1.6rem + var(--btt-lift, 0px));
   }
   .image-modal {
     padding: 0.75rem;

@@ -132,6 +132,14 @@ main {
     transform 0.65s ease;
 }
 
+/* Until certifications.js has placed the cards on the ring and added
+   .is-ready, skip transitions: otherwise the cards animate from their
+   unpositioned state (stacked, small) out to the ring on page load. */
+.carousel:not(.is-ready),
+.carousel:not(.is-ready) .carousel-item {
+  transition: none;
+}
+
 .cert-slide {
   position: absolute;
 }

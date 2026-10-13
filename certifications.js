@@ -381,6 +381,12 @@ if (certCarousel) {
   window.requestAnimationFrame(() => {
     updateGeometry();
     rotateTo(0);
+    // Transitions stay off (see .carousel:not(.is-ready) in the CSS) until
+    // the ring has been painted once in its final layout, so the cards
+    // don't visibly animate out of their unpositioned starting state.
+    window.requestAnimationFrame(() => {
+      track?.classList.add("is-ready");
+    });
   });
   startAutoAdvance(true);
 }

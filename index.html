@@ -1457,7 +1457,7 @@
 </h2>
 
 <p class="contact-sub">
-  I'm currently seeking opportunities in front-end development. I'm interested in full-time, internship, and contract roles where I can begin a career contributing to building responsive, accessible, and user-focused websites and digital experiences
+  I'm open to full-time, internship, and contract roles in front-end development. I build responsive, accessible websites with real users in mind, and I'm ready to bring that to a team.
 
 </p>
         </div>
@@ -1504,12 +1504,9 @@
           method="POST"
         >
           <input type="hidden" name="_subject" value="New employer inquiry from portfolio site" />
-          <div class="form-note">
-  Have a position you'd like to discuss, or want to learn more about my work? Fill out the form below with your contact information, and I'll get back to you as soon as possible.
-</div>
           <div class="form-row">
             <div class="form-group">
-              <label for="contactName">Employer Name</label>
+              <label for="contactName">Name</label>
               <input id="contactName" type="text" name="name" placeholder="Jordan Smith" required />
             </div>
             <div class="form-group">
@@ -1525,12 +1522,18 @@
           </div>
           <div class="form-row">
             <div class="form-group full">
-              <label for="contactMessage">Preferred Method of Contact</label>
-              <select id="contactMessage" name="message" required>
+              <label for="contactMethod">Preferred Method of Contact</label>
+              <select id="contactMethod" name="preferred_contact" required>
                 <option value="" disabled selected>Select a contact method...</option>
                 <option>Email</option>
                 <option>Phone</option>
               </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="contactMessage">Message (Optional)</label>
+              <textarea id="contactMessage" name="message" rows="3" placeholder="Tell me a bit about the role or project..."></textarea>
             </div>
           </div>
           <button type="submit" class="form-submit">Send Inquiry →</button>
@@ -1706,7 +1709,6 @@
     >
       ↑
     </button>
-    <span class="back-to-top-text" aria-hidden="true">Back to top</span>
 
     <!-- ===== ADDED: portfolio assistant chat widget (bottom-left) ===== -->
     <div class="chatbot-widget">
