@@ -39,7 +39,8 @@
 
   function showTyping() {
     const bubble = document.createElement("div");
-    bubble.className = "chatbot-message chatbot-message--bot chatbot-message--typing";
+    bubble.className =
+      "chatbot-message chatbot-message--bot chatbot-message--typing";
     bubble.setAttribute("aria-label", "Assistant is typing");
     bubble.innerHTML = "<span></span><span></span><span></span>";
     messagesEl.appendChild(bubble);
