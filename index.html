@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixel Designs | Web Design & Development</title>
+    <title>Chad Blincoe | Front-End Developer Portfolio</title>
     <meta
       name="description"
       content="Pixel Designs is the portfolio of Chad Blincoe, a web designer and developer building responsive, modern websites and interactive front-end projects."
@@ -32,6 +32,8 @@
       href="favicon/apple-touch-icon.png"
     />
     <link rel="manifest" href="favicon/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
@@ -49,6 +51,8 @@
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <!-- Cursor -->
     <div class="cursor" id="cursor">
       <div class="cursor-dot" id="cursorDot"></div>
@@ -61,7 +65,7 @@
     <nav>
       <a href="#hero" class="nav-logo">
         <img
-          src="media/myLogo.png"
+          src="media/web/myLogo-240.webp"
           alt="Pixel Designs Logo"
           onerror="this.style.display = 'none'"
         />
@@ -79,7 +83,7 @@
              CHANGED: now a shared resume-popup trigger — see the resume-modal
              markup near the end of <body> and the "Resume popup" JS section. -->
         <a
-          href="media/Chad_Blincoe.pdf"
+          href="media/Chad_Blincoe_Resume.pdf"
           target="_blank"
           rel="noopener"
           class="btn-primary nav-resume"
@@ -153,7 +157,7 @@
              shown/hidden at the opposite breakpoint — the two swap in this
              same spot depending on viewport width. ===== -->
         <a
-          href="media/Chad_Blincoe.pdf"
+          href="media/Chad_Blincoe_Resume.pdf"
           target="_blank"
           rel="noopener"
           class="btn-primary nav-resume-desktop"
@@ -207,27 +211,29 @@
     </nav>
 
     <!-- ─── HERO ─────────────────────────────────────── -->
+    <main id="main-content" tabindex="-1">
     <section id="hero">
       <div class="hero-inner">
         <div class="hero-content">
           <h1 class="hero-title">
-            <span class="line1">Web Design</span>
-            <span class="line2">&amp; Development</span>
-            <span class="line3">That Delivers.</span>
+            <span class="line1">Chad Blincoe</span>
+            <span class="line2">Front-End</span>
+            <span class="line3">Developer</span>
           </h1>
           <div class="hero-mobile-portrait" aria-hidden="true">
             <div class="hero-mobile-portrait-frame">
-              <img src="media/ChadSelfie.png" alt="Picture of me" />
+              <img width="960" height="1153" fetchpriority="high" decoding="async" src="media/web/ChadSelfie-960.webp" alt="Picture of me" />
             </div>
           </div>
           <p class="hero-sub">
-            I
-            <span class="hero-sub-accent hero-sub-accent--1">design</span>
-            and
-            <span class="hero-sub-accent hero-sub-accent--2">
-              build responsive websites
+            I build
+            <span class="hero-sub-accent hero-sub-accent--1">
+              responsive sites
             </span>
-            that look good, run fast, and are made to last.
+            in HTML, CSS, JavaScript, and React, and on
+            <span class="hero-sub-accent hero-sub-accent--2">
+              WordPress and Webflow.
+            </span>
           </p>
           <!-- ADDED: hero-cta-group wraps the original hero-actions row so a
                third button can stack underneath it without touching the
@@ -240,12 +246,12 @@
             <!-- ===== ADDED: hero resume button (desktop/tablet only, hidden ≤900px) =====
                  CHANGED: now a shared resume-popup trigger. -->
             <a
-              href="media/Chad_Blincoe.pdf"
+              href="media/Chad_Blincoe_Resume.pdf"
               target="_blank"
               rel="noopener"
               class="btn-ghost hero-resume-btn"
               data-resume-trigger
-              aria-label="View or download Chad Blincoe's resume, PDF"
+              aria-label="My Resume: view or download, PDF"
             >
               <svg
                 class="hero-resume-btn__icon"
@@ -313,7 +319,11 @@
             <div class="hero-photo-wrap">
               <div class="hero-photo-inner">
                 <img
-                  src="media/ChadSelfie.png"
+                  width="960"
+                  height="1153"
+                  fetchpriority="high"
+                  decoding="async"
+                  src="media/web/ChadSelfie-960.webp"
                   alt="Chad - Pixel Designs"
                   onerror="
                     this.style.display = 'none';
@@ -340,7 +350,7 @@
             <div class="hero-tag t2">// UI / UX Design</div>
             <div class="hero-logo-badge">
               <img
-                src="media/myLogo.png"
+                src="media/web/myLogo-240.webp"
                 alt=""
                 onerror="this.style.display = 'none'"
               />
@@ -362,6 +372,18 @@
         <div class="ticker-item">
           <span>✦</span>
           JavaScript
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          React
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          WordPress
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Webflow
         </div>
         <div class="ticker-item">
           <span>✦</span>
@@ -400,6 +422,18 @@
         <div class="ticker-item">
           <span>✦</span>
           JavaScript
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          React
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          WordPress
+        </div>
+        <div class="ticker-item">
+          <span>✦</span>
+          Webflow
         </div>
         <div class="ticker-item">
           <span>✦</span>
@@ -443,21 +477,22 @@
           </h2>
           <p class="about-text">
             My name is Chad Blincoe. I'm a Front-end developer based in
-            Lakeland, FL, and I love creating clean, functional websites that
-            look as good as they work. I build responsive sites that perform
+            Lakeland, FL, and I love building eye-catching functional websites that look as good as they work! I build responsive sites that perform
             well on every device, from phones to large desktop screens.
           </p>
           <p class="about-text">
             I've worked with both WordPress and Webflow and can use either when
-            a project calls for it, but most of my work is coded from scratch.
-            Writing my own code gives me the freedom to design exactly what I
-            have in mind instead of working around the limits of a template.
-            Once your site is live, I can also handle ongoing updates and
-            maintenance so it keeps growing with your business.
+            a project calls for it, and I also build a lot of my projects from scratch in HTML, CSS, and JavaScript.
+            I also maintain sites after launch, including updates, security
+            hardening, and SEO.
           </p>
           <div class="skills-grid">
             <div class="skill-chip">HTML5 / CSS3</div>
             <div class="skill-chip">JavaScript (ES6+)</div>
+            <div class="skill-chip">React</div>
+            <div class="skill-chip">WordPress</div>
+            <div class="skill-chip">Webflow</div>
+            <div class="skill-chip">Figma</div>
             <div class="skill-chip">Responsive Design</div>
             <div class="skill-chip">UI / UX Principles</div>
             <div class="skill-chip">Web Accessibility</div>
@@ -536,11 +571,16 @@
               <div class="ba-pane">
                 <div class="ba-label before">Before</div>
                 <img
-                  src="media/beforeSite.png"
+                  width="960"
+                  height="591"
+                  data-modal-src="media/web/beforeSite-1800.webp"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/beforeSite-960.webp"
                   alt="Pacific NW X-Ray - Before"
                   onerror="
                     this.parentElement.innerHTML =
-                      '<div class=\'project-img-placeholder\'>[media/beforeSite.png]</div>'
+                      '<div class=\'project-img-placeholder\'>Preview unavailable</div>'
                   "
                 />
               </div>
@@ -548,14 +588,18 @@
                 <div class="ba-label after">After</div>
                 <video
                   src="media/clips/SiteRebuild.mp4"
-                  poster="media/afterSite.png"
-                  data-modal-src="media/AfterRebuildImage.png"
-                  autoplay
+                  poster="media/web/AfterRebuildImage-960.webp"
+                  data-modal-src="media/web/AfterRebuildImage-1800.webp"
+                  data-preview-video
+                  preload="none"
                   muted
                   loop
                   playsinline
                   aria-label="Pacific NW X-Ray - After (site rebuild preview)"
                 ></video>
+              </div>
+              <div class="project-hover-label project-hover-label--stack" aria-hidden="true">
+                <span>HTML &middot; CSS &middot; JavaScript</span>
               </div>
               <div class="img-hint">Click to expand</div>
             </div>
@@ -631,7 +675,7 @@
                   to communicate, then rebuild the presentation around it. I
                   audited the original pages, identified the core visitor tasks
                   (understand what they sell, browse products, make contact),
-                  and designed a dark, professional theme with a clear hierarchy
+                  and designed a light, professional theme with a clear hierarchy
                   before writing the CSS mobile-first.
                 </p>
                 <h4>Design &amp; Development Decisions</h4>
@@ -688,38 +732,259 @@
             <div class="project-arrow">↗</div>
           </div>
 
-          <!-- Pott's Dog Sanctuary -->
+          <!-- IBEW Local 291 Webflow Redesign -->
           <div class="project-card reveal">
             <div class="project-img">
               <img
-                src="media/pottsSiteDesign.png"
-                alt="Pott's Dog Sanctuary"
+                width="960"
+                height="696"
+                data-modal-src="media/web/WebflowDesktop1-1800.webp"
+                loading="lazy"
+                decoding="async"
+                src="media/web/WebflowDesktop1-960.webp"
+                alt="IBEW Local 291 redesigned landing page hero and member tools"
                 onerror="
                   this.parentElement.innerHTML =
-                    '<div class=\'project-img-placeholder\'>[media/pottsSiteDesign.png]</div>'
+                    '<div class=\'project-img-placeholder\'>Preview unavailable</div>'
                 "
               />
+              <div hidden>
+                <img
+                  width="1800"
+                  height="1345"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WebflowDesktop2-1800.webp"
+                  alt="IBEW Local 291 redesign with CMS-driven events and news sections"
+                />
+                <img
+                  width="1800"
+                  height="995"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WebflowBeforeRedesign-1800.webp"
+                  alt="IBEW Local 291 original site before the redesign"
+                />
+                <img
+                  width="782"
+                  height="1740"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WebflowMobile1-1800.webp"
+                  alt="IBEW Local 291 redesign on mobile"
+                />
+                <img
+                  width="782"
+                  height="1740"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WebflowMobile2-1800.webp"
+                  alt="IBEW Local 291 redesign mobile navigation menu"
+                />
+              </div>
               <div class="project-overlay"></div>
+              <div class="project-hover-label" aria-hidden="true">
+                <span>Webflow</span>
+              </div>
               <div class="img-hint">Click to expand</div>
             </div>
             <div class="project-body">
-              <div class="project-type">// Web Design</div>
-              <div class="project-title">Pott's Off-Leash Dog Sanctuary</div>
+              <div class="project-type">// Webflow Redesign</div>
+              <div class="project-title">IBEW Local 291 Landing Page</div>
               <p class="project-desc">
-                Responsive website for a community dog sanctuary. Designed and
-                built a layout with a video hero, donation call-to-action,
-                volunteer sign-up, and regulation pages, organized so every type
-                of visitor can find their next step quickly.
+                Landing page redesign for an assessment, built in Webflow for an
+                electrical workers' union in Boise, Idaho. News and events run
+                on the Webflow CMS, so the page updates from the items saved in
+                the site's database.
               </p>
               <div class="project-tags">
-                <div class="tag">HTML/CSS</div>
-                <div class="tag">Non-Profit</div>
-                <div class="tag">Video Hero</div>
+                <div class="tag">Webflow</div>
+                <div class="tag">CMS</div>
+                <div class="tag">UI Redesign</div>
+                <div class="tag">Responsive</div>
               </div>
               <div class="project-links">
                 <a
                   class="project-link project-link-live"
-                  href="https://blincoechad.github.io/PottsDogWebsite/"
+                  href="https://ibew291-homepage-chad.webflow.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Site
+                </a>
+                <button
+                  type="button"
+                  class="project-link project-link-case-study"
+                  data-case-study-trigger
+                >
+                  View Case Study
+                </button>
+              </div>
+              <div class="case-study-content" hidden>
+                <h4>Overview</h4>
+                  <p>
+                    A redesign of the IBEW Local 291 homepage, built in Webflow
+                    as a take-home assessment for a junior Webflow developer
+                    role. The brief assumed most visitors are members on their
+                    phones, so the design started from what a member needs to
+                    do, not from how the page looks on a desktop.
+                  </p>
+                <h4>The Problem</h4>
+                  <p>
+                    Three problems stood out on the existing homepage. At phone
+                    size the first screen showed only the logo and a menu icon,
+                    so Pay Dues and Sign the Books were hidden. The news section
+                    was just two links, and the next meeting didn't show a date.
+                    Some content was also hard to reach: the membership benefits
+                    only appeared on mouse hover, which doesn't work on a phone,
+                    and the hero was a moving slideshow.
+                  </p>
+                <h4>My Approach</h4>
+                  <p>
+                    I set one rule for the build: Dispatch, Pay Dues, and Sign
+                    the Books had to stay one tap away on mobile. Everything
+                    else followed from that. I planned in wireframes first, then
+                    built the page in Webflow with color variables, consistent
+                    class names, and CMS collections for the content that
+                    changes.
+                  </p>
+                <h4>Design &amp; Development Decisions</h4>
+                <ul>
+                  <li>
+                    Added a bar fixed to the bottom of the screen on phones and
+                    tablets with the three member tasks, and a Member tools
+                    panel above the hero on desktop.
+                  </li>
+                  <li>
+                    Set up News and Events CMS collections, so the homepage
+                    shows the next union meeting, the next three events, and the
+                    three latest stories from items saved in the database.
+                  </li>
+                  <li>
+                    Wrote the benefits out so they are always visible, and
+                    replaced the slideshow with one still photo and a
+                    left-aligned headline.
+                  </li>
+                  <li>
+                    Used a date-led events list, because members scan by date
+                    the way they would read a hall bulletin board.
+                  </li>
+                  <li>
+                    Kept the “Wiring the Treasure Valley since 1902” headline,
+                    the real member photos, and the IBEW navy and gold. Those
+                    are what make the site feel like Local 291.
+                  </li>
+                </ul>
+                <h4>Challenges &amp; Solutions</h4>
+                  <p>
+                    My first version kept the photo slider and put the member
+                    links inside the menu. I rejected it because after
+                    scrolling, Pay Dues took three taps to reach, and white text
+                    over moving photos was hard to read on a phone. The final
+                    layout came from that test. The second part of the
+                    assessment was a separate Events build on Webflow's free
+                    plan, which doesn't allow custom code, so I built category
+                    filtering with native Tabs and a filtered Collection List in
+                    each tab. On the detail page, the image and Register button
+                    only appear when those fields are filled in, so there are no
+                    empty boxes or broken buttons.
+                  </p>
+                <h4>How I Used AI</h4>
+                  <p>
+                    I used Claude to help plan the project, spot problems on the
+                    current site, and write the sample CMS content. It made a
+                    low-fidelity first version of the wireframes, which I added
+                    my own components to, including the fixed member bar.
+                  </p>
+                <h4>Result</h4>
+                  <p>
+                    A published, responsive homepage where the three main member
+                    tasks stay one tap away and news and events update from the
+                    CMS. The event and news content is sample data, apart from
+                    the union meeting schedule.
+                  </p>
+                <h4>What I Learned</h4>
+                  <p>
+                    How to structure a Webflow build around CMS collections, and
+                    how to work within a platform's limits. On a real client
+                    site with a paid plan, I would use a script-based filter so
+                    there is one event list instead of four copies. Next I would
+                    test the page with members on their phones and run a full
+                    accessibility check.
+                  </p>
+              </div>
+            </div>
+            <div class="project-arrow">↗</div>
+          </div>
+
+          <!-- Dough Flow -->
+          <div class="project-card reveal">
+            <div class="project-img">
+              <img
+                width="960"
+                height="543"
+                data-modal-src="media/web/ExspenseDesk1-1800.webp"
+                loading="lazy"
+                decoding="async"
+                src="media/web/ExspenseDesk1-960.webp"
+                alt="Dough Flow summary, this week card, and paycheck cards on desktop"
+                onerror="
+                  this.parentElement.innerHTML =
+                    '<div class=\'project-img-placeholder\'>Preview unavailable</div>'
+                "
+              />
+              <div hidden>
+                <img
+                  width="1800"
+                  height="1018"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/ExspenseDesk2-1800.webp"
+                  alt="Dough Flow weekly targets, outside savings, and income breakdown on desktop"
+                />
+                <img
+                  width="847"
+                  height="1800"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/ExspenseMobile1-1800.webp"
+                  alt="Dough Flow summary and this week card on a phone"
+                />
+                <img
+                  width="847"
+                  height="1800"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/ExspenseMobile2-1800.webp"
+                  alt="Dough Flow weekly targets and income breakdown on a phone"
+                />
+              </div>
+              <div class="project-overlay"></div>
+              <div class="project-hover-label project-hover-label--stack" aria-hidden="true">
+                <span>HTML &middot; CSS &middot; JavaScript</span>
+              </div>
+              <div class="img-hint">Click to expand</div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">// Personal Budgeting Web App</div>
+              <div class="project-title">Dough Flow</div>
+              <p class="project-desc">
+                A budgeting app built around weekly paychecks. It shows which
+                Friday's pay covers which bill and syncs between my phone and
+                laptop. I owned the product, design, and testing, and Claude
+                assisted in configuring the math logic, and helped with
+                debugging and testing.
+              </p>
+              <div class="project-tags">
+                <div class="tag">JavaScript</div>
+                <div class="tag">Firebase</div>
+                <div class="tag">Web App</div>
+                <div class="tag">AI-Assisted</div>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link project-link-live"
+                  href="https://blincoechad.github.io/MoneyTracker/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -727,7 +992,7 @@
                 </a>
                 <a
                   class="project-link project-link-code"
-                  href="https://github.com/Blincoechad/PottsDogWebsite"
+                  href="https://github.com/Blincoechad/MoneyTracker"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -744,72 +1009,97 @@
               <div class="case-study-content" hidden>
                 <h4>Overview</h4>
                 <p>
-                  A website for a community dog sanctuary: a real organization
-                  that needed a practical web presence. I designed and built the
-                  full site, including a video hero, donation call-to-action,
-                  volunteer sign-up, and regulation pages.
+                  A budgeting app I use every week, built with HTML, CSS, and
+                  vanilla JavaScript, with Firebase for sign-in and storage. I
+                  was the product owner, designer, and tester, and Claude
+                  assisted in configuring the math logic, and helped with
+                  debugging and testing. I defined every feature and rule,
+                  approved the designs, set up GitHub, Firebase, and the
+                  security rules, tested on my own phone and laptop, and
+                  approved every commit.
                 </p>
                 <h4>The Problem</h4>
                 <p>
-                  The sanctuary's visitors arrive with very different goals.
-                  Donors want a quick way to give, volunteers want to sign up,
-                  and visitors need the rules before bringing a dog. All of that
-                  has to live on one site without the important-but-dry
-                  information burying the emotional appeal that motivates
-                  donations.
+                  I get paid every Friday. Most budgeting apps assume monthly
+                  pay and divide by 4.33 weeks, but a real month has four or
+                  five paydays. My rent is weekly and my other bills are monthly
+                  with different due dates, so the question I actually had was
+                  which paycheck pays which bill. My pay also changes week to
+                  week, and sometimes I cover a bill from a separate savings
+                  account. I couldn't find a tool that handled any of that.
                 </p>
                 <h4>My Approach</h4>
                 <p>
-                  I started from visitor intent rather than from a layout. Most
-                  arrivals want to do one of three things: donate, volunteer, or
-                  plan a visit. I organized the content around those paths and
-                  led with a video hero to communicate the sanctuary's
-                  atmosphere immediately.
+                  I started with a one-page budget calculator and put it on
+                  GitHub first so every change could be reviewed and undone.
+                  Then I replaced the 4.33-week average with a count of the real
+                  Fridays in each month. Before building the paycheck cards, I
+                  reviewed a clickable mockup and changed the rules (weekly
+                  rent, editable due dates) before any code existed. After a few
+                  weeks of daily use, I cut the summary from six tiles to three
+                  and merged panels that repeated each other.
                 </p>
                 <h4>Design &amp; Development Decisions</h4>
                 <ul>
                   <li>
-                    Used a full-width video hero for immediate emotional
-                    connection, with overlay treatment to keep text legible over
-                    motion.
+                    One number at the top, green or red, for what's projected to
+                    be left this month.
                   </li>
                   <li>
-                    Gave the donation call-to-action prominent placement so it
-                    is never more than a glance away.
+                    A card for each payday listing the bills due before the next
+                    one, with checkboxes and a running total.
                   </li>
                   <li>
-                    Separated volunteer sign-up and regulation details into
-                    their own sections so essential information stays findable
-                    without cluttering the main message.
+                    A "This week" card: enter your pay and see what it has to
+                    cover and what's left until Friday.
                   </li>
                   <li>
-                    Built the layout responsive so the site works for the many
-                    visitors who will first open it on a phone.
+                    "Pay from other source" for bills covered by side savings,
+                    tracked in its own panel.
+                  </li>
+                  <li>
+                    Firebase with Google sign-in. A security rule lets each
+                    account read and write only its own data.
+                  </li>
+                  <li>A light and dark theme toggle in the header.</li>
+                  <li>
+                    A macOS reminder at 9 AM on Fridays asks what I made that
+                    week and saves it to the right week.
+                  </li>
+                  <li>
+                    Calculation code lives in its own file, separate from the
+                    screen and sync code, and every input recalculates and
+                    redraws the whole page so the numbers can't drift apart.
                   </li>
                 </ul>
                 <h4>Challenges &amp; Solutions</h4>
                 <p>
-                  The main challenge was balance: lead with feeling, but keep
-                  practical information one click away. I solved it with
-                  hierarchy. The hero and donation path carry the visual weight,
-                  while sign-up and regulation content is clearly signposted
-                  rather than competing for attention. Keeping text readable
-                  over a moving video background also took deliberate work with
-                  overlays and type contrast.
+                  A tab left open overnight from September 30 to October 1 saved
+                  October's pay under September and then wiped it. Now the app
+                  checks the month again whenever you come back to the tab or
+                  start typing. My phone and laptop could also overwrite each
+                  other, so every piece of data now carries the time it was last
+                  changed and the newer copy wins. The reminder had its own bug:
+                  macOS's open command was quietly dropping the pay amount from
+                  the link. I set up a small local server to log the exact URL
+                  Safari received, found the problem, and switched to
+                  AppleScript.
                 </p>
                 <h4>Result</h4>
                 <p>
-                  A complete, deployed website that serves the organization's
-                  real needs: it tells the sanctuary's story and gives every
-                  type of visitor a clear next step. It shows I can design
-                  around user goals and business needs, not just aesthetics.
+                  It's live on my phone and laptop and I use it every week. On
+                  Friday I get one prompt and enter one number, and I can see
+                  which bills that check covers. It shipped through 12 reviewed
+                  commits.
                 </p>
                 <h4>What I Learned</h4>
                 <p>
-                  Designing for multiple audiences on one site, organizing
-                  content by visitor intent, working with video backgrounds
-                  responsibly, and taking a real-world project from blank page
-                  to deployed site.
+                  Model the real unit. Once the app counted paychecks instead of
+                  months, the numbers matched my bank account. Real devices find
+                  bugs a test browser won't. And directing an AI assistant is a
+                  skill of its own: clear requirements, checking the output
+                  against real use, and asking for a bug review before every
+                  commit.
                 </p>
               </div>
             </div>
@@ -820,7 +1110,12 @@
           <div class="project-card reveal">
             <div class="project-img">
               <img
-                src="media/AndysSite1.png"
+                width="960"
+                height="762"
+                data-modal-src="media/web/AndysSite1-1800.webp"
+                loading="lazy"
+                decoding="async"
+                src="media/web/AndysSite1-960.webp"
                 alt="IEEE Community Resource Hub homepage preview"
                 onerror="
                   this.parentElement.innerHTML =
@@ -829,19 +1124,34 @@
               />
               <div hidden>
                 <img
-                  src="media/AndysSite1.png"
+                  width="1074"
+                  height="852"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/AndysSite1-1800.webp"
                   alt="IEEE Community Resource Hub homepage hero section"
                 />
                 <img
-                  src="media/AndysSite2.png"
+                  width="1074"
+                  height="1635"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/AndysSite2-1800.webp"
                   alt="IEEE Community Resource Hub content and resource layout"
                 />
                 <img
-                  src="media/AndysSite3.png"
+                  width="1074"
+                  height="1635"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/AndysSite3-1800.webp"
                   alt="IEEE Community Resource Hub additional site preview"
                 />
               </div>
               <div class="project-overlay"></div>
+              <div class="project-hover-label project-hover-label--stack" aria-hidden="true">
+                <span>HTML &middot; CSS &middot; JavaScript</span>
+              </div>
               <div class="img-hint">Click to expand</div>
             </div>
             <div class="project-body">
@@ -1070,35 +1380,56 @@
             <div class="project-img ba-strip">
               <div class="ba-pane">
                 <img
-                  src="media/Login.png"
+                  width="960"
+                  height="777"
+                  data-modal-src="media/web/Login-1800.webp"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/Login-960.webp"
                   alt="Vanguard Intelligence mock sign-in screen"
                   onerror="
                     this.parentElement.innerHTML =
-                      '<div class=\'project-img-placeholder\'>[media/Login.png]</div>'
+                      '<div class=\'project-img-placeholder\'>Preview unavailable</div>'
                   "
                 />
               </div>
               <div class="ba-pane ba-pane-contain">
                 <img
-                  src="media/TopHalf.png"
+                  width="960"
+                  height="538"
+                  data-modal-src="media/web/TopHalf-1800.webp"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/TopHalf-960.webp"
                   alt="Vanguard Intelligence dashboard with signals chart"
                   onerror="
                     this.parentElement.innerHTML =
-                      '<div class=\'project-img-placeholder\'>[media/TopHalf.png]</div>'
+                      '<div class=\'project-img-placeholder\'>Preview unavailable</div>'
                   "
                 />
               </div>
               <div hidden>
                 <img
-                  src="media/BottomHalf.png"
+                  width="1800"
+                  height="1029"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/BottomHalf-1800.webp"
                   alt="Vanguard Intelligence dashboard source reliability and API health panels"
                 />
                 <img
-                  src="media/SignUp.png"
+                  width="1045"
+                  height="846"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/SignUp-1800.webp"
                   alt="Vanguard Intelligence mock sign-up screen"
                 />
               </div>
               <div class="project-overlay"></div>
+              <div class="project-hover-label project-hover-label--stack" aria-hidden="true">
+                <span>Python &middot; HTML &middot; CSS &middot; JavaScript</span>
+              </div>
               <div class="img-hint">Click to expand</div>
             </div>
             <div class="project-body">
@@ -1225,54 +1556,72 @@
             <div class="project-arrow">↗</div>
           </div>
 
-          <!-- MyBudgetDash -->
+          <!-- Ott's Dog Sanctuary -->
           <div class="project-card reveal">
             <div class="project-img">
               <img
-                src="media/ExspenseDesk1.png"
-                alt="MyBudgetDash summary, this week card, and paycheck cards on desktop"
+                width="960"
+                height="484"
+                data-modal-src="media/web/OttsSite-1800.webp"
+                loading="lazy"
+                decoding="async"
+                src="media/web/OttsSite-960.webp"
+                alt="Ott's Dog Sanctuary homepage with video hero"
                 onerror="
                   this.parentElement.innerHTML =
-                    '<div class=\'project-img-placeholder\'>[media/ExspenseDesk1.png]</div>'
+                    '<div class=\'project-img-placeholder\'>Preview unavailable</div>'
                 "
               />
               <div hidden>
                 <img
-                  src="media/ExspenseDesk2.png"
-                  alt="MyBudgetDash weekly targets, outside savings, and income breakdown on desktop"
+                  width="1800"
+                  height="907"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/Otts2-1800.webp"
+                  alt="Ott's Dog Sanctuary Get Involved page with sign-up form"
                 />
                 <img
-                  src="media/ExspenseMobile1.png"
-                  alt="MyBudgetDash summary and this week card on a phone"
+                  width="936"
+                  height="1658"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/OttsMobile1-1800.webp"
+                  alt="Ott's Dog Sanctuary homepage on mobile"
                 />
                 <img
-                  src="media/ExspenseMobile2.png"
-                  alt="MyBudgetDash weekly targets and income breakdown on a phone"
+                  width="936"
+                  height="1658"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/OttsMobile2-1800.webp"
+                  alt="Ott's Dog Sanctuary mobile navigation menu"
                 />
               </div>
               <div class="project-overlay"></div>
+              <div class="project-hover-label project-hover-label--stack" aria-hidden="true">
+                <span>HTML &middot; CSS &middot; JavaScript</span>
+              </div>
               <div class="img-hint">Click to expand</div>
             </div>
             <div class="project-body">
-              <div class="project-type">// Personal Budgeting Web App</div>
-              <div class="project-title">MyBudgetDash</div>
+              <div class="project-type">// Web Design</div>
+              <div class="project-title">Ott's Off-Leash Dog Sanctuary</div>
               <p class="project-desc">
-                A budgeting app built around weekly paychecks. It shows which
-                Friday's pay covers which bill and syncs between my phone and
-                laptop. I owned the product, design, and testing, and Claude
-                assisted in configuring the math logic, and helped with
-                debugging and testing.
+                Responsive website for a community dog sanctuary. Designed and
+                built a layout with a video hero, donation call-to-action,
+                volunteer sign-up, and regulation pages, organized so every type
+                of visitor can find their next step quickly.
               </p>
               <div class="project-tags">
-                <div class="tag">JavaScript</div>
-                <div class="tag">Firebase</div>
-                <div class="tag">Web App</div>
-                <div class="tag">AI-Assisted</div>
+                <div class="tag">HTML/CSS</div>
+                <div class="tag">Non-Profit</div>
+                <div class="tag">Video Hero</div>
               </div>
               <div class="project-links">
                 <a
                   class="project-link project-link-live"
-                  href="https://blincoechad.github.io/MoneyTracker/"
+                  href="https://blincoechad.github.io/PottsDogWebsite/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1280,7 +1629,7 @@
                 </a>
                 <a
                   class="project-link project-link-code"
-                  href="https://github.com/Blincoechad/MoneyTracker"
+                  href="https://github.com/Blincoechad/PottsDogWebsite"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1297,165 +1646,233 @@
               <div class="case-study-content" hidden>
                 <h4>Overview</h4>
                 <p>
-                  A budgeting app I use every week, built with HTML, CSS, and
-                  vanilla JavaScript, with Firebase for sign-in and storage. I
-                  was the product owner, designer, and tester, and Claude
-                  assisted in configuring the math logic, and helped with
-                  debugging and testing. I defined every feature and rule,
-                  approved the designs, set up GitHub, Firebase, and the
-                  security rules, tested on my own phone and laptop, and
-                  approved every commit.
+                  A website for a community dog sanctuary: a real organization
+                  that needed a practical web presence. I designed and built the
+                  full site, including a video hero, donation call-to-action,
+                  volunteer sign-up, and regulation pages.
                 </p>
                 <h4>The Problem</h4>
                 <p>
-                  I get paid every Friday. Most budgeting apps assume monthly
-                  pay and divide by 4.33 weeks, but a real month has four or
-                  five paydays. My rent is weekly and my other bills are monthly
-                  with different due dates, so the question I actually had was
-                  which paycheck pays which bill. My pay also changes week to
-                  week, and sometimes I cover a bill from a separate savings
-                  account. I couldn't find a tool that handled any of that.
+                  The sanctuary's visitors arrive with very different goals.
+                  Donors want a quick way to give, volunteers want to sign up,
+                  and visitors need the rules before bringing a dog. All of that
+                  has to live on one site without the important-but-dry
+                  information burying the emotional appeal that motivates
+                  donations.
                 </p>
                 <h4>My Approach</h4>
                 <p>
-                  I started with a one-page budget calculator and put it on
-                  GitHub first so every change could be reviewed and undone.
-                  Then I replaced the 4.33-week average with a count of the real
-                  Fridays in each month. Before building the paycheck cards, I
-                  reviewed a clickable mockup and changed the rules (weekly
-                  rent, editable due dates) before any code existed. After a few
-                  weeks of daily use, I cut the summary from six tiles to three
-                  and merged panels that repeated each other.
+                  I started from visitor intent rather than from a layout. Most
+                  arrivals want to do one of three things: donate, volunteer, or
+                  plan a visit. I organized the content around those paths and
+                  led with a video hero to communicate the sanctuary's
+                  atmosphere immediately.
                 </p>
                 <h4>Design &amp; Development Decisions</h4>
                 <ul>
                   <li>
-                    One number at the top, green or red, for what's projected to
-                    be left this month.
+                    Used a full-width video hero for immediate emotional
+                    connection, with overlay treatment to keep text legible over
+                    motion.
                   </li>
                   <li>
-                    A card for each payday listing the bills due before the next
-                    one, with checkboxes and a running total.
+                    Gave the donation call-to-action prominent placement so it
+                    is never more than a glance away.
                   </li>
                   <li>
-                    A "This week" card: enter your pay and see what it has to
-                    cover and what's left until Friday.
+                    Separated volunteer sign-up and regulation details into
+                    their own sections so essential information stays findable
+                    without cluttering the main message.
                   </li>
                   <li>
-                    "Pay from other source" for bills covered by side savings,
-                    tracked in its own panel.
-                  </li>
-                  <li>
-                    Firebase with Google sign-in. A security rule lets each
-                    account read and write only its own data.
-                  </li>
-                  <li>A light and dark theme toggle in the header.</li>
-                  <li>
-                    A macOS reminder at 9 AM on Fridays asks what I made that
-                    week and saves it to the right week.
-                  </li>
-                  <li>
-                    Calculation code lives in its own file, separate from the
-                    screen and sync code, and every input recalculates and
-                    redraws the whole page so the numbers can't drift apart.
+                    Built the layout responsive so the site works for the many
+                    visitors who will first open it on a phone.
                   </li>
                 </ul>
                 <h4>Challenges &amp; Solutions</h4>
                 <p>
-                  A tab left open overnight from September 30 to October 1 saved
-                  October's pay under September and then wiped it. Now the app
-                  checks the month again whenever you come back to the tab or
-                  start typing. My phone and laptop could also overwrite each
-                  other, so every piece of data now carries the time it was last
-                  changed and the newer copy wins. The reminder had its own bug:
-                  macOS's open command was quietly dropping the pay amount from
-                  the link. I set up a small local server to log the exact URL
-                  Safari received, found the problem, and switched to
-                  AppleScript.
+                  The main challenge was balance: lead with feeling, but keep
+                  practical information one click away. I solved it with
+                  hierarchy. The hero and donation path carry the visual weight,
+                  while sign-up and regulation content is clearly signposted
+                  rather than competing for attention. Keeping text readable
+                  over a moving video background also took deliberate work with
+                  overlays and type contrast.
                 </p>
                 <h4>Result</h4>
                 <p>
-                  It's live on my phone and laptop and I use it every week. On
-                  Friday I get one prompt and enter one number, and I can see
-                  which bills that check covers. It shipped through 12 reviewed
-                  commits.
+                  A complete, deployed website that serves the organization's
+                  real needs: it tells the sanctuary's story and gives every
+                  type of visitor a clear next step. It shows I can design
+                  around user goals and business needs, not just aesthetics.
                 </p>
                 <h4>What I Learned</h4>
                 <p>
-                  Model the real unit. Once the app counted paychecks instead of
-                  months, the numbers matched my bank account. Real devices find
-                  bugs a test browser won't. And directing an AI assistant is a
-                  skill of its own: clear requirements, checking the output
-                  against real use, and asking for a bug review before every
-                  commit.
+                  Designing for multiple audiences on one site, organizing
+                  content by visitor intent, working with video backgrounds
+                  responsibly, and taking a real-world project from blank page
+                  to deployed site.
                 </p>
               </div>
             </div>
             <div class="project-arrow">↗</div>
           </div>
 
-          <!-- Interactive PDF Newsletter -->
+          <!-- Polk Roofing WordPress Site -->
           <div class="project-card reveal">
             <div class="project-img">
               <img
-                src="media/graphicWork/NewsLetter1.png"
-                alt="Interactive PDF newsletter layout"
+                width="960"
+                height="540"
+                data-modal-src="media/web/WordPressPreview-1800.webp"
+                loading="lazy"
+                decoding="async"
+                src="media/web/WordPressPreview-960.webp"
+                alt="Polk Roofing Co. WordPress site homepage"
                 onerror="
                   this.parentElement.innerHTML =
-                    '<div class=\'project-img-placeholder\'>[media/graphicWork/NewsLetter1.png]</div>'
+                    '<div class=\'project-img-placeholder\'>Preview unavailable</div>'
                 "
               />
               <div hidden>
                 <img
-                  src="media/graphicWork/NewsLetter1.png"
-                  alt="Newsletter page 1"
+                  width="1600"
+                  height="1057"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WordPressServices-1800.webp"
+                  alt="Polk Roofing Co. roofing services section"
                 />
                 <img
-                  src="media/graphicWork/NewsLetter2.png"
-                  alt="Newsletter page 2"
+                  width="1600"
+                  height="1206"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WordPressOffer-1800.webp"
+                  alt="Polk Roofing Co. additional services section"
                 />
                 <img
-                  src="media/graphicWork/NewsLetter3.png"
-                  alt="Newsletter page 3"
+                  width="750"
+                  height="1700"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WordPressMobile1-1800.webp"
+                  alt="Polk Roofing Co. homepage on mobile"
                 />
                 <img
-                  src="media/graphicWork/NewsLetter4.png"
-                  alt="Newsletter page 4"
-                />
-                <img
-                  src="media/graphicWork/NewsLetter5.png"
-                  alt="Newsletter page 5"
-                />
-                <img
-                  src="media/graphicWork/NewsLetter6.png"
-                  alt="Newsletter page 6"
+                  width="750"
+                  height="1700"
+                  loading="lazy"
+                  decoding="async"
+                  src="media/web/WordPressMobile2-1800.webp"
+                  alt="Polk Roofing Co. mobile navigation menu"
                 />
               </div>
               <div class="project-overlay"></div>
+              <div class="project-hover-label" aria-hidden="true">
+                <span>WordPress</span>
+              </div>
               <div class="img-hint">Click to expand</div>
             </div>
             <div class="project-body">
-              <div class="project-type">// Interactive PDF Design</div>
-              <div class="project-title">InDesign Newsletter Experience</div>
+              <div class="project-type">// WordPress Practice Build</div>
+              <div class="project-title">Polk Roofing Co.</div>
               <p class="project-desc">
-                Interactive newsletter built in Adobe InDesign with a clean
-                editorial layout, clickable navigation, and a digital reading
-                flow.
+                Responsive WordPress site for a practice local roofing company,
+                built on the Astra theme with a quote request form, services,
+                and click-to-call contact options. The video walks through the
+                site on desktop and mobile.
               </p>
               <div class="project-tags">
-                <div class="tag">InDesign</div>
-                <div class="tag">Interactive PDF</div>
-                <div class="tag">Editorial Design</div>
+                <div class="tag">WordPress</div>
+                <div class="tag">Astra Theme</div>
+                <div class="tag">Local Business</div>
+                <div class="tag">Responsive</div>
               </div>
               <div class="project-links">
                 <a
                   class="project-link project-link-live"
-                  href="https://indd.adobe.com/view/d4904f1c-a24c-4510-95b4-b731d081a69c"
+                  href="https://youtu.be/jhQJFqbZusc"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View Live Interactive Design
+                  Watch Walk Demo
                 </a>
+                <button
+                  type="button"
+                  class="project-link project-link-case-study"
+                  data-case-study-trigger
+                >
+                  View Case Study
+                </button>
+              </div>
+              <div class="case-study-content" hidden>
+                <h4>Overview</h4>
+                  <p>
+                    A practice WordPress site for a fictional family-owned
+                    roofing contractor in Lakeland, Florida. I built it in a
+                    local WordPress environment, with five pages: Home, About,
+                    Services, Projects, and Contact.
+                  </p>
+                <h4>The Goal</h4>
+                  <p>
+                    A local roofing company's website has one main job: turn
+                    someone with a leak or storm damage into a phone call or a
+                    quote request. The site needed to make that step easy from
+                    the first screen and on a phone.
+                  </p>
+                <h4>My Approach</h4>
+                  <p>
+                    I started from an Astra starter template, then reworked it
+                    around the fictional business with its own services, service
+                    area, and contact details. The homepage leads with the
+                    headline and a click-to-call button, followed directly by
+                    the quote request form.
+                  </p>
+                <h4>Design &amp; Development Decisions</h4>
+                <ul>
+                  <li>
+                    Placed the phone number in the top bar and hero, with a Book
+                    a Call button in the navigation, so contact is always close.
+                  </li>
+                  <li>
+                    Built the forms with SureForms, including separate forms for
+                    the Home and Service pages.
+                  </li>
+                  <li>
+                    Used Spectra blocks with the Astra theme for the page
+                    layouts, in place of custom code.
+                  </li>
+                  <li>
+                    Organized the services into clear sections with short
+                    descriptions, then added a Why Choose Us section to build
+                    trust.
+                  </li>
+                  <li>
+                    Checked the layout at phone width, where the navigation
+                    moves into a slide-out menu.
+                  </li>
+                </ul>
+                <h4>Challenges &amp; Solutions</h4>
+                  <p>
+                    The main challenge was making a starter template feel like
+                    one specific business. I replaced its general content with
+                    copy and sections written for a Lakeland roofer, so the site
+                    reads as a local company.
+                  </p>
+                <h4>Result</h4>
+                  <p>
+                    A responsive five-page WordPress site with working page
+                    structure, quote request forms, and a mobile menu. It runs
+                    locally, so the walkthrough video shows it on desktop and
+                    mobile.
+                  </p>
+                <h4>What I Learned</h4>
+                  <p>
+                    How to set up a WordPress site from a local install through
+                    theme, plugins, forms, and page content, and how to adapt a
+                    template to a specific business.
+                  </p>
               </div>
             </div>
             <div class="project-arrow">↗</div>
@@ -1521,66 +1938,62 @@
             type="button"
             class="process-step reveal"
             data-title="01 — Discovery"
-            data-text="We'll talk about your goals, audience, and vision. I'll ask the right questions to understand exactly what you need — and how the site fits into your bigger marketing picture."
+            data-text="I start by defining the project's goals, target audience, and requirements. I ask questions early, research competitors, and map out the site's structure and content so every design and development decision has a clear purpose behind it."
           >
             <div class="step-connector"></div>
             <div class="step-num">01</div>
             <div class="step-title">Discovery</div>
             <div class="step-desc">
-              Understanding the client's goals and audience, and how the site
-              fits into their bigger marketing picture — not just design and
-              development goals.
+              Every project starts with understanding the goals, needs, and
+              audience. It's the foundation for every decision that follows.
             </div>
           </button>
           <button
             type="button"
             class="process-step reveal"
             data-title="02 — Design"
-            data-text="I craft layouts, color palettes, and typography that fit your brand and make a strong first impression, with an eye toward how the design supports your marketing and conversion goals."
+            data-text="I work from wireframes to polished layouts, choosing color, typography, and spacing that reflect the brand. I design mobile-first and with accessibility in mind, and I keep marketing and conversion goals in view so the design supports the business, not just the look."
           >
             <div class="step-connector"></div>
             <div class="step-num">02</div>
             <div class="step-title">Design</div>
             <div class="step-desc">
-              Building layouts and visual identity tied to marketing and
-              conversion goals, not just aesthetics.
+              Anyone can make a modern site. I focus on capturing the brand's
+              personality, so the site feels personable.
             </div>
           </button>
           <button
             type="button"
             class="process-step reveal"
             data-title="03 — Build"
-            data-text="
-  I build using the right tool for the job — custom code or WordPress — whichever gets you a clean, easy-to-maintain site without unnecessary bloat."
+            data-text="I build with clean, semantic HTML, CSS, and JavaScript. I build in WordPress and Webflow as well. I write responsive, maintainable code, track my work with Git and GitHub, and share progress regularly so feedback is easy to give and act on."
           >
             <div class="step-connector"></div>
             <div class="step-num">03</div>
             <div class="step-title">Build</div>
             <div class="step-desc">
-              Built with the right approach for the project: custom code or
-              WordPress, whichever best fits the job and supports long-term
-              maintainability.
+              I keep the build transparent and make sure everyone involved
+              stays updated from start to finish.
             </div>
           </button>
           <button
             type="button"
             class="process-step reveal"
-            data-title="04 — Launch & Grow"
-            data-text="Final review, testing across devices, and deployment, plus post-launch SEO and content strategy so marketing has a clear place in the process."
+            data-title="04 — Launch &amp; Improve"
+            data-text="Before launch, I test across browsers and devices, check performance and accessibility, and set up on-page SEO. After launch, I keep improving the site based on real results, because a site should keep getting better over time."
           >
             <div class="step-num">04</div>
-            <div class="step-title">Launch</div>
+            <div class="step-title">Launch &amp; Improve</div>
             <div class="step-desc">
-              Final review, testing, and deployment — then ongoing SEO and
-              content strategy support to help the site get found and keep
-              performing.
+              I test across devices, fine-tune performance, and review every
+              page so the site runs smoothly from day one.
             </div>
           </button>
         </div>
       </div>
     </section>
 
-    <div class="process-modal" id="processModal" aria-hidden="true">
+    <div class="process-modal" id="processModal" aria-hidden="true" inert>
       <div class="process-modal__backdrop" data-close-modal></div>
       <div
         class="process-modal__dialog"
@@ -1604,7 +2017,7 @@
       </div>
     </div>
 
-    <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal" id="videoModal" aria-hidden="true" inert>
       <div class="video-modal__backdrop" data-close-video-modal></div>
       <div
         class="video-modal__dialog"
@@ -1629,7 +2042,7 @@
       </div>
     </div>
 
-    <div class="image-modal" id="imageModal" aria-hidden="true">
+    <div class="image-modal" id="imageModal" aria-hidden="true" inert>
       <div class="image-modal__backdrop" data-close-image-modal></div>
       <div
         class="image-modal__dialog"
@@ -1674,7 +2087,7 @@
       </div>
     </div>
 
-    <div class="case-study-modal" id="caseStudyModal" aria-hidden="true">
+    <div class="case-study-modal" id="caseStudyModal" aria-hidden="true" inert>
       <div class="case-study-modal__backdrop" data-close-case-study></div>
       <div
         class="case-study-modal__dialog"
@@ -1735,11 +2148,11 @@
             </p>
             <a
               class="btn-primary resume-cta__btn"
-              href="media/Chad_Blincoe.pdf"
+              href="media/Chad_Blincoe_Resume.pdf"
               target="_blank"
               rel="noopener"
               data-resume-trigger
-              aria-label="View or download Chad Blincoe's resume, PDF"
+              aria-label="My Resume, PDF, 73 KB: view or download"
             >
               <svg
                 class="resume-cta__icon"
@@ -1761,7 +2174,7 @@
               </svg>
               My Resume
             </a>
-            <span class="resume-cta__meta">PDF · 195 KB</span>
+            <span class="resume-cta__meta">PDF · 73 KB</span>
           </div>
           <!-- ===== END resume download callout ===== -->
 
@@ -1843,7 +2256,7 @@
       </div>
     </section>
 
-    <div class="submit-modal" id="submitModal" aria-hidden="true">
+    <div class="submit-modal" id="submitModal" aria-hidden="true" inert>
       <div class="submit-modal__backdrop" data-close-submit-modal></div>
       <div
         class="submit-modal__dialog"
@@ -1881,7 +2294,7 @@
     <!-- ===== ADDED: shared resume popup, opened by every [data-resume-trigger]
          link (nav "Resume", hero "My Resume", contact "My Resume"). Follows
          the same markup/class/overlay pattern as .submit-modal above. ===== -->
-    <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <div class="resume-modal" id="resumeModal" aria-hidden="true" inert>
       <div class="resume-modal__backdrop" data-close-resume-modal></div>
       <div
         class="resume-modal__dialog"
@@ -1906,7 +2319,7 @@
         </p>
         <div class="resume-modal__options">
           <a
-            href="media/Chad_Blincoe.pdf"
+            href="media/Chad_Blincoe_Resume.pdf"
             target="_blank"
             rel="noopener"
             class="resume-modal__option resume-modal__option--primary"
@@ -1929,8 +2342,8 @@
             View Resume
           </a>
           <a
-            href="media/Chad_Blincoe.pdf"
-            download="Chad_Blincoe.pdf"
+            href="media/Chad_Blincoe_Resume.pdf"
+            download="Chad_Blincoe_Resume.pdf"
             class="resume-modal__option resume-modal__option--secondary"
             data-resume-option
           >
@@ -1957,11 +2370,13 @@
     <!-- ===== END resume popup ===== -->
 
     <!-- ─── FOOTER ────────────────────────────────────── -->
+    </main>
+
     <footer>
       <div class="footer-left">
         <div class="footer-logo">
           <img
-            src="media/myLogo.png"
+            src="media/web/myLogo-240.webp"
             alt=""
             onerror="this.style.display = 'none'"
           />
@@ -2143,7 +2558,7 @@
     </div>
     <!-- ===== END chat widget ===== -->
 
-    <script src="script.js"></script>
-    <script src="chatbot.js"></script>
+    <script src="script.js" defer></script>
+    <script src="chatbot.js" defer></script>
   </body>
 </html>

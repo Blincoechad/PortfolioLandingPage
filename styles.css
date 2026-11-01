@@ -51,7 +51,7 @@
   --bg3: #dfe7f2;
   --surface: #ffffff;
   --border: #c0d2e4;
-  --accent: #38bdf8;
+  --accent: #0369a1;
   --accent2: #2563eb;
   --glow: #38bdf855;
   --text: #061427;
@@ -415,7 +415,7 @@ nav {
   font-size: 0.68rem;
 }
 [data-theme="light"] .nav-resume-desktop {
-  color: var(--text);
+  color: var(--inverse-text);
 }
 .nav-resume-desktop:focus-visible {
   outline: 2px solid var(--accent);
@@ -1275,6 +1275,55 @@ section {
 }
 .project-card:hover .img-hint {
   opacity: 1;
+}
+button.img-hint {
+  pointer-events: auto;
+  cursor: pointer;
+}
+button.img-hint:focus-visible {
+  opacity: 1;
+}
+.project-hover-label {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 12, 20, 0.72);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.project-hover-label span {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  transform: translateY(8px);
+  transition: transform 0.3s ease;
+}
+.project-hover-label--stack {
+  padding: 1rem;
+  text-align: center;
+}
+.project-hover-label--stack span {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
+.project-card:hover .project-hover-label,
+.project-img:focus-within .project-hover-label {
+  opacity: 1;
+}
+.project-card:hover .project-hover-label span,
+.project-img:focus-within .project-hover-label span {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-hover-label span {
+    transform: none;
+    transition: none;
+  }
 }
 .project-body {
   padding: 1.5rem;
@@ -2175,7 +2224,7 @@ button.project-link {
    would be near-white and unreadable, so var(--text) (dark navy) is used
    there instead — both pass WCAG AA without inventing a new color. */
 [data-theme="light"] .resume-cta__btn {
-  color: var(--text);
+  color: var(--inverse-text);
 }
 .resume-cta__icon {
   flex-shrink: 0;
@@ -2645,6 +2694,10 @@ footer {
   }
   .project-card.featured .ba-pane {
     min-height: 180px;
+  }
+  /* Stacked panes put the After chip mid-card, right behind the overlay text. */
+  .project-card.featured .project-hover-label {
+    z-index: 3;
   }
   .project-card.featured .ba-pane img,
   .project-card.featured .ba-pane video {
@@ -3180,5 +3233,44 @@ footer {
   .chatbot-panel {
     width: calc(100vw - 1.5rem);
     height: min(70vh, 560px);
+  }
+}
+
+/* Keyboard access */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3000;
+  padding: 0.6rem 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--inverse-text);
+  background: var(--accent2);
+  border-radius: 4px;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+#main-content:focus {
+  outline: none;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ticker-track {
+    animation: none;
   }
 }

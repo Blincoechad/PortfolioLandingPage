@@ -52,6 +52,8 @@
 
     <div class="grid-bg"></div>
 
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <nav>
       <a href="index.html#hero" class="nav-logo">
         <img
@@ -77,7 +79,7 @@
              used in index.html's navbar (hidden on desktop, sits left of
              Contact Me) ===== -->
         <a
-          href="media/Chad_Blincoe.pdf"
+          href="media/Chad_Blincoe_Resume.pdf"
           target="_blank"
           rel="noopener"
           class="btn-primary nav-resume"
@@ -150,7 +152,7 @@
              Me. Same as index.html's navbar — swaps with the mobile
              .nav-resume above at the 900px breakpoint. ===== -->
         <a
-          href="media/Chad_Blincoe.pdf"
+          href="media/Chad_Blincoe_Resume.pdf"
           target="_blank"
           rel="noopener"
           class="btn-primary nav-resume-desktop"
@@ -204,7 +206,7 @@
       </div>
     </nav>
 
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="cert-hero" id="certifications">
         <div class="cert-hero-inner reveal visible">
           <div class="about-label">Credentials</div>
@@ -418,7 +420,7 @@
               <button
                 class="cert-nav cert-nav-prev"
                 type="button"
-                aria-label="Previous certification"
+                aria-label="Prev: previous certification"
               >
                 Prev
               </button>
@@ -440,12 +442,12 @@
             <!-- ===== ADDED: resume popup trigger, same style/behavior as
                  the hero's "My Resume" button on index.html ===== -->
             <a
-              href="media/Chad_Blincoe.pdf"
+              href="media/Chad_Blincoe_Resume.pdf"
               target="_blank"
               rel="noopener"
               class="btn-ghost hero-resume-btn"
               data-resume-trigger
-              aria-label="View or download Chad Blincoe's resume, PDF"
+              aria-label="My Resume: view or download, PDF"
             >
               <svg
                 class="hero-resume-btn__icon"
@@ -499,7 +501,7 @@
     <!-- ===== ADDED: shared resume popup, same markup/IDs as index.html so
          the shared script.js logic (which looks up #resumeModal) works here
          too — opened by the nav "Resume" and "My Resume" triggers above. ===== -->
-    <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <div class="resume-modal" id="resumeModal" aria-hidden="true" inert>
       <div class="resume-modal__backdrop" data-close-resume-modal></div>
       <div
         class="resume-modal__dialog"
@@ -524,7 +526,7 @@
         </p>
         <div class="resume-modal__options">
           <a
-            href="media/Chad_Blincoe.pdf"
+            href="media/Chad_Blincoe_Resume.pdf"
             target="_blank"
             rel="noopener"
             class="resume-modal__option resume-modal__option--primary"
@@ -547,8 +549,8 @@
             View Resume
           </a>
           <a
-            href="media/Chad_Blincoe.pdf"
-            download="Chad_Blincoe.pdf"
+            href="media/Chad_Blincoe_Resume.pdf"
+            download="Chad_Blincoe_Resume.pdf"
             class="resume-modal__option resume-modal__option--secondary"
             data-resume-option
           >

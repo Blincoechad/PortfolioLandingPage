@@ -660,6 +660,35 @@ function openImageModal(images, startIndex = 0) {
   document.body.classList.add("modal-open");
 }
 
+// Collect a card's images and open them in the gallery modal.
+function openCardGallery(card) {
+  const images = [
+    ...card.querySelectorAll(".project-img img, .project-img video"),
+  ]
+    .map((media) => ({
+      src:
+        media.getAttribute("data-modal-src") ||
+        media.currentSrc ||
+        media.getAttribute("src") ||
+        media.getAttribute("poster") ||
+        "",
+      alt:
+        media.getAttribute("alt") ||
+        media.getAttribute("aria-label") ||
+        "Project preview",
+    }))
+    .filter((item) => item.src);
+
+  const uniqueImages = images.filter(
+    (item, idx, arr) =>
+      arr.findIndex((entry) => entry.src === item.src) === idx,
+  );
+
+  // Remove duplicates so one image source does not appear multiple times.
+  if (uniqueImages.length === 0) return;
+  openImageModal(uniqueImages);
+}
+
 imageCards.forEach((card) => {
   // Open image modal only when the card body is clicked, not a link/button.
   card.addEventListener("click", (event) => {
@@ -668,32 +697,23 @@ imageCards.forEach((card) => {
       return;
     }
 
-    const images = [
-      ...card.querySelectorAll(".project-img img, .project-img video"),
-    ]
-      .map((media) => ({
-        src:
-          media.getAttribute("data-modal-src") ||
-          media.currentSrc ||
-          media.getAttribute("src") ||
-          media.getAttribute("poster") ||
-          "",
-        alt:
-          media.getAttribute("alt") ||
-          media.getAttribute("aria-label") ||
-          "Project preview",
-      }))
-      .filter((item) => item.src);
-
-    const uniqueImages = images.filter(
-      (item, idx, arr) =>
-        arr.findIndex((entry) => entry.src === item.src) === idx,
-    );
-
-    // Remove duplicates so one image source does not appear multiple times.
-    if (uniqueImages.length === 0) return;
-    openImageModal(uniqueImages);
+    openCardGallery(card);
   });
+
+  // Swap the hint for a real button so keyboard users can open the gallery too.
+  const hint = card.querySelector(".img-hint");
+  if (!hint) return;
+  const title = card.querySelector(".project-title")?.textContent?.trim();
+  const hintButton = document.createElement("button");
+  hintButton.type = "button";
+  hintButton.className = "img-hint";
+  hintButton.textContent = hint.textContent;
+  hintButton.setAttribute(
+    "aria-label",
+    `${hint.textContent}: ${title || "project"} images`,
+  );
+  hintButton.addEventListener("click", () => openCardGallery(card));
+  hint.replaceWith(hintButton);
 });
 
 imageModalPrev?.addEventListener("click", () => stepImageModal(-1));
@@ -822,6 +842,85 @@ document.addEventListener("keydown", (event) => {
 
   const first = focusable[0];
   const last = focusable[focusable.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
+// Only download and play the preview video once it scrolls into view.
+const lazyPreviewVideos = document.querySelectorAll("[data-preview-video]");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+);
+
+if (lazyPreviewVideos.length && !prefersReducedMotion.matches) {
+  const previewObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    },
+    { rootMargin: "200px" },
+  );
+  lazyPreviewVideos.forEach((video) => previewObserver.observe(video));
+}
+
+// Keep closed modals out of the tab order, and manage focus for open ones.
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), video[controls], [tabindex]:not([tabindex="-1"])';
+const managedModals = document.querySelectorAll(
+  ".process-modal, .video-modal, .image-modal, .case-study-modal, .submit-modal, .resume-modal",
+);
+const modalReturnFocus = new WeakMap();
+
+function getModalFocusables(modal) {
+  return [...modal.querySelectorAll(FOCUSABLE_SELECTOR)].filter(
+    (element) => element.getClientRects().length > 0,
+  );
+}
+
+managedModals.forEach((modal) => {
+  modal.inert = !modal.classList.contains("is-open");
+
+  // Open and close paths all toggle .is-open, so watch that one class.
+  new MutationObserver(() => {
+    const isOpen = modal.classList.contains("is-open");
+    if (isOpen === !modal.inert) return;
+    modal.inert = !isOpen;
+
+    if (isOpen) {
+      modalReturnFocus.set(modal, document.activeElement);
+      getModalFocusables(modal)[0]?.focus();
+    } else if (
+      document.activeElement === document.body ||
+      modal.contains(document.activeElement)
+    ) {
+      modalReturnFocus.get(modal)?.focus?.();
+    }
+  }).observe(modal, { attributes: true, attributeFilter: ["class"] });
+});
+
+// Keep Tab inside whichever modal is open.
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const openModal = [...managedModals].find((modal) =>
+    modal.classList.contains("is-open"),
+  );
+  if (!openModal) return;
+
+  const focusables = getModalFocusables(openModal);
+  if (focusables.length === 0) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
 
   if (event.shiftKey && document.activeElement === first) {
     event.preventDefault();
