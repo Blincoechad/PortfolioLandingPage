@@ -241,7 +241,7 @@ Led and supervised children's activities during church services.
 - Live: https://polkroofing.site.je
 - Video walkthrough: https://youtu.be/jhQJFqbZusc
 - Practice WordPress site for a fictional local roofing company, built on the Astra theme: quote request form, services, and click-to-call contact options. Not a real client.
-- Five pages: Home, About, Services, Projects, Contact. Started from an Astra starter template and reworked it around the fictional business, using Spectra blocks and SureForms.
+- Five pages: Home, About, Services, Projects, Contact. Started from an Astra starter template and reworked it around the fictional business, using Elementor for the page layouts and SureForms for the forms.
 - **Going live:** built in Local, then moved by hand to InfinityFree (free PHP/MySQL hosting), because migration plugins often fail under its upload limits. Installed a fresh WordPress with Softaculous, uploaded wp-content over FTP with FileZilla, exported the database from Local, replaced the local URLs with the live domain, and imported it in phpMyAdmin.
 - **Testing and quality:** tested on a real phone and at tablet and desktop widths; submitted the quote forms and tested the click-to-call links; checked the color palette against WCAG contrast guidelines; wrote alt text; compressed images; set page titles and meta descriptions with an SEO plugin; kept plugins updated.
 - **Shows:** WordPress site building, responsive layouts for a local service business, and deploying a WordPress site to live hosting.
